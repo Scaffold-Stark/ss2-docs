@@ -2,9 +2,9 @@
 sidebar_position: 7
 ---
 
-# 🙏 Contributing to Scaffold-ETH 2
+# 🙏 Contributing to Scaffold-Stark 2
 
-We welcome contributions to Scaffold-ETH 2!
+We welcome contributions to Scaffold-Stark 2!
 
 This section aims to provide an overview of the contribution workflow to help us make the contribution process effective for everyone involved.
 
