@@ -23,7 +23,7 @@ Scaffold-Stark is not a product itself but more of a combination or stack of oth
 
 Here are the main components:
 
-- [**Sepolia**] ([https://www.infura.io/faucet/sepolia])for running local networks, deploying and testing smart contracts.
+- [**Sepolia**]([https://www.infura.io/faucet/sepolia])for running local networks, deploying and testing smart contracts.
 - [**Starknet-React**]([https://starknet-react.com/docs/getting-started]) Collection of React hooks wrapper around starknet-react to simplify interactions with smart contracts with typescript autocompletion.
 - [**StarknetJS**]([https://www.starknetjs.com/docs/guides/intro]) as low-level interface that provides primitives to interact with Starknet. The alternative to ethers.js and web3.js.
 - [**NextJS**](https://nextjs.org/docs) for building a frontend, using many useful pre-made hooks.
