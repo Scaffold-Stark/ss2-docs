@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# AddressInput
+# AddressInput (Coming soon)
 
 Display an Ethereum address input that validates the address format, resolves ENS domains, and shows their avatars.
 

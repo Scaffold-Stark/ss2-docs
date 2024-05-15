@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Address
+# Address (Coming soon)
 
 Display an address (or ENS) along with a utility icon to copy the address. If the address is associated with an ENS that has an avatar, this avatar will be displayed. If not, a blockie image representation of the address will be shown.
 

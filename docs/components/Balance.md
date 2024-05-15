@@ -11,7 +11,7 @@ Displays the balance of a given address in both ether (ETH) and US dollars (USD)
 ## Import
 
 ```tsx
-import { Balance } from "~~/components/scaffold-eth";
+import { Balance } from "~~/components/scaffold-stark";
 ```
 
 ## Usage
@@ -24,5 +24,5 @@ import { Balance } from "~~/components/scaffold-eth";
 
 | Prop                     | Type     | Default Value | Description                                                                                                               |
 | ------------------------ | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **address**              | `string` | `undefined`   | Address in `0x___` format, it will resolve its ENS if it has one associated.                                              |
+| **address**              | `string` | `undefined`   | Address in `0x___` format, it will resolve its Starknet Domain if it has one associated(coming soon).                     |
 | **className** (optional) | `string` | `""`          | Prop to pass additional CSS styling to the component. You can use Tailwind / daisyUI classes like `text-3xl` for styling. |

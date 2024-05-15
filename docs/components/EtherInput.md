@@ -11,7 +11,7 @@ Displays an input field for ETH/USD amount, with an option to convert between ET
 ## Import
 
 ```tsx
-import { EtherInput } from "~~/components/scaffold-eth";
+import { EtherInput } from "~~/components/scaffold-stark";
 ```
 
 ## Usage

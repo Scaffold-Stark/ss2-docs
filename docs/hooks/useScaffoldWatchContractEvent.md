@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# useScaffoldWatchContractEvent
+# useScaffoldWatchContractEvent (Coming soon)
 
 Use this hook to subscribe to events emitted by your smart contract, and receive real-time updates when these events are emitted.
 

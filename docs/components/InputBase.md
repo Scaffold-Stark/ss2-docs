@@ -11,7 +11,7 @@ Simple building block for creating an input which comes with basic default style
 ## Import
 
 ```tsx
-import { InputBase } from "~~/components/scaffold-eth";
+import { InputBase } from "~~/components/scaffold-stark";
 ```
 
 ## Usage
