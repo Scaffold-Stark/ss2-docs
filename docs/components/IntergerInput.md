@@ -12,7 +12,7 @@ Shows by default a small button to multiply input's value \* 10^18 to transform 
 ## Import
 
 ```tsx
-import { IntegerInput } from "~~/components/scaffold-eth";
+import { IntegerInput } from "~~/components/scaffold-stark";
 ```
 
 ## Usage
