@@ -20,9 +20,11 @@ To ensure the proper functioning of scaffold-stark, your local `Scarb` version m
 ```sh
 scarb --version
 ```
+
 If your local Scarb version is not `2.5.4`, you need to install it.
 
-## Installation Process
+<details>
+<summary><b>Scarb Installation Process</b></summary>
 
 To install Scarb, please refer to the [installation instructions](https://docs.swmansion.com/scarb/download).
 We strongly recommend that you install
@@ -58,7 +60,9 @@ will install the version `2.5.4` of Scarb.
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.5.4
 ```
-## Setup
+
+</details>
+
 ## Compatible versions
 
 - scarb - v2.5.4
@@ -66,6 +70,15 @@ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh
 - starknet - v2.5.4
 - sierra - v1.4.0
 - rpc - v0.5.1
+
+## Setup
+
+To get started with Scaffold-Stark 2, you have two options:
+
+1. Follow readme to clone the repository.
+2. **[Comming soon]** Use the npx command: ` npx create-stark@latest` to bootstrap the project directly.
+
+### Option 1: Setup using `git clone`
 
 Clone this repo and install dependencies
 
@@ -75,3 +88,23 @@ cd scaffold-stark-2
 yarn install
 ```
 
+### Option 2: [Comming soon] Setup using `npx create-stark@latest`
+
+For a simplified setup, Scaffold-Stark 2 offers a beta npx method that guides you interactively through the setup.
+
+Bootstrap the project:
+
+```
+npx create-stark@latest
+```
+
+You will be presented with a series of prompts:
+
+- **Project Name:** Input your project name: Enter a name for your project, e.g., my-dapp-example.
+- **Install packages?:** Press `Enter` for `yes` (default option) or type `n` and press `Enter` for no
+
+Once the setup is complete, navigate to the project directory:
+
+```
+cd project-name
+```
