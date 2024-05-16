@@ -2,9 +2,9 @@
 sidebar_position: 7
 ---
 
-# RainbowKitCustomConnectButton
+# CustomConnectButton
 
-Scaffold-ETH 2 uses a custom _"Connect Button"_, based on RainbowKit, that is enhanced with several useful features:
+Scaffold-Stark 2 uses a custom _"Connect Button"_, that is enhanced with several useful features:
 
 - **Balance Display**: Shows the balance of the native token from the connected address.
 - **Chain Name and Color**: Displays the name of the connected blockchain and uses a distinct color for each chain.
@@ -12,16 +12,16 @@ Scaffold-ETH 2 uses a custom _"Connect Button"_, based on RainbowKit, that is en
 
 You can extend this component to suit your app's needs.
 
-![RainbowKitCustomConnectButton Example](/img/RainbowKitCustomConnectButton.gif)
+![CustomConnectButton Example](/img/RainbowKitCustomConnectButton.gif)
 
 ## Import
 
 ```tsx
-import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { CustomConnectButton } from "~~/components/scaffold-stark";
 ```
 
 ## Usage
 
 ```tsx
-<RainbowKitCustomConnectButton />
+<CustomConnectButton />
 ```
