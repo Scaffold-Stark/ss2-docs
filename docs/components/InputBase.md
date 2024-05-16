@@ -6,7 +6,7 @@ sidebar_position: 5
 
 Simple building block for creating an input which comes with basic default styles (colors, rounded borders).
 
-![InputBase Example](/img/inputBase.png)
+![InputBase Example](/img/inputBase.svg)
 
 ## Import
 
