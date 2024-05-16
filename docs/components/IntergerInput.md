@@ -40,4 +40,4 @@ const [txValue, setTxValue] = useState<string | bigint>("");
 | **error** (optional)       | `boolean`  | `false`       | When set to `true`, changes input border to have error styling.                         |
 | **disabled** (optional)    | `boolean`  | `false`       | When set to `true`, changes input background color and border to have disabled styling. |
 | **variant** (optional)     | `IntegerVariant` enum | `Uint256`     | The variant of integer input to use (`Uint256` or `Int256`).                 |
-| **disableMultiplyBy1e18**(optional)  | `boolean`  | `false`       | When set to `true`, disables the ability to multiply the value by 10^18.                |
+| **disableMultiplyBy1e18** (optional)  | `boolean`  | `false`       | When set to `true`, disables the ability to multiply the value by 10^18.                |
