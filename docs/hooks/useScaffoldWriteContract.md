@@ -14,7 +14,7 @@ const { writeAsync: writeYourContractAsync } = useScaffoldContractWrite({
 });
 ```
 
-The first argument is name of the contract to write to and the second argument is starknet-react `useWriteContract` hook [parameters object](https://starknet-react.com/hooks/mutation/usecontractwrite).
+The first argument is name of the contract to write to and the second argument is starknet-react `usecontractwrite` hook [parameters object](https://starknet-react.com/hooks/mutation/usecontractwrite).
 
 ## Usage Example
 
@@ -56,4 +56,4 @@ You can also pass other arguments accepted by [writeContractAsync from starknet-
 
 - `writeContractAsync` function sends the transaction to the smart contract.
 - `isMining` property indicates whether the transaction is currently being mined.
-- The extended object includes properties inherited from the useContractWrite hook from starknet-react. You can check the [useWriteContract return values](https://wagmi.sh/react/api/hooks/useWriteContract#return-type) for the types.
+- The extended object includes properties inherited from the useContractWrite hook from starknet-react. You can check the [usecontractwrite return values](https://wagmi.sh/react/api/hooks/useWriteContract#return-type) for the types.
