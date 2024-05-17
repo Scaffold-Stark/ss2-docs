@@ -42,13 +42,12 @@ Below is the configuration for `writeContractAsync` function:
 
 ## Configuration
 
-| Parameter                          | Type        | Description                                                                                                          |
-| :--------------------------------- | :---------- | :------------------------------------------------------------------------------------------------------------------- |
-| **contractName**                   | `string`    | Name of the contract to write to.                                                                                      |
-| **functionName**                | `string` | Name of the function to call.|
-| **args** (optional)                | `unknown[]` |Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
-| **options** (optional)                | `objet` | Additional options for the transaction (e.g., value for payable functions).|
-
+| Parameter              | Type        | Description                                                                                                      |
+| :--------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
+| **contractName**       | `string`    | Name of the contract to write to.                                                                                |
+| **functionName**       | `string`    | Name of the function to call.                                                                                    |
+| **args** (optional)    | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
+| **options** (optional) | `objet`     | Additional options for the transaction (e.g., value for payable functions).                                      |
 
 You can also pass other arguments accepted by [writeContractAsync from starknet-react](https://starknet-react.com/hooks/mutation/usecontractwrite).
 

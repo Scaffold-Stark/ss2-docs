@@ -12,7 +12,7 @@ Scaffold-Stark 2 uses a custom _"Connect Button"_, that is enhanced with several
 
 You can extend this component to suit your app's needs.
 
-![CustomConnectButton Example](/img/RainbowKitCustomConnectButton.gif)
+![CustomConnectButton Example](/img/customConnectButton.gif)
 
 ## Import
 
