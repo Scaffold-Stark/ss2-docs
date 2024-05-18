@@ -12,11 +12,11 @@ This recipe demonstrates how to read data from contract functions and display it
 <summary>Here is the full code, which we will be implementing in the guide below:</summary>
 
 ```tsx title="components/GreetingsCount.tsx"
-import { useAccount } from "wagmi";
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useAccount } from "@starknet-react/core";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
 
 export const GreetingsCount = () => {
-  const { address: connectedAddress } = useAccount();
+  const { account: connectedAddress } = useAccount();
 
   const { data: totalCounter, isLoading: isTotalCounterLoading } = useScaffoldReadContract({
     contractName: "YourContract",
@@ -77,8 +77,7 @@ export const GreetingsCount = () => {
 Initialize the [useScaffoldReadContract](/hooks/useScaffoldReadContract) hook to read from the contract. This hook provides the `data` which contains the return value of the function.
 
 ```tsx title="components/GreetingsCount.tsx"
-//highlight-start
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
 // highlight-end
 
 export const GreetingsCount = () => {
@@ -107,17 +106,17 @@ In the contract, `totalCounter` returns an `uint` value, which is represented as
 
 ### Step 3: Retrieve connected address greetings count
 
-We can get the connected address using the [useAccount](https://wagmi.sh/react/api/hooks/useAccount) hook and pass it to `args` key in the `useScaffoldReadContract` hook configuration. This will be used as an argument to read the contract function.
+We can get the connected address using the [useAccount](https://starknet-react.com/hooks/account/useaccount) hook and pass it to `args` key in the `useScaffoldReadContract` hook configuration. This will be used as an argument to read the contract function.
 
 ```tsx title="components/GreetingsCount.tsx"
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
 //highlight-start
-import { useAccount } from "wagmi";
+import { useAccount } from "@starknet-react/core";
 //highlight-end
 
 export const GreetingsCount = () => {
   //highlight-start
-  const { address: connectedAddress } = useAccount();
+  const { account: connectedAddress } = useAccount();
   //highlight-end
 
   const { data: totalCounter } = useScaffoldReadContract({
@@ -151,11 +150,11 @@ export const GreetingsCount = () => {
 We can use `isLoading` returned from the [`useScaffoldReadContract`](/hooks/usescaffoldreadcontract) hook. This variable is set to `true` while fetching data from the contract.
 
 ```tsx title="components/GreetingsCount.tsx"
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
-import { useAccount } from "wagmi";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
+import { useAccount } from "@starknet-react/core";
 
 export const GreetingsCount = () => {
-  const { address: connectedAddress } = useAccount();
+  const { account: connectedAddress } = useAccount();
 
   // highlight-start
   const { data: totalCounter, isLoading: isTotalCounterLoading } = useScaffoldReadContract({

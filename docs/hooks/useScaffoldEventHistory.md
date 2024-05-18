@@ -4,43 +4,40 @@ sidebar_position: 4
 
 # useScaffoldEventHistory
 
-Use this hook to retrieve historical event logs for your smart contract, providing past activity data, with the option to watch for new events.
+Use this hook to read events from a deployed smart contract.
 
 ```ts
-const {
-  data: events,
-  isLoading: isLoadingEvents,
-  error: errorReadingEvents,
-} = useScaffoldEventHistory({
+const { data, isLoading, error } = useScaffoldEventHistory({
   contractName: "YourContract",
-  eventName: "GreetingChange",
-  fromBlock: 31231n,
-  watch: true,
-  filters: { greetingSetter: "0x9eB2C4866aAe575bC88d00DE5061d5063a1bb3aF" },
+  eventName: "YourEvent",
+  fromBlock: BigInt(0),
+  filters: { parameterName: value },
   blockData: true,
-  transactionData: true,
-  receiptData: true,
+  transactionData: false,
+  receiptData: false,
+  watch: true,
+  enabled: true,
 });
 ```
 
-This example retrieves the historical event logs for the `GreetingChange` event of the `YourContract` smart contract, starting from block number 31231 and filtering events where the `greetingSetter` parameter is `0x9eB2C4866aAe575bC88d00DE5061d5063a1bb3aF`.
+This example configures the hook to read events from the YourEvent event of the YourContract smart contract, starting from block 0. It includes block data, but excludes transaction and receipt data. The hook will watch for new events and refresh the data.
 
 ## Configuration
 
-| Parameter                      | Type      | Description                                                                                                                                                           |
-| :----------------------------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **contractName**               | `string`  | Name of the contract to read from.                                                                                                                                    |
-| **eventName**                  | `string`  | Name of the event to read.                                                                                                                                            |
-| **fromBlock**                  | `bigint`  | Block number from which to start reading events.                                                                                                                      |
-| **filters** (optional)         | `object`  | Apply filters to the event based on **indexed** parameter names and values `{ [parameterName]: value }`.                                                              |
-| **blockData** (optional)       | `boolean` | If set to true it will return the block data for each event (default: false).                                                                                         |
-| **transactionData** (optional) | `boolean` | If set to true it will return the transaction data for each event (default: false).                                                                                   |
-| **receiptData** (optional)     | `boolean` | If set to true it will return the receipt data for each event (default: false).                                                                                       |
-| **watch** (optional)           | `boolean` | If set to true, the events will be refetched every [`pollingInterval`](/deploying/deploy-nextjs-app#--pollinginterval) set at `scaffold.config.ts`. (default: false). |
-| **enabled** (optional)         | `boolean` | If set to false, the hook will not fetch any data (default: true).                                                                                                    |
+| Parameter                      | Type                  | Description                                                                                                                                                    |
+| :----------------------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **contractName**               | `string`              | Name of the deployed contract to read events from.                                                                                                             |
+| **eventName**                  | `string`              | Name of the event to listen for.                                                                                                                               |
+| **fromBlock**                  | `bigint`              | The block number to start reading events from.                                                                                                                 |
+| **filters** (optional)         | `Record<string, any>` | Filters to be applied to the event `{ [parameterName]: value }`.                                                                                               |
+| **blockData** (optional)       | `boolean`             | If true, returns the block data for each event (default: false).                                                                                               |
+| **transactionData** (optional) | `boolean`             | If true, returns the transaction data for each event (default: false).                                                                                         |
+| **receiptData** (optional)     | `boolean`             | If true, returns the receipt data for each event (default: false).                                                                                             |
+| **watch** (optional)           | `boolean`             | If true, the events will be refetched every [`pollingInterval`](/deploying/deploy-nextjs-app#--pollinginterval) set at `scaffold.config.ts`. (default: false). |
+| **enabled** (optional)         | `boolean`             | If false, disables the hook from running (default: true).                                                                                                      |
 
 ## Return Values
 
-- `data` property of the returned object contains an array of event objects, each containing the event parameters and (optionally) the block, transaction, and receipt data.
-- `isLoading` property indicates whether the event logs are currently being fetched.
-- `error` property contains any error that occurred during the fetching process (if applicable).
+- `data` The event history data, including optional block, transaction, and receipt data if specified.
+- `isLoading` A boolean indicating whether the data is currently being loaded.
+- `error` An error message if an error occurred while fetching the data.

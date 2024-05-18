@@ -6,37 +6,33 @@ description: Learn how to create a button that executes the writeContractAsync f
 
 # Write to a Contract with `writeContractAsync` button
 
-This recipe shows how to implement a button that allows users to interact with a smart contract by executing the `writeContractAsync` function returned by [useScaffoldWriteContract](/hooks/useScaffoldWriteContract). By following this guide, you can create a user interface for writing data to a contract.
+his recipe demonstrates how to create a button for contract interaction using the "useTransactor" and "useWriteContract" hooks from the "starknet-react" library. The interaction includes the capability to provide feedback on the transaction status when using starknet-react `useContractWrite`.
 
 <details open>
 <summary>Here is the full code, which we will be implementing in the guide below:</summary>
 
-```tsx title="components/Greetings.tsx"
+```tsx title="components/ContractInteraction.tsx"
 import { useState } from "react";
-import { parseEther } from "viem";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
 
-export const Greetings = () => {
-  const [newGreeting, setNewGreeting] = useState("");
+export const SetName = () => {
+  const [newName, setNewName] = useState("");
 
-  const { writeContractAsync, isPending } = useScaffoldWriteContract("YourContract");
+  const { writeAsync, isPending } = useScaffoldWriteContract({
+    calls: [
+      {
+        contractName: "YourContract",
+        functionName: "setName",
+        args: [newName],
+      },
+    ],
+  });
 
-  const handleSetGreeting = async () => {
+  const handleSetName = async () => {
     try {
-      await writeContractAsync(
-        {
-          functionName: "setGreeting",
-          args: [newGreeting],
-          value: parseEther("0.01"),
-        },
-        {
-          onBlockConfirmation: txnReceipt => {
-            console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-          },
-        },
-      );
+      await writeAsync();
     } catch (e) {
-      console.error("Error setting greeting", e);
+      console.error("Error setting name", e);
     }
   };
 
@@ -44,11 +40,11 @@ export const Greetings = () => {
     <>
       <input
         type="text"
-        placeholder="Write your greeting"
+        placeholder="Write your name"
         className="input border border-primary"
-        onChange={e => setNewGreeting(e.target.value)}
+        onChange={e => setNewName(e.target.value)}
       />
-      <button className="btn btn-primary" onClick={handleSetGreeting} disabled={isPending}>
+      <button className="btn btn-primary" onClick={handleSetName} disabled={isPending}>
         {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Send"}
       </button>
     </>
@@ -62,64 +58,60 @@ export const Greetings = () => {
 
 ### Step 1: Set Up Your Component
 
-Create a new component in the "components" folder. This component will enable users to write data to a smart contract.
+Create a new component in the "components" folder. The component will show a button that will allow users to interact with your smart contract.
 
-```tsx title="components/Greetings.tsx"
-export const Greetings = () => {
+```tsx title="components/ContractInteraction.tsx"
+export const SetName = () => {
   return (
     <>
-      <input type="text" placeholder="Write your greeting" className="input border border-primary" />
+      <input type="text" placeholder="Write your name" className="input border border-primary" />
       <button>Send</button>
     </>
   );
 };
 ```
 
-### Step 2: Initialize `useScaffoldWriteContract` hook
+### Step 2: Initialize useScaffoldWriteContract hook
 
-Initialize the `useScaffoldWriteContract` hook. This hook provides the `writeContractAsync` function for sending transactions, we'll create `handleSetGreeting` function in which we'll call and pass parameters to `writeContractAsync` required to perform contract interaction.
+Initialize the `useScaffoldWriteContract` hook. This hook provides the `writeAsync` function for sending transactions. We'll create a `handleSetName` function in which we'll call and pass parameters to `writeAsync` required to perform contract interaction.
 
 ```tsx
 // highlight-start
 import { useState } from "react";
-import { parseEther } from "viem";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
 // highlight-end
 
-export const Greetings = () => {
+export const SetName = () => {
   // highlight-start
-  const [newGreeting, setNewGreeting] = useState("");
+  const [newName, setNewName] = useState("");
   // highlight-end
 
   // highlight-start
-  const { writeContractAsync } = useScaffoldWriteContract("YourContract");
+  const { writeAsync } = useScaffoldWriteContract({
+    calls: [
+      {
+        contractName: "YourContract",
+        functionName: "setName",
+        args: [newName],
+      },
+    ],
+  });
   // highlight-end
 
   // highlight-start
-  const handleSetGreeting = async () => {
+  const handleSetName = async () => {
     try {
-      await writeContractAsync(
-        {
-          functionName: "setGreeting",
-          args: [newGreeting],
-          value: parseEther("0.01"),
-        },
-        {
-          onBlockConfirmation: txnReceipt => {
-            console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-          },
-        },
-      );
+      await writeAsync();
     } catch (e) {
-      console.error("Error setting greeting", e);
+      console.error("Error setting name", e);
     }
   };
   // highlight-end
 
   return (
     <>
-      <input type="text" placeholder="Write your greeting" className="input border border-primary" />
-      <button>Send</button>
+      <input type="text" placeholder="Write your name" className="input border border-primary" />
+      <button onClick={handleSetName}>Send</button>
     </>
   );
 };
@@ -127,33 +119,30 @@ export const Greetings = () => {
 
 ### Step 3: Add input change logic and send transaction when users click the button
 
-Wire up the input field to update the `newGreeting` state when the user types in a new greeting and call `handleSetGreeting` function when user click on the button.
+Wire up the input field to update the `newName` state when the user types in a new name and call the `handleSetName` function when the user clicks the button.
 
 ```tsx
-import { parseEther } from "viem";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useState } from "react";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
 
-export const Greetings = () => {
-  const [newGreeting, setNewGreeting] = useState("");
+export const SetName = () => {
+  const [newName, setNewName] = useState("");
 
-  const { writeContractAsync } = useScaffoldWriteContract("YourContract");
+  const { writeAsync } = useScaffoldWriteContract({
+    calls: [
+      {
+        contractName: "YourContract",
+        functionName: "setName",
+        args: [newName],
+      },
+    ],
+  });
 
-  const handleSetGreeting = async () => {
+  const handleSetName = async () => {
     try {
-      await writeContractAsync(
-        {
-          functionName: "setGreeting",
-          args: [newGreeting],
-          value: parseEther("0.01"),
-        },
-        {
-          onBlockConfirmation: txnReceipt => {
-            console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-          },
-        },
-      );
+      await writeAsync();
     } catch (e) {
-      console.error("Error setting greeting", e);
+      console.error("Error setting name", e);
     }
   };
 
@@ -161,56 +150,49 @@ export const Greetings = () => {
     <>
       <input
         type="text"
-        placeholder="Write your greeting"
+        placeholder="Write your name"
         className="input border border-primary"
         // highlight-start
-        onChange={e => setNewGreeting(e.target.value)}
+        onChange={e => setNewName(e.target.value)}
         // highlight-end
       />
-      <button
-        className="btn btn-primary"
-        // highlight-start
-        onClick={handleSetGreeting}
-        // highlight-end
-      >
+      // highlight-start
+      <button className="btn btn-primary" onClick={handleSetName}>
         Send
       </button>
+      // highlight-end
     </>
   );
 };
 ```
 
-### Step 4: Bonus adding loading state
+### Step 4: Bonus - Adding loading state
 
 We can use `isPending` returned from `useScaffoldWriteContract` while the transaction is being mined and also disable the button.
 
 ```tsx
 import { useState } from "react";
-import { parseEther } from "viem";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
 
-export const Greetings = () => {
-  const [newGreeting, setNewGreeting] = useState("");
+export const SetName = () => {
+  const [newName, setNewName] = useState("");
   // highlight-start
-  const { writeContractAsync, isPending } = useScaffoldWriteContract("YourContract");
-  // highlight-end
+  const { writeAsync, isPending } = useScaffoldWriteContract({
+    // highlight-end
+    calls: [
+      {
+        contractName: "YourContract",
+        functionName: "setName",
+        args: [newName],
+      },
+    ],
+  });
 
-  const handleSetGreeting = async () => {
+  const handleSetName = async () => {
     try {
-      await writeContractAsync(
-        {
-          functionName: "setGreeting",
-          args: [newGreeting],
-          value: parseEther("0.01"),
-        },
-        {
-          onBlockConfirmation: txnReceipt => {
-            console.log("📦 Transaction blockHash", txnReceipt.blockHash);
-          },
-        },
-      );
+      await writeAsync();
     } catch (e) {
-      console.error("Error setting greeting", e);
+      console.error("Error setting name", e);
     }
   };
 
@@ -218,21 +200,16 @@ export const Greetings = () => {
     <>
       <input
         type="text"
-        placeholder="Write your greeting"
+        placeholder="Write your name"
         className="input border border-primary"
-        onChange={e => setNewGreeting(e.target.value)}
+        onChange={e => setNewName(e.target.value)}
       />
-
-      <button
-        className="btn btn-primary"
-        onClick={handleSetGreeting}
-        // highlight-start
-        disabled={isPending}
-      >
+      // highlight-start
+      <button className="btn btn-primary" onClick={handleSetName} disabled={isPending}>
         {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Send"}
       </button>
+      // highlight-end
     </>
-    // highlight-end
   );
 };
 ```

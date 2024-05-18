@@ -1,20 +1,29 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # useScaffoldWriteContract
 
-Use this hook to send a transaction to your smart contract to write data or perform an action.
+Use this hook to write to state-changing functions of your smart contract.
 
 ```ts
-const { writeAsync: writeYourContractAsync } = useScaffoldContractWrite({
-  contractName: "YourContract",
-  functionName: "setGreeting",
-  args: ["The value to set"],
+const { writeAsync } = useScaffoldWriteContract({
+  calls: [
+    {
+      contractName: "YourContract1",
+      functionName: "setGreeting",
+      args: ["Hello"],
+    },
+    {
+      contractName: "YourContract2",
+      functionName: "setCounter",
+      args: [42],
+    },
+  ],
 });
 ```
 
-The first argument is name of the contract to write to and the second argument is starknet-react `usecontractwrite` hook [parameters object](https://starknet-react.com/hooks/mutation/usecontractwrite).
+This example sends multiple transactions to the specified smart contracts to call the functions with the arguments passed in calls. The writeAsync function sends the transactions to the smart contracts.
 
 ## Usage Example
 
@@ -23,31 +32,32 @@ The first argument is name of the contract to write to and the second argument i
   className="btn btn-primary"
   onClick={async () => {
     try {
-      await writeYourContractAsync({
-        args: ["The new value to set"],
-        options: {
-          value: parseEther("0.1"),
-        },
-      });
+      await writeAsync();
     } catch (e) {
-      console.error("Error setting greeting:", e);
+      console.error("Error sending transactions:", e);
     }
   }}
 >
-  Set Greeting
+  Send Transactions
 </button>
 ```
 
-Below is the configuration for `writeContractAsync` function:
+This example demonstrates how to use the writeAsync function to send multiple transactions to the specified smart contracts, calling the functions with the arguments passed in calls.
 
 ## Configuration
 
-| Parameter              | Type        | Description                                                                                                      |
-| :--------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
-| **contractName**       | `string`    | Name of the contract to write to.                                                                                |
-| **functionName**       | `string`    | Name of the function to call.                                                                                    |
-| **args** (optional)    | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
-| **options** (optional) | `objet`     | Additional options for the transaction (e.g., value for payable functions).                                      |
+| Parameter              | Type                 | Description                                                                                                                   |
+| :--------------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
+| **calls**              | `Array`              | Array of configuration objects for the contract calls. Each object should contain `contractName`, `functionName`, and `args`. |
+| **options** (optional) | `InvocationsDetails` | Additional options for the transactions.                                                                                      |
+
+## Call Object Configuration
+
+| Parameter           | Type        | Description                                                                                                      |
+| :------------------ | :---------- | :--------------------------------------------------------------------------------------------------------------- |
+| **contractName**    | `string`    | Name of the contract to write to.                                                                                |
+| **functionName**    | `string`    | Name of the function to call.                                                                                    |
+| **args** (optional) | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
 
 You can also pass other arguments accepted by [writeContractAsync from starknet-react](https://starknet-react.com/hooks/mutation/usecontractwrite).
 
@@ -55,4 +65,4 @@ You can also pass other arguments accepted by [writeContractAsync from starknet-
 
 - `writeContractAsync` function sends the transaction to the smart contract.
 - `isMining` property indicates whether the transaction is currently being mined.
-- The extended object includes properties inherited from the useContractWrite hook from starknet-react. You can check the [usecontractwrite return values](https://wagmi.sh/react/api/hooks/useWriteContract#return-type) for the types.
+- The extended object includes properties inherited from the useContractWrite hook from starknet-react. You can check the [usecontractwrite return values](https://starknet-react.com/hooks/mutation/usecontractwrite) for the types.
