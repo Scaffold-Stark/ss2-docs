@@ -1,68 +1,55 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # useScaffoldWriteContract
 
-Use this hook to write to state-changing functions of your smart contract.
+Use this hook to write to your smart contract by calling state-mutating functions.
 
 ```ts
 const { writeAsync } = useScaffoldWriteContract({
-  calls: [
-    {
-      contractName: "YourContract1",
-      functionName: "setGreeting",
-      args: ["Hello"],
-    },
-    {
-      contractName: "YourContract2",
-      functionName: "setCounter",
-      args: [42],
-    },
-  ],
+  contractName: "YourContract",
+  functionName: "updateGreeting",
+  args: ["0xd8da6bf26964af9d7eed9e03e53415d37aa96045", "Hello, world!"],
 });
 ```
 
-This example sends multiple transactions to the specified smart contracts to call the functions with the arguments passed in calls. The writeAsync function sends the transactions to the smart contracts.
+This example calls the updateGreeting function of the YourContract smart contract.
 
 ## Usage Example
 
 ```tsx
-<button
-  className="btn btn-primary"
-  onClick={async () => {
-    try {
-      await writeAsync();
-    } catch (e) {
-      console.error("Error sending transactions:", e);
-    }
-  }}
->
-  Send Transactions
-</button>
+const { writeAsync } = useScaffoldWriteContract({
+  contractName: "YourContract",
+  functionName: "updateGreeting",
+  args: ["0xd8da6bf26964af9d7eed9e03e53415d37aa96045", "Hello, world!"],
+  options: { gas: 100000 },
+});
+
+const handleUpdateGreeting = async () => {
+  try {
+    const result = await writeAsync();
+    console.log("Transaction successful:", result);
+  } catch (error) {
+    console.error("Transaction failed:", error);
+  }
+};
 ```
 
-This example demonstrates how to use the writeAsync function to send multiple transactions to the specified smart contracts, calling the functions with the arguments passed in calls.
+In this example, the updateGreeting function of the YourContract is called with the specified arguments. The transaction is sent using the `writeAsync` method, which handles the logic for sending the transaction and returns a promise
 
 ## Configuration
 
-| Parameter              | Type                 | Description                                                                                                                   |
-| :--------------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
-| **calls**              | `Array`              | Array of configuration objects for the contract calls. Each object should contain `contractName`, `functionName`, and `args`. |
-| **options** (optional) | `InvocationsDetails` | Additional options for the transactions.                                                                                      |
+| Parameter             | Type        | Description                                                                                                      |
+| :-------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
+| **contractName**      | `string`    | Name of the contract to write to.                                                                                |
+| **functionName**      | `string`    | Name of the function to call.                                                                                    |
+| **args** (optional)   | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
+| **option** (optional) | `object`    | Additional options for the transaction, such as gas and value.                                                   |
 
-## Call Object Configuration
-
-| Parameter           | Type        | Description                                                                                                      |
-| :------------------ | :---------- | :--------------------------------------------------------------------------------------------------------------- |
-| **contractName**    | `string`    | Name of the contract to write to.                                                                                |
-| **functionName**    | `string`    | Name of the function to call.                                                                                    |
-| **args** (optional) | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
-
-You can also pass other arguments accepted by [writeContractAsync from starknet-react](https://starknet-react.com/hooks/mutation/usecontractwrite).
+You can also pass other arguments accepted by [useContractWrite from Starknet-react](https://starknet-react.com/hooks/mutation/usecontractwrite).
 
 ## Return Values
 
-- `writeContractAsync` function sends the transaction to the smart contract.
-- `isMining` property indicates whether the transaction is currently being mined.
-- The extended object includes properties inherited from the useContractWrite hook from starknet-react. You can check the [usecontractwrite return values](https://starknet-react.com/hooks/mutation/usecontractwrite) for the types.
+- The writeAsync method is used to send the write transaction. It returns a promise that resolves when the transaction is confirmed.
+- The extended object includes properties inherited from the useContractWrite hook of starknet-react. You can check the [useContractWrite return values](https://starknet-react.com/hooks/mutation/usecontractwrite) documentation for the types.
