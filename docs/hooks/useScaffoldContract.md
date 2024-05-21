@@ -15,12 +15,12 @@ const { data: yourContract } = useScaffoldContract({
 await yourContract?.read.greeting();
 
 // Used to write to a contract and can be called in any function
-import { useWalletClient } from "wagmi";
+import { useAccount } from "@starknet-react/core";
 
-const { data: walletClient } = useWalletClient();
+const { account } = useAccount();
 const { data: yourContract } = useScaffoldContract({
   contractName: "YourContract",
-  walletClient,
+  account,
 });
 const setGreeting = async () => {
   // Call the method in any function
@@ -32,13 +32,11 @@ This example uses the `useScaffoldContract` hook to obtain a contract instance f
 
 ## Configuration
 
-| Parameter                   | Type                                                               | Description                                                                   |
-| :-------------------------- | :----------------------------------------------------------------- | :---------------------------------------------------------------------------- |
-| **contractName**            | `string`                                                           | Name of the contract.                                                         |
-| **walletClient** (optional) | [`WalletClient`](https://wagmi.sh/react/api/hooks/useWalletClient) | Wallet client must be passed in order to call `write` methods of the contract |
+| Parameter        | Type     | Description           |
+| :--------------- | :------- | :-------------------- |
+| **contractName** | `string` | Name of the contract. |
 
 ## Return Value
 
-- `data` : Object representing viem's [contract instance](https://viem.sh/docs/contract/getContract.html#return-value). Which can be used to call `read` and `write` of the contract.
-
+- `data`: An instance of the contract, which can be used to call `read` and `write` methods of the contract.
 - `isLoading` : Boolean indicating if the contract is being loaded.
