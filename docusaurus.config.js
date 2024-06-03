@@ -129,16 +129,12 @@ const config = {
             items: [
               {
                 label: "Twitter",
-                href: "https://twitter.com/ScaffoldSTARK",
+                href: "https://x.com/ScaffoldStark",
               },
               {
                 label: "Telegram",
-                href: "https://t.me/joinchat/F7nCRK3kI93PoCOk",
-              },
-              {
-                label: "Youtube",
-                href: "https://www.youtube.com/@austingriffith3550/playlists",
-              },
+                href: "https://t.me/+wO3PtlRAreo4MDI9",
+              }
             ],
           },
         ],
