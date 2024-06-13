@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "🏗 Scaffold-Stark 2 | Docs",
+  title: "Scaffold-Stark 2 | Docs",
   tagline: "Open-source toolkit for building dapps",
   favicon: "img/icon-starknet.svg",
 
@@ -69,7 +69,7 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
-      image: "img/thumbnail.jpg",
+      image: "img/icon-starknet.svg",
       navbar: {
         title: "Scaffold-Stark 2 | Docs",
         logo: {
