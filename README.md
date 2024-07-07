@@ -63,7 +63,7 @@ TODO: Explain _category_.json
 
 For contributions to the Website Code, we follow the ["fork-and-pull" Git workflow](https://github.com/susam/gitpr).
 
-Fork the repository, create a new branch, and make all changes necessary in your repository. Once you are done with your changes, create a PR to Scaffold-ETH 2 Documentation repository.
+Fork the repository, create a new branch, and make all changes necessary in your repository. Once you are done with your changes, create a PR to Scaffold-Start-2 Documentation repository.
 
 ### Configuration
 
