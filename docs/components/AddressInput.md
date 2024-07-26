@@ -2,9 +2,9 @@
 sidebar_position: 3
 ---
 
-# AddressInput (Coming soon)
+# AddressInput
 
-Display an Ethereum address input that validates the address format, resolves ENS domains, and shows their avatars.
+Display an Ethereum address input that validates the address format, resolves StarknetId domains, and shows their avatars.
 
 Also shows a blockie image for each address.
 
@@ -13,7 +13,7 @@ Also shows a blockie image for each address.
 ## Import
 
 ```tsx
-import { AddressInput } from "~~/components/scaffold-eth";
+import { AddressInput } from "~~/components/scaffold-stark";
 ```
 
 ## Usage
