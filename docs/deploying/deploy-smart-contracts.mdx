@@ -1,0 +1,45 @@
+---
+sidebar_position: 1
+---
+
+# Deploy Your Smart Contracts
+
+To deploy your smart contracts to a live network, there are a few things you need to adjust.
+
+## 1. Configure your network
+
+Scaffold-Stark 2 comes with a selection of predefined networks. They are `Devnet` and `Sepolia`.
+
+Here are the [Starknet docs](https://docs.starknet.io/documentation/tools/api-services/) for information on Seplia networks providers.
+
+## 2. Use prefunded accounts and add one of them to deploy the contract(s) from.
+
+The deployer account is the account that will deploy your contracts. Additionally, the deployer account will be used to execute any function calls that are part of your deployment script.
+
+You can use any prefunded account / private key or add your crypto wallet's private key.
+
+You can also manually set your own private key, you will need to add `PRIVATE_KEY_SEPOLIA=yourWalletPrivateKey` to the `packages/snfoundry/.env` file.
+
+## 3. Deploy your smart contract(s)
+
+By default `yarn deploy` will deploy contract to the local network. You can change `defaultNetwork` in `scaffold.config.ts`
+
+Run the command below to deploy the smart contract to the target network. Make sure to have some funds in your deployer account to pay for the transaction.
+
+```
+yarn deploy --network network_name
+```
+
+eg: `yarn deploy --network sepolia`
+
+## Configuration of Third-Party Services for Production-Grade Apps.
+
+By default, Scaffold-Stark 2 provides predefined API keys for popular services such as Infura. This allows you to begin developing and testing your applications more easily, avoiding the need to register for this service.
+
+For production-grade applications, it's recommended to obtain your own API keys (to prevent rate limiting issues). You can configure these at:
+
+- `RPC_URL_SEPOLIA` variable in `packages/snfoundry/.env` and `packages/nextjs/.env.local`. You can create API keys from the [Alchemy dashboard](https://dashboard.alchemy.com/).
+
+:::tip Hint
+It's recommended to store envs for nextjs in Vercel/system env config for live apps and use .env.local for local testing.
+:::tip Hint

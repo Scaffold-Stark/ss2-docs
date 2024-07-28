@@ -1,0 +1,110 @@
+---
+sidebar_position: 1
+description: Requirements and installation methods to get started with Scaffold Stark-2.
+---
+
+# Installation
+
+## Requirements
+
+Before you begin, you need to install the following tools:
+
+- [Node (>= v18.17)](https://nodejs.org/en/download/)
+- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
+- [Git](https://git-scm.com/downloads)
+
+## Install scarb
+
+To ensure the proper functioning of scaffold-stark, your local `Scarb` version must be `2.5.4`. To accomplish this, first check your local Scarb version:
+
+```sh
+scarb --version
+```
+
+If your local Scarb version is not `2.5.4`, you need to install it.
+
+<details>
+<summary><b>Scarb Installation Process</b></summary>
+
+To install Scarb, please refer to the [installation instructions](https://docs.swmansion.com/scarb/download).
+We strongly recommend that you install
+Scarb via [asdf](https://docs.swmansion.com/scarb/download.html#install-via-asdf), a CLI tool that can manage
+multiple language runtime versions on a per-project basis.
+This will ensure that the version of Scarb you use to work on a project always matches the one defined in the
+project settings, avoiding problems related to version mismatches.
+
+Please refer to the [asdf documentation](https://asdf-vm.com/guide/getting-started.html) to install all
+prerequisites.
+
+Once you have `asdf` installed locally, you can download Scarb plugin with the following command:
+
+```bash
+asdf plugin add scarb
+```
+
+This will allow you to download specific versions. You can choose the same version as the Dojo's Cairo version, for example, 2.5.4, with the following command:
+
+```bash
+asdf install scarb 2.5.4
+```
+
+and set a global version:
+
+```bash
+asdf global scarb 2.5.4
+```
+
+Otherwise, you can simply run the following command in your terminal, and follow the onscreen instructions. This
+will install the version `2.5.4` of Scarb.
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.5.4
+```
+
+</details>
+
+## Compatible versions
+
+- scarb - v2.5.4
+- cairo - v2.5.4
+- starknet - v2.5.4
+- sierra - v1.4.0
+- rpc - v0.5.1
+
+## Setup
+
+To get started with Scaffold-Stark 2, you have two options:
+
+1. Follow readme to clone the repository.
+2. **[Comming soon]** Use the npx command: ` npx create-stark@latest` to bootstrap the project directly.
+
+### Option 1: Setup using `git clone`
+
+Clone this repo and install dependencies
+
+```bash
+git clone https://github.com/Quantum3-Labs/scaffold-stark-2 --recurse-submodules
+cd scaffold-stark-2
+yarn install
+```
+
+### Option 2: [Comming soon] Setup using `npx create-stark@latest`
+
+For a simplified setup, Scaffold-Stark 2 offers a beta npx method that guides you interactively through the setup.
+
+Bootstrap the project:
+
+```
+npx create-stark@latest
+```
+
+You will be presented with a series of prompts:
+
+- **Project Name:** Input your project name: Enter a name for your project, e.g., my-dapp-example.
+- **Install packages?:** Press `Enter` for `yes` (default option) or type `n` and press `Enter` for no
+
+Once the setup is complete, navigate to the project directory:
+
+```
+cd project-name
+```
