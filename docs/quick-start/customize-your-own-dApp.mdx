@@ -18,7 +18,7 @@ These two directories together form the complete project structure, with `snfoun
    You can edit your smart contract file `YourContract.cairo` in the `packages/snfoundry/contracts/src` directory. This is where all the contract logic is stored. When modifying this file, ensure your contract logic meets the project requirements and is thoroughly tested before deployment.
 
 2. **Deployment Scripts**:
-   The deployment scripts are located in `packages/snfoundry/script-js/deploy.js`. This script is used to deploy your smart contract to the specified blockchain network. By editing this script, you can adjust the deployment process, such as specifying different networks or contract parameters.
+   The deployment scripts are located in `packages/snfoundry/scripts-ts/deploy.ts`. This script is used to deploy your smart contract to the specified blockchain network. By editing this script, you can adjust the deployment process, such as specifying different networks or contract parameters.
 
 3. **Test Smart Contracts**:
    To ensure your smart contracts work correctly, write and run tests in the `packages/snfoundry/contracts/src/test` directory. These tests can be executed using the `yarn test` command. This helps catch and fix potential errors before deployment.
@@ -27,25 +27,33 @@ These two directories together form the complete project structure, with `snfoun
 
 ### Customize Nextjs App
 
-The `nextjs` directory is a critical part of your dApp, handling the frontend logic and user interface. It offers robust features and flexibility to build a dynamic and responsive application. Let's dive into the main characteristics and how you can leverage them for your project.
+The `nextjs` directory is a critical part of your dApp, handling the frontend logic and user interface. It offers robust features and flexibility to build a dynamic and responsive application. 
+By following these steps, you can effectively customize the pre-built components and use preset hooks to create a unique and fully functional user interface for your decentralized application.
+Let's dive into the main characteristics and how you can leverage them for your project.
 
 1. **Edit Frontend Homepage**:
-   You can edit your frontend homepage in `packages/nextjs/app/page.tsx`. This file is one of the entry points of your application, and modifying it will change what users see when they visit your homepage. By customizing this file, you can tailor the first impression your users get, showcasing key features and information prominently.
+   You can edit your frontend homepage in `packages/nextjs/app/page.tsx`.
+   This file is one of the entry points of your application, and modifying it will change what users see when they visit your homepage.
+   By customizing this file, you can tailor the first impression your users get, showcasing key features and information prominently.
 
 2. **Routing and Page Layouts**:
-   Next.js supports a powerful and flexible routing system. For configuring routing and page layouts, refer to the Next.js documentation. The documentation provides detailed guides to help you define routes and configure page layouts, ensuring your application has an intuitive and powerful user interface. Next.js enables both server-side and client-side components, allowing you to build a seamless user experience.
+   Next.js supports a powerful and flexible routing system. For configuring routing and page layouts, refer to the [Next.js documentation](https://nextjs.org/docs/app/building-your-application/routing).
+   The documentation provides detailed guides to help you define routes and configure page layouts, ensuring your application has an intuitive and powerful user interface. Next.js enables both server-side and client-side components, allowing you to build a seamless user experience.
 
-3. **UI Styling Options**:
+3. **UI Styling**:
    The Next.js app supports various UI styling solutions including Tailwind CSS, CSS-in-JS (like styled-components or emotion), and traditional CSS. This flexibility allows you to choose the best styling approach that fits your project requirements and developer preferences.
 
 4. **State Management**:
    For state management, the default solution provided is Zustand. Zustand is a small, fast, and scalable state-management solution that works well with React and Next.js. It simplifies managing global state in your application without the boilerplate often associated with other state management libraries.
 
-5. **Server-side and Client-side Components**:
-   Next.js allows you to utilize both server-side and client-side components. This hybrid approach can optimize performance and user experience by pre-rendering parts of your application on the server while enabling dynamic interactions on the client.
+5. **Scaffold-Stark Configuration**:
+   The configuration for Scaffold-Stark is primarily contained in the `packages/nextjs/scaffold.config.ts` file.
+   The folders such as utils, web3, and components under the scaffold-stark directory do not hold configurations but rather helper functions that implement the framework itself. These functions handle different aspects of the project, including utilities for smart contract interactions, web3 setup, and reusable UI components tailored for Starknet integration.
+   These folders should mostly be untouched unless users have a deep understanding of the framework and aim to create their own dApp. 
 
-6. **Scaffold-Stark Configuration**:
-   The configuration for Scaffold-Stark is contained within various folders such as `utils`, `web3`, and `components` under the `scaffold-stark` directory. These configurations handle different aspects of the project, including utilities for smart contract interactions, web3 setup, and reusable UI components tailored for Starknet integration.
+6. **Use pre-built components and hooks**
+   Use the preset functionality provided under the components and hooks folder to form your own business logic by further encapsulating and including hooks and components.
+   For more details on the available components and how to use them, please refer to the [components](../components) and [Interacting with Your Smart Contracts](../hooks) section.
 
 ### Custom Scaffold Stark Components
 
@@ -103,11 +111,10 @@ In this example, the `MyBalance` component:
 4. **Integrate with Your Application**:
    Use your custom component in your application wherever needed. This allows you to maintain consistency while customizing components for specific business requirements.
 
-By following these steps, you can effectively customize the pre-built components to create a unique and functional user interface for your decentralized application. For more details on the available components and how to use them, please refer to the [components](./components) section.
 
-### Custom Scaffold Stark Hooks
+### Using Scaffold Stark Hooks
 
 The `hooks` directory, located at `packages/nextjs/hooks/scaffold-stark`, offers several hooks.
 Scaffold-Stark 2 provides a collection of custom React hooks designed to simplify interactions with your deployed smart contracts.
 These hooks are wrappers around Starknet-React, an easy-to-use interface with TypeScript autocompletions for reading from, writing to, and monitoring events emitted by your smart contracts.
-For more details, please see the [Interacting with Your Smart Contracts](./hooks) section.
+For more details, please see the [Interacting with Your Smart Contracts](../hooks) section.
