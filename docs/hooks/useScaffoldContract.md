@@ -39,4 +39,7 @@ This example uses the `useScaffoldContract` hook to obtain a contract instance f
 ## Return Value
 
 - `data`: An instance of the contract, which can be used to call `read` and `write` methods of the contract.
+
+  - Currently the return item of the `call()` function of the `Contract` instance would return unparsed data (`rawArgs`). We are working on a fix on this.
+
 - `isLoading` : Boolean indicating if the contract is being loaded.
