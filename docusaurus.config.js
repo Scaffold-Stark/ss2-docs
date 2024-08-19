@@ -77,12 +77,6 @@ const config = {
           src: "img/logo-starknet.svg",
         },
         items: [
-          // commented until Scaffold-eth 2 website is launched
-          // {
-          //   href: 'https://scaffoldeth.io/',
-          //   label: 'SE-2 Website',
-          //   position: 'left',
-          // },
           {
             href: "https://github.com/Quantum3-Labs/ss2-docs",
             label: "GitHub Docs",
@@ -98,19 +92,6 @@ const config = {
       footer: {
         style: "dark",
         links: [
-          {
-            title: "Built with ♥ at BuidlGuidl",
-            items: [
-              {
-                label: "BuidlGuidl Website",
-                to: "https://buidlguidl.com/",
-              },
-              {
-                label: "BuidlGuidl Twitter",
-                to: "https://twitter.com/buidlguidl",
-              },
-            ],
-          },
           {
             title: "GitHub",
             items: [
