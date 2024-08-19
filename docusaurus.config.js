@@ -5,8 +5,9 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
+// @ts-ignore
 const config = {
-  title: "Scaffold-Stark 2 | Docs",
+  title: "Scaffold-Stark | Docs",
   tagline: "Open-source toolkit for building dapps",
   favicon: "img/icon-starknet.svg",
 
@@ -19,7 +20,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "scaffold-stark",
-  projectName: "scaffold-Stark-2",
+  projectName: "scaffold-Stark",
 
   scripts: [
     {
@@ -71,7 +72,7 @@ const config = {
       },
       image: "img/icon-starknet.svg",
       navbar: {
-        title: "Scaffold-Stark 2 | Docs",
+        title: "Scaffold-Stark | Docs",
         logo: {
           alt: "scaffold-stark-logo",
           src: "img/logo-starknet.svg",
@@ -96,7 +97,7 @@ const config = {
             title: "GitHub",
             items: [
               {
-                label: "Scaffold-Stark 2 GitHub",
+                label: "Scaffold-Stark GitHub",
                 href: "https://github.com/Quantum3-Labs/scaffold-stark-2",
               },
               {
@@ -119,7 +120,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Scaffold-stark Docs. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Scaffold-Stark Docs. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

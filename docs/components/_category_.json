@@ -4,6 +4,6 @@
   "link": {
     "type": "generated-index",
     "slug": "components",
-    "description": "Scaffold-Stark 2 provides a set of pre-built components for common web3 use cases. You can make use of them to accelerate and simplify your dapp development."
+    "description": "Scaffold-Stark provides a set of pre-built components for common web3 use cases. You can make use of them to accelerate and simplify your dapp development."
   }
 }
