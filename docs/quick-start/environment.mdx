@@ -31,6 +31,18 @@ yarn deploy --network {NETWORK_NAME} // when NETWORK_NAME is not specified, it d
 
 This command deploys a sample smart contract to the local network. The contract is located in `packages/snfoundry/contracts/src` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/snfoundry/scripts-js/deploy.js` to deploy the contract to the network. You can also customize the deploy script.
 
+The command also will create a file called `packages/nextjs/contracts/deployedContracts.ts` within the Next.js App, which would be the ABI source-of-truth for the Scaffold Hooks. This enables autocomplete to be activated when you are building the Next.js front-end of the application.
+
+:::tip
+
+Note that `yarn deploy` does not reset the the generated `deployedContracts.ts` file, meaning that any changes that you made to the contract name or any deletion will not be taken into account, as it will only make the new deployment on top of the existing API. To completely start from a fresh state of deployment, you can run (do run with caution):
+
+```
+yarn deploy:reset
+```
+
+:::
+
 ### 3. Launch your NextJS Application
 
 On a third terminal, start your NextJS app:
