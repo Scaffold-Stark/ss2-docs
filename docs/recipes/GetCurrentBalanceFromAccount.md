@@ -54,7 +54,7 @@ export const ConnectedAddressBalance = () => {
 
 ### Step 2: Retrieve the Connected Account
 
-Fetch the Ethereum address of the currently connected account using the [useAccount starknet-react hook](https://starknet-react.com/hooks/account/useaccount) and easily display them using Scaffold Stark-2 [Address](/components/Address) and [Balance](/components/Balance) components.
+Fetch the Ethereum address of the currently connected account using the [useAccount starknet-react hook](https://starknet-react.com/hooks/account/useaccount) and easily display them using Scaffold Stark [Address](/components/Address) and [Balance](/components/Balance) components.
 
 ```tsx title="components/ConnectedAddressBalance.tsx"
 // highlight-start
