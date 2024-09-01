@@ -5,7 +5,7 @@ slug: /
 
 # 🏗 Welcome to Scaffold-Stark
 
-[Scaffold-Stark](https://github.com/Quantum3-Labs/scaffold-stark-2) is everything you need to get started building decentralized applications on Starknet! 🚀
+[Scaffold-Stark](https://github.com/Scaffold-Stark/scaffold-stark-2) is everything you need to get started building decentralized applications on Starknet! 🚀
 
 ⚙️ Built using NextJS, StarknetJS, Scarb, Starknet-React, Starknet Foundry and Typescript.
 
