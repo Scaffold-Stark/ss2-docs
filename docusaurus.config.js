@@ -53,7 +53,7 @@ const config = {
           // sidebarCollapsible: false,
           sidebarCollapsed: true,
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/Quantum3-Labs/ss2-docs/edit/main/",
+          editUrl: "https://github.com/Scaffold-Stark/ss2-docs/edit/main/",
         },
         blog: false,
         theme: {
@@ -79,12 +79,12 @@ const config = {
         },
         items: [
           {
-            href: "https://github.com/Quantum3-Labs/ss2-docs",
+            href: "https://github.com/Scaffold-Stark/ss2-docs",
             label: "GitHub Docs",
             position: "right",
           },
           {
-            href: "https://github.com/Quantum3-Labs/scaffold-stark-2",
+            href: "https://github.com/Scaffold-Stark/scaffold-stark-2",
             label: "GitHub SS-2",
             position: "right",
           },
@@ -98,11 +98,11 @@ const config = {
             items: [
               {
                 label: "Scaffold-Stark GitHub",
-                href: "https://github.com/Quantum3-Labs/scaffold-stark-2",
+                href: "https://github.com/Scaffold-Stark/scaffold-stark-2",
               },
               {
                 label: "Docs GitHub",
-                href: "https://github.com/Quantum3-Labs/ss2-docs",
+                href: "https://github.com/Scaffold-Stark/ss2-docs",
               },
             ],
           },

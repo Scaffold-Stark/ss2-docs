@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Pull Request Process
 
-We follow the ["fork-and-pull" Git workflow](https://github.com/Quantum3-Labs/scaffold-stark-2)
+We follow the ["fork-and-pull" Git workflow](https://github.com/Scaffold-Stark/scaffold-stark-2)
 
 1. Fork the repo
 2. Clone the project
