@@ -5,12 +5,11 @@ description: How to set up your Customize Your Own dApp
 
 # Customize Your Own dApp
 
-We have two main directories that handle different parts of the project: `snfoundry` and `nextjs`. 
+We have two main directories that handle different parts of the project: `snfoundry` and `nextjs`.
 
 The `snfoundry` directory represents the contracts section, while `nextjs` is for the frontend application.
 
 These two directories together form the complete project structure, with `snfoundry` handling the backend contract logic and `nextjs` providing the frontend interface and interaction. By organizing and editing these two parts effectively, you can build a fully functional and user-friendly decentralized application.
-
 
 ## Customize Contracts (snfoundry)
 
@@ -27,7 +26,7 @@ These two directories together form the complete project structure, with `snfoun
 
 ### Customize Nextjs App
 
-The `nextjs` directory is a critical part of your dApp, handling the frontend logic and user interface. It offers robust features and flexibility to build a dynamic and responsive application. 
+The `nextjs` directory is a critical part of your dApp, handling the frontend logic and user interface. It offers robust features and flexibility to build a dynamic and responsive application.
 By following these steps, you can effectively customize the pre-built components and use preset hooks to create a unique and fully functional user interface for your decentralized application.
 Let's dive into the main characteristics and how you can leverage them for your project.
 
@@ -55,6 +54,14 @@ Let's dive into the main characteristics and how you can leverage them for your 
    Use the preset functionality provided under the components and hooks folder to form your own business logic by further encapsulating and including hooks and components.
    For more details on the available components and how to use them, please refer to the [components](../components) and [Interacting with Your Smart Contracts](../hooks) section.
 
+#### Unit Testing
+
+Scaffold Stark 2 comes with Vitest to perform unit testing and integration testing. Feel free to write unit tests should they are required and you can run them with the following commands:
+
+- `yarn test:nextjs` to run regular tests with watch mode
+- `yarn test:nextjs run` to run regular tests without watch mode
+- `yarn test:nextjs run --coverage` to run regular tests without watch mode with coverage
+
 ### Custom Scaffold Stark Components
 
 The `components` directory, located at `packages/nextjs/components/scaffold-stark`, provides pre-built components styled with DaisyUI. These components offer a consistent and attractive design language for your application, simplifying the process of building a visually appealing frontend. However, to meet specific business needs, you might want to create custom components that wrap around these pre-built components.
@@ -64,17 +71,13 @@ By creating your own wrappers, you can extend and customize the functionality an
 Here is an example of how you can create a more complex custom component by wrapping the `Balance` component provided by Scaffold Stark:
 
 ```js
-import { Balance } from 'path/to/scaffold-stark/components';
+import { Balance } from "path/to/scaffold-stark/components";
 
 const MyBalance = ({ address }) => {
   return (
     <div className="p-6 bg-white rounded-lg shadow-lg">
       <div className="flex items-center mb-4">
-        <img
-          src="/path/to/icon.png"
-          alt="Account Icon"
-          className="w-12 h-12 rounded-full mr-4"
-        />
+        <img src="/path/to/icon.png" alt="Account Icon" className="w-12 h-12 rounded-full mr-4" />
         <div>
           <h2 className="text-2xl font-semibold">Account Balance</h2>
           <p className="text-gray-600">{address}</p>
@@ -110,7 +113,6 @@ In this example, the `MyBalance` component:
 
 4. **Integrate with Your Application**:
    Use your custom component in your application wherever needed. This allows you to maintain consistency while customizing components for specific business requirements.
-
 
 ### Using Scaffold Stark Hooks
 
