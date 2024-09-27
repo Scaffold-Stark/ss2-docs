@@ -10,7 +10,7 @@ TypeScript helps you catch errors at compile time, which can save time and impro
 
 ## Disabling Commit Checks
 
-We run the `pre-commit` [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) which lints the staged files and doesn't let you commit if there is an linting error.
+We run the `pre-commit` [git hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) which lints the staged files and doesn't let you commit if there is a linting error.
 
 To disable this, go to the `.husky/pre-commit` file and comment out `yarn lint-staged --verbose`
 
