@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
 title: Read a uint from a contract
-description: Learn how to read from contract functions which accepts arguments / no arguments and display them on UI.
+description: Learn how to read from contract functions which accept arguments / no arguments and display them on UI.
 ---
 
 # Read a `uint` from a contract
