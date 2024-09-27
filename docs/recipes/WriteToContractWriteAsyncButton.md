@@ -6,7 +6,7 @@ description: Learn how to create a button that executes the writeContractAsync f
 
 # Write to a Contract with `writeContractAsync` button
 
-his recipe demonstrates how to create a button for contract interaction using the "useTransactor" and "useWriteContract" hooks from the "starknet-react" library. The interaction includes the capability to provide feedback on the transaction status when using starknet-react `useContractWrite`.
+This recipe demonstrates how to create a button for contract interaction using the "useTransactor" and "useWriteContract" hooks from the "starknet-react" library. The interaction includes the capability to provide feedback on the transaction status when using starknet-react `useContractWrite`.
 
 <details open>
 <summary>Here is the full code, which we will be implementing in the guide below:</summary>
