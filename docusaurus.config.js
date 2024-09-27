@@ -116,7 +116,7 @@ const config = {
               {
                 label: "Telegram",
                 href: "https://t.me/+wO3PtlRAreo4MDI9",
-              }
+              },
             ],
           },
         ],
