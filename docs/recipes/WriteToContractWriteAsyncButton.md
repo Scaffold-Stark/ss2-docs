@@ -4,9 +4,9 @@ title: Write to contract with writeContractAsync button
 description: Learn how to create a button that executes the writeContractAsync function to interact with a smart contract.
 ---
 
-# Write to a Contract with `writeContractAsync` button
+# Write to a Contract with `sendAsync` button using then `useScaffoldWriteContract` hook.
 
-his recipe demonstrates how to create a button for contract interaction using the "useTransactor" and "useWriteContract" hooks from the "starknet-react" library. The interaction includes the capability to provide feedback on the transaction status when using starknet-react `useContractWrite`.
+This recipe demonstrates how to create a button for contract interaction using the `useScaffoldWriteContract` hooks from the Scaffold-Stark 2 hooks.
 
 <details open>
 <summary>Here is the full code, which we will be implementing in the guide below:</summary>
@@ -18,7 +18,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
 export const SetName = () => {
   const [newName, setNewName] = useState("");
 
-  const { writeAsync, isPending } = useScaffoldWriteContract({
+  const { sendAsync, isPending } = useScaffoldWriteContract({
     calls: [
       {
         contractName: "YourContract",
@@ -30,7 +30,7 @@ export const SetName = () => {
 
   const handleSetName = async () => {
     try {
-      await writeAsync();
+      await sendAsync();
     } catch (e) {
       console.error("Error setting name", e);
     }
@@ -73,7 +73,7 @@ export const SetName = () => {
 
 ### Step 2: Initialize useScaffoldWriteContract hook
 
-Initialize the `useScaffoldWriteContract` hook. This hook provides the `writeAsync` function for sending transactions. We'll create a `handleSetName` function in which we'll call and pass parameters to `writeAsync` required to perform contract interaction.
+Initialize the `useScaffoldWriteContract` hook. This hook provides the `sendAsync` function for sending transactions. We'll create a `handleSetName` function in which we'll call and pass parameters to `sendAsync` required to perform contract interaction.
 
 ```tsx
 // highlight-start
@@ -87,7 +87,7 @@ export const SetName = () => {
   // highlight-end
 
   // highlight-start
-  const { writeAsync } = useScaffoldWriteContract({
+  const { sendAsync } = useScaffoldWriteContract({
     calls: [
       {
         contractName: "YourContract",
@@ -101,7 +101,7 @@ export const SetName = () => {
   // highlight-start
   const handleSetName = async () => {
     try {
-      await writeAsync();
+      await sendAsync();
     } catch (e) {
       console.error("Error setting name", e);
     }
@@ -128,7 +128,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
 export const SetName = () => {
   const [newName, setNewName] = useState("");
 
-  const { writeAsync } = useScaffoldWriteContract({
+  const { sendAsync } = useScaffoldWriteContract({
     calls: [
       {
         contractName: "YourContract",
@@ -140,7 +140,7 @@ export const SetName = () => {
 
   const handleSetName = async () => {
     try {
-      await writeAsync();
+      await sendAsync();
     } catch (e) {
       console.error("Error setting name", e);
     }
@@ -177,7 +177,7 @@ import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
 export const SetName = () => {
   const [newName, setNewName] = useState("");
   // highlight-start
-  const { writeAsync, isPending } = useScaffoldWriteContract({
+  const { sendAsync, isPending } = useScaffoldWriteContract({
     // highlight-end
     calls: [
       {
@@ -190,7 +190,7 @@ export const SetName = () => {
 
   const handleSetName = async () => {
     try {
-      await writeAsync();
+      await sendAsync();
     } catch (e) {
       console.error("Error setting name", e);
     }

@@ -54,6 +54,9 @@ const config = {
           sidebarCollapsed: true,
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/Scaffold-Stark/ss2-docs/edit/main/",
+
+          // TODO: reinstate once fixed
+          exclude: ["**/StarknetContractWriteWithFeedback.md"],
         },
         blog: false,
         theme: {
@@ -116,7 +119,7 @@ const config = {
               {
                 label: "Telegram",
                 href: "https://t.me/+wO3PtlRAreo4MDI9",
-              }
+              },
             ],
           },
         ],
