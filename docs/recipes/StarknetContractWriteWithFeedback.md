@@ -1,12 +1,12 @@
 ---
 sidebar_position: 4
-title: Starknet-react useContractWrite with transaction status
-description: Show feedback on transaction status to user by `useContractWrite` along with `useTransactor`
+title: Starknet-react useSendTransaction with transaction status
+description: Show feedback on transaction status to user by `useSendTransaction` along with `useTransactor`
 ---
 
-# Starknet `useContractWrite` with transaction status
+# Starknet `useSendTransaction` with transaction status
 
-This recipe demonstrates how to create a button for contract interaction using the "useTransactor" and "useWriteContract" hooks from the "wagmi" library. The interaction includes the capability to provide feedback on the transaction status when using wagmi `useWriteContract`.
+This recipe demonstrates how to create a button for contract interaction using the `useTransactor` and `useSendTransaction` hooks from the "starknet-react" library. The interaction includes the capability to provide feedback on the transaction status when using starknet-react `useSendTransaction`.
 
 <details open>
 <summary>Here is the full code, which we will be implementing in the guide below:</summary>
@@ -31,7 +31,7 @@ export const ContractInteraction = () => {
     return contract.populateTransaction["transfer"]!(address, { low: 1, high: 0 });
   }, [contract, address]);
 
-  const { writeAsync, isPending } = useContractWrite({
+  const { sendAsync, isPending } = useContractWrite({
     calls,
   });
 
@@ -39,7 +39,7 @@ export const ContractInteraction = () => {
 
   const handleTransfer = async () => {
     try {
-      await writeTx(() => writeAsync());
+      await writeTx(() => sendAsync());
     } catch (e) {
       console.log("Unexpected error in writeTx", e);
     }
@@ -95,7 +95,7 @@ export const ContractInteraction = () => {
     return contract.populateTransaction["transfer"]!(address, { low: 1, high: 0 });
   }, [contract, address]);
 
-  const { writeAsync, data, isPending } = useContractWrite({
+  const { sendAsync, data, isPending } = useContractWrite({
     calls,
   });
   // highlight-end
@@ -106,7 +106,7 @@ export const ContractInteraction = () => {
 
 ### Step 3: Initialize `useTransactor` hook and send transaction
 
-Initialize the `useTransactor` hook and use it to wrap the `writeAsync` function obtained from `useContractWrite` to provide feedback on the transaction status to the user.
+Initialize the `useTransactor` hook and use it to wrap the `sendAsync` function obtained from `useContractWrite` to provide feedback on the transaction status to the user.
 
 ```tsx
 import * as React from "react";
@@ -130,7 +130,7 @@ export const ContractInteraction = () => {
     return contract.populateTransaction["transfer"]!(address, { low: 1, high: 0 });
   }, [contract, address]);
 
-  const { writeAsync, data, isPending } = useContractWrite({
+  const { sendAsync, data, isPending } = useContractWrite({
     calls,
   });
 
@@ -138,7 +138,7 @@ export const ContractInteraction = () => {
   const writeTx = useTransactor();
   // highlight-end
 
-  return <button onClick={() => writeTx(() => writeAsync())}>Transfer</button>;
+  return <button onClick={() => writeTx(() => sendAsync())}>Transfer</button>;
 };
 ```
 
@@ -166,7 +166,7 @@ export const ContractInteraction = () => {
     return contract.populateTransaction["transfer"]!(address, { low: 1, high: 0 });
   }, [contract, address]);
 
-  const { writeAsync, data, isPending } = useContractWrite({
+  const { sendAsync, data, isPending } = useContractWrite({
     calls,
   });
 
@@ -174,7 +174,7 @@ export const ContractInteraction = () => {
   // highlight-start
   const handleTransfer = async () => {
     try {
-      await writeTx(() => writeAsync());
+      await writeTx(() => sendAsync());
     } catch (e) {
       console.log("Unexpected error in writeTx", e);
     }
@@ -215,7 +215,7 @@ export const ContractInteraction = () => {
     return contract.populateTransaction["transfer"]!(address, { low: 1, high: 0 });
   }, [contract, address]);
   // highlight-start
-  const { writeAsync, isPending } = useContractWrite({
+  const { sendAsync, isPending } = useContractWrite({
     calls,
   });
   // highlight-start
@@ -224,7 +224,7 @@ export const ContractInteraction = () => {
 
   const handleTransfer = async () => {
     try {
-      await writeTx(() => writeAsync());
+      await writeTx(() => sendAsync());
     } catch (e) {
       console.log("Unexpected error in writeTx", e);
     }

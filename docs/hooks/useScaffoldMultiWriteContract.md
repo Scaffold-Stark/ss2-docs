@@ -7,7 +7,7 @@ sidebar_position: 2
 Use this hook to write to state-changing functions of your smart contract.
 
 ```ts
-const { writeAsync } = useScaffoldMultiWriteContract({
+const { sendAsync } = useScaffoldMultiWriteContract({
   calls: [
     {
       contractName: "YourContract1",
@@ -23,7 +23,7 @@ const { writeAsync } = useScaffoldMultiWriteContract({
 });
 ```
 
-This example sends multiple transactions to the specified smart contracts to call the functions with the arguments passed in calls. The `writeAsync` function sends the transactions to the smart contracts.
+This example sends multiple transactions to the specified smart contracts to call the functions with the arguments passed in calls. The `sendAsync` function sends the transactions to the smart contracts.
 
 ## Usage Example
 
@@ -32,7 +32,7 @@ This example sends multiple transactions to the specified smart contracts to cal
   className="btn btn-primary"
   onClick={async () => {
     try {
-      await writeAsync();
+      await sendAsync();
     } catch (e) {
       console.error("Error sending transactions:", e);
     }
@@ -42,7 +42,7 @@ This example sends multiple transactions to the specified smart contracts to cal
 </button>
 ```
 
-This example demonstrates how to use the `writeAsync`function to send multiple transactions to the specified smart contracts, calling the functions with the arguments passed in calls.
+This example demonstrates how to use the `sendAsync`function to send multiple transactions to the specified smart contracts, calling the functions with the arguments passed in calls.
 
 ## Configuration
 

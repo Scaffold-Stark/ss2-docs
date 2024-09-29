@@ -54,6 +54,14 @@ Let's dive into the main characteristics and how you can leverage them for your 
    Use the preset functionality provided under the components and hooks folder to form your own business logic by further encapsulating and including hooks and components.
    For more details on the available components and how to use them, please refer to the [components](../components) and [Interacting with Your Smart Contracts](../hooks) section.
 
+#### Unit Testing
+
+Scaffold Stark 2 comes with Vitest to perform unit testing and integration testing. Feel free to write unit tests should they are required and you can run them with the following commands:
+
+- `yarn test:nextjs` to run regular tests with watch mode
+- `yarn test:nextjs run` to run regular tests without watch mode
+- `yarn test:nextjs run --coverage` to run regular tests without watch mode with coverage
+
 ### Custom Scaffold Stark Components
 
 The `components` directory, located at `packages/nextjs/components/scaffold-stark`, provides pre-built components styled with DaisyUI. These components offer a consistent and attractive design language for your application, simplifying the process of building a visually appealing frontend. However, to meet specific business needs, you might want to create custom components that wrap around these pre-built components.
