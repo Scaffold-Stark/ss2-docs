@@ -11,6 +11,8 @@ The `useScaffoldStrkBalance` hook is a custom React hook designed to fetch and d
 ```ts
 import useScaffoldStrkBalance from './hooks/useScaffoldStrkBalance';
 
+const address = "0x01176a1bd84444c89232ec27754698e5d2e7e1a7f1539f12027f28b23ec9f3d8"
+
 function StrkBalanceDisplay({ address }) {
   const { value, formatted, symbol } = useScaffoldStrkBalance({ address });
 
@@ -42,13 +44,6 @@ This example demonstrates how to use the `useScaffoldStrkBalance` hook to displa
 | **symbol**       | `string`      | The token symbol. For this contract, it will return `"STRK"`.                                                   |
 | **formatted**    | `string`      | The balance formatted into a human-readable string using ethers' `formatUnits`.                                 |
 | **error**        | `Error`       | Error object in case there is a failure fetching the balance.                                                   |
-
-## Key Points
-
-- The hook automatically handles fetching the latest block data.
-- It returns both the raw balance value and a formatted version.
-- The hook watches for changes in the balance, updating whenever the blockchain state changes.
-- The hook utilizes `useDeployedContractInfo` to get contract info and `useReadContract` to read contract data.
 
 ## Best Practices
 

@@ -8,7 +8,7 @@ Use this hook to read the Ethereum (ETH) balance of a specified address on the S
 
 ```ts
 const { value, formatted, symbol } = useScaffoldEthBalance({
-  address: "0xYourAddressHere",
+  address: "0x01176a1bd84444c89232ec27754698e5d2e7e1a7f1539f12027f28b23ec9f3d8",
 });
 ```
 
@@ -64,11 +64,6 @@ You can also pass other arguments accepted by [useReadContract from starknet-rea
 - **`symbol`**: The token symbol ("ETH").
 - The object also includes properties from the `useReadContract` hook. You can check the [useContractRead return values](https://starknet-react.com/docs/hooks/queries/usecontractread) for additional details.
 
-## Key Points
-- This hook fetches the ETH balance for a given address using the deployed Ethereum contract on StarkNet.
-- It returns both the raw balance `(bigint)` and a human-readable formatted balance.
-- The hook automatically listens for changes in the blockchain state and updates the balance accordingly.
-- The hook relies on useDeployedContractInfo to retrieve contract details `(address, ABI)` and useReadContract to interact with the blockchain.
 
 ## Best Practices
 - Use this hook in any component where you need to display the ETH balance of a specific address.
