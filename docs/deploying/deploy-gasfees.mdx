@@ -1,0 +1,56 @@
+---
+sidebar_position: 3
+toc_max_heading_level: 5
+---
+
+# Gas and transaction fees
+
+This section describes fees that are paid on L2 starting in Starknet 0.13.0. 
+
+
+
+## Overall transaction fee
+
+Starting with Starknet v0.13.1, Starknet distinguishes between blocks whose state diffs are sent to L1 as calldata and blocks whose state diffs are sent to L1 as blobs. The `l1_da_mode`property in the Starknet block header contains this information. The cost of computation remains the same on both options, but the cost related to data availability differs.
+
+### Overall transaction fee with blobs
+
+This section shows the formula for determining a transaction’s fee. The following sections describe how this formula was derived.
+
+The following formula describes the overall fee, F, for a transaction:
+
+![Blob Example](/img/blob.jpg)
+
+### Overall transaction fee with calldata
+
+This section shows the formula for determining a transaction’s fee
+
+![Calldata Example](/img/calldata.jpg)
+
+## When is the fee charged?
+
+The fee is charged atomically with the transaction execution on L2. The Starknet OS injects a transfer of the fee-related ERC-20, with an amount equal to the fee paid, the sender equal to the transaction submitter, and the sequencer as a receiver.
+
+## Transaction Fee limits
+
+### v3 transactions
+
+With v3 transactions, users specify the max amount and max price for each resource. At the time of writing, the only available resource is L1 gas. In the future, we will introduce L2 gas which will be used to price L2 work (as opposed to only charging for the proof verification in L1 gas, which is what happens today).
+
+### Deprecated transactions (version < 3)
+
+With older transaction versions, users specify the maximum fee that they are willing to pay for a transaction.
+
+The only limitation on the sequencer, which is enforced by the Starknet OS, is that the actual fee charged is bounded by max_fee. While not enforced in the proof, the Starknet sequencer usually charges less than max_fee, as it charges in accordance with the above fee formula.
+
+## What do we price
+
+The following components are contributing to the transaction fee:
+
+`Computational complexity:` The marginal cost of verifying the transaction on L1, measured in L1 gas.
+
+`Onchain data:` The cost of posting the state diffs induced by the transaction to L1 (for more details, see [data availability](https://docs.starknet.io/architecture-and-concepts/network-architecture/data-availability/)). This is measured in L1 gas or L1 data gas, depending on whether or not the L2 block in which the transaction was included uses calldata or blobs.
+
+`L2→L1 messages:` Messages sent to L1 are eventually sent to the Starknet core contract as L1 calldata by the sequencer; therefore L2 transaction that send L2→L1 messages incur an additional L1 gas cost.
+
+`L2 calldata, events and code:` From Starknet 0.13.1 onwards, there is a per-byte (or per felt) price for L2 payloads. For more details, see [L2 payloads: calldata, events, and code](https://docs.starknet.io/architecture-and-concepts/network-architecture/fee-mechanism/#l2_calldata).
