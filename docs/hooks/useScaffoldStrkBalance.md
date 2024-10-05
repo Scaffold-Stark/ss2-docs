@@ -14,7 +14,7 @@ import useScaffoldStrkBalance from './hooks/useScaffoldStrkBalance';
 const address = "0x01176a1bd84444c89232ec27754698e5d2e7e1a7f1539f12027f28b23ec9f3d8"
 
 function StrkBalanceDisplay({ address }) {
-  const { value, formatted, symbol } = useScaffoldStrkBalance({ address });
+  const { value, formatted, symbol } = useScaffoldStrkBalance({ address: "0x01176a1bd84444c89232ec27754698e5d2e7e1a7f1539f12027f28b23ec9f3d8" });
 
   return (
     <div>
