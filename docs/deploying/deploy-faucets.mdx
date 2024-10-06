@@ -3,11 +3,11 @@ sidebar_position: 3
 toc_max_heading_level: 5
 ---
 
-# Faucets (Available)
+# Faucets 
 
 Faucets for deployment of smart contracts can be requested from the website.
 
-The button is at the bottom left of the  [Demo app] (https://scaffold-stark-demo.vercel.app/debug)
+The button is at the bottom left of the  [Demo app] (https://scaffold-stark-demo.vercel.app/)
 
 
 ![Faucets Example](/img/faucets.jpg)
@@ -19,7 +19,7 @@ On clicking on it, You will get a pop up
 
 ## Websites available for Starknet Sepolia faucets
 
-These three options are available for any user to get Starknet Sepolia Faucets
+Starknet Sepolia Faucets
 
 ### [Starknet Foundation](https://starknet-faucet.vercel.app/)
 
@@ -27,4 +27,9 @@ These three options are available for any user to get Starknet Sepolia Faucets
 
 ### [Blast](https://blastapi.io/faucets/starknet-sepolia-eth)
 
-#### In  accessing any of these websites, you will paste or input your wallet address
+
+## Devnet Faucets
+
+To mint tokens, either to an existing address or a new one, use the following command:
+
+`curl -d '{"amount":8646000000000, "address":"0x6e...eadf"}' -H "Content-Type: application/json" -X POST http://localhost:5050/mint`
