@@ -1,0 +1,47 @@
+---
+sidebar_position: 4
+description: How to Configure Contracts.
+---
+
+# Configure Contracts
+
+The `Configure Contracts` page allows you to pull existing contracts from the Starknet network and incorporate them into your Scaffold-Stark 2 project. This makes it easier to reuse deployed contracts, enabling efficient project setup.
+
+### **Getting Started**:
+
+### ** Accessing the Configure Contracts Page**
+
+To access the page, navigate to the top of the screen and click on Configure Contracts. This will open a new interface where you can search for and import contracts.
+
+### How to Use the Configure Contracts Page
+
+#### 1. Search for Contracts
+
+Once on the page, you’ll find an interface to search for contracts deployed on the Starknet network. You can search using:
+
+- Contract Address
+- Contract Name
+
+Always make sure the contract address is correct and that you are searching on the right network.
+
+#### 2. Select the Desired Contract
+
+After entering the contract details, click `Search`. The page will retrieve the contract's information from the network and display relevant details, including its ABI.
+
+```bash
+const contract = new starknet.Contract(contractAbi, contractAddress, provider);
+```
+
+#### 3. Download and Integrate the Contract
+
+Once you’ve identified the contract, click Download Contract to pull it into your project. The DownloadContracts component will integrate the contract into your Scaffold-Stark 2 setup.
+
+To integrate an existing DeFi contract into your project. Follow these steps:
+
+- Search for the contract by its address.
+- Pull the contract using the Download Contracts interface.
+- Add the contract to your project using the following code:
+
+```bash
+const contract = new starknet.Contract(contractAbi, contractAddress, provider);
+```
