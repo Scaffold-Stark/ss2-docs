@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Starknet Multi-Write Feature Recipe
+title: Batching multiple writes to a single transaction
 description: Learn how to perform multiple write operations to StarkNet smart contracts simultaneously.
 ---
 
