@@ -1,20 +1,21 @@
 ---
 sidebar_position: 6
-title: Read a uint from a contract
-description: Learn how to read from contract functions which accept arguments / no arguments and display them on UI.
+title: Read Data from a Contract
+description: Learn how to read data from a deployed smart contract using the useScaffoldReadContract hook and display it in your UI.
 ---
 
 # Read Data from a Contract on the Network
 
 This recipe demonstrates how to read data from a smart contract deployed on a network using the [`useScaffoldReadContract`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/hooks/scaffold-stark/useScaffoldReadContract.ts) hook. You will learn how to read contract data and display it in your dApp's UI.
 
-<details open><summary>Here is the full code, which we will be implementing in the guide below:</summary>
+<details open>
+<summary>Here is the full code, which we will be implementing in the guide below:</summary>
 
 ```tsx title="components/GetContractData.tsx"
 import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
 import { useAccount } from "@starknet-react/core";
 
-export const ContractReader = () => {
+export const GetContractData = () => {
   const { address: connectedAddress } = useAccount();
 
   const { data: contractData, isLoading } = useScaffoldReadContract({
@@ -41,7 +42,7 @@ export const ContractReader = () => {
 ```
 </details>
 
-## Implementation Guide
+## Implementation guide
 
 ### Step 1: Set Up the Component
 Start by creating a new component in your `component` folder of your application. This component will handle the reading of contract data and display it.
@@ -57,9 +58,9 @@ export const ContractReader = () => {
 
 ```
 
-### Step 2: Use the [`useScaffoldReactContract`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/hooks/scaffold-stark/useScaffoldReadContract.ts) Hook
+### Step 2: Use the `useScaffoldReadContract` Hook to read data
 
-To read data from the contract, you will use the `useScaffoldReadContract` hook. This hook interacts with the contract, fetches data from a specific function, and can be configured to pass arguments (such as the connected user's account address).
+To read data from the contract, you will use the [`useScaffoldReactContract`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/hooks/scaffold-stark/useScaffoldReadContract.ts) hook. This hook interacts with the contract, fetches data from a specific function, and can be configured to pass arguments (such as the connected user's account address).
 
 ```tsx title="components/GetContractData.tsx"
 import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
@@ -140,5 +141,3 @@ export const ContractReader = () => {
   );
 };
 ```
-
-By following this guide, you have successfully implemented a contract reader in your dApp that fetches and displays data from a deployed contract using the [`useScaffoldReactContract`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/hooks/scaffold-stark/useScaffoldReadContract.ts) hook.
