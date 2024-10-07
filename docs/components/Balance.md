@@ -51,5 +51,7 @@ This example showcases how to apply additional styling to the component and enab
 
 ## Notes
 
+:::info
 - The component automatically handles loading states, showing a skeleton loader when the balance is being fetched.
 - If the address is invalid or no balance is found, it will show an error message.
+:::
