@@ -49,7 +49,6 @@ The `Balance` component can be easily customized using Tailwind or daisyUI class
 
 This example showcases how to apply additional styling to the component and enables the USD display mode.
 
-## Notes
 
 :::info
 - The component automatically handles loading states, showing a skeleton loader when the balance is being fetched.
