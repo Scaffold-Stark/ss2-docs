@@ -1,0 +1,80 @@
+---
+sidebar_position: 4
+description: How to import other Contracts.
+---
+
+# Importing other contracts
+
+The `Configure Contracts` page allows you to pull existing contracts from the Starknet network and incorporate them into your `Scaffold-Stark 2` project.
+It generates a configuration file that can be used to replace or append to your local predeployedContracts.ts or configExternalContracts.ts file, enabling contract debugging in the `/debug` page of your Scaffold-Stark project.
+
+### **Getting Started**:
+
+### ** Accessing the Configure Contracts Page**
+
+To access the page, navigate to the bottom of the screen and click on Configure Contracts. This will open a new interface where you can search for and import contracts.
+
+<img src="/img/configure_contracts.png" alt="configure-contracts" />
+
+### How to Use the Configure Contracts Page
+
+#### 1. Chain Selection in `scaffold.config.ts`
+
+The contracts pulled from the network are determined by the chain configured in the `scaffold.config.ts` file. This configuration decides whether you are interacting with the Sepolia or Mainnet network.
+
+- If `Sepolia` is configured, contracts will be fetched from the `Sepolia testnet`.
+- If `Mainnet` is configured, contracts will be fetched from the `Mainnet network`.
+
+**Note:**
+While some contracts may have the same address on both `Sepolia and Mainnet`, this is not always guaranteed. Always double-check you are on the correct network based on the contract's intended usage.
+
+```ts
+const scaffoldConfig = {
+  targetNetworks: [chains.devnet],
+```
+
+#### 2. Enter the Contract Address and Name
+
+- Once on the page, in the designated input fields, enter the contract address and contract name.
+
+- These values are required to locate the contract on the network and pull the relevant details (ABI, address, classHash).
+
+<img src="/img/configure_contracts_Input.png" alt="configure-contracts" />
+
+Always make sure the contract address is correct and that you are searching on the right network.
+
+#### 3. Click the "Download Contract File" Button
+
+After entering the details, click the `Download Contract File` button.
+
+This will fetch the contract information (ABI, address, and classHash) from the configured network (either Sepolia or Mainnet, as set in the scaffold.config.ts file).
+
+#### 4. Generate and Download the Configuration File
+
+The tool will generate a configuration file that includes:
+
+- Contract ABI
+- Contract Address
+- Class Hash
+
+```ts
+export const externalContracts = [
+  {
+    address: "0x1234...",
+    abi: [...], // Contract ABI here
+    classHash: "0x5678..."
+  }
+];
+```
+
+#### 5. Replace or Append the Configuration File
+
+- Download the file and replace or append its contents to your local `configExternalContracts.ts` file. This file is used to register external contracts that you want to interact with in your project.
+
+Alternatively, if you're working with pre-deployed contracts, you can modify the `predeployedContracts.ts` file.
+
+#### 6. Use the /debug Page
+
+- With the updated contract configuration file, navigate to the `/debug page` in your project.
+
+You can interact with and test the contract using the `Scaffold-Stark hooks` and `utilities` here.
