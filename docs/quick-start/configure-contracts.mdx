@@ -29,31 +29,8 @@ The contracts pulled from the network are determined by the chain configured in 
 While some contracts may have the same address on both `Sepolia and Mainnet`, this is not always guaranteed. Always double-check you are on the correct network based on the contract's intended usage.
 
 ```ts
-export type ScaffoldConfig = {
-  targetNetworks: readonly chains.Chain[];
-  pollingInterval: number;
-  onlyLocalBurnerWallet: boolean;
-  rpcProviderUrl: string;
-  walletAutoConnect: boolean;
-};
-
 const scaffoldConfig = {
   targetNetworks: [chains.devnet],
-  // Only show the Burner Wallet when running on devnet
-  onlyLocalBurnerWallet: false,
-  rpcProviderUrl: process.env.NEXT_PUBLIC_PROVIDER_URL || "",
-  // The interval at which your front-end polls the RPC servers for new data
-  // it has no effect if you only target the local network (default is 30_000)
-  pollingInterval: 30_000,
-  /**
-   * Auto connect:
-   * 1. If the user was connected into a wallet before, on page reload reconnect automatically
-   * 2. If user is not connected to any wallet:  On reload, connect to burner wallet if burnerWallet.enabled is true && burnerWallet.onlyLocal is false
-   */
-  walletAutoConnect: true,
-} as const satisfies ScaffoldConfig;
-
-export default scaffoldConfig;
 ```
 
 #### 2. Enter the Contract Address and Name
