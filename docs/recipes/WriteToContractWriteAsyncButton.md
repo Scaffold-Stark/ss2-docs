@@ -4,7 +4,7 @@ title: Write to contract with writeContractAsync button
 description: Learn how to create a button that executes the writeContractAsync function to interact with a smart contract.
 ---
 
-# Write to a Contract with `sendAsync` button using then `useScaffoldWriteContract` hook.
+# Write to a Contract with `sendAsync` button using the `useScaffoldWriteContract` hook.
 
 This recipe demonstrates how to create a button for contract interaction using the `useScaffoldWriteContract` hooks from the Scaffold-Stark 2 hooks.
 
