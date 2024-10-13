@@ -52,12 +52,13 @@ In this example, the updateGreeting function of the YourContract is called with 
 
 ## Configuration for Starknet
 
-| Parameter             | Type        | Description                                                                                                      |
-| :-------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
-| **contractName**      | `string`    | Name of the contract to write to.                                                                                |
-| **functionName**      | `string`    | Name of the function to call.                                                                                    |
-| **args** (optional)   | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
-| **option** (optional) | `object`    | Additional options for the transaction, such as gas and value.                                                   |
+| Parameter                | Type        | Description                                                                                                      |
+| :----------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
+| **contractName**         | `string`    | Name of the contract to write to.                                                                                |
+| **functionName**         | `string`    | Name of the function to call.                                                                                    |
+| **args** (optional)      | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
+| **onSuccess** (optional) | `function`  | Function to call on successful transaction.                                                                      |
+| **onError** (optional)   | `function`  | Function to call on error.                                                                                       |
 
 ## Configuration for Ethereum
 
