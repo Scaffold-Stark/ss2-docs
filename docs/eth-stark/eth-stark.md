@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # 🚩 Using Scaffold Stark with Ethereum Contracts
 
-Scaffold-ETH-Stark is an innovative toolkit that combines the capabilities of Scaffold-Stark and Scaffold-ETH, providing a unified solution for building decentralized applications (dapps) on both Starknet and EVM-compatible blockchains.
+[Scaffold-ETH-Stark](https://github.com/Scaffold-Stark/scaffold-eth-stark) is an innovative toolkit that combines the capabilities of Scaffold-Stark and Scaffold-ETH, providing a unified solution for building decentralized applications (dapps) on both Starknet and EVM-compatible blockchains.
 
 ## What is Scaffold-ETH-Stark?
 
