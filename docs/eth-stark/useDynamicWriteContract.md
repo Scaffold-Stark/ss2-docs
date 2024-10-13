@@ -72,4 +72,4 @@ In this example, the updateGreeting function of the YourContract is called with 
 ## Return Values
 
 - The writeAsync method is used to send the write transaction. It returns a promise that resolves when the transaction is confirmed.
-- The extended object includes properties inherited from the `useScaffoldWriteContract` hook. You can check the [Scaffold-Stark useScaffoldWriteContract return values](https://docs.scaffoldstark.com/hooks/useScaffoldWriteContract#return-values) and [Scaffold-ETH useScaffoldWriteContract documentation](https://docs.scaffoldeth.io/hooks/useScaffoldWriteContract#return-values) for the types.
+- The extended object includes properties inherited from the `useScaffoldWriteContract` hook. You can check the [Scaffold-Stark useScaffoldWriteContract return values](https://docs.scaffoldstark.com/hooks/useScaffoldWriteContract#return-values) and [Scaffold-ETH useScaffoldWriteContract return values](https://docs.scaffoldeth.io/hooks/useScaffoldWriteContract#return-values) for the types.

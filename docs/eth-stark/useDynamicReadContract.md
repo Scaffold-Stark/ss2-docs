@@ -33,4 +33,4 @@ This example retrieves the data returned by the `userGreetingCounter` function o
 ## Return Values
 
 - The retrieved data is stored in the `data` property of the returned object.
-- The extended object includes properties inherited from the `useScaffoldReadContract` hook. You can check the [Scaffold-Stark useScaffoldReadContract return values](https://docs.scaffoldstark.com/hooks/useScaffoldReadContract#return-values) and [Scaffold-ETH useScaffoldReadContract documentation](https://docs.scaffoldeth.io/hooks/useScaffoldReadContract#return-values) for the types.
+- The extended object includes properties inherited from the `useScaffoldReadContract` hook. You can check the [Scaffold-Stark useScaffoldReadContract return values](https://docs.scaffoldstark.com/hooks/useScaffoldReadContract#return-values) and [Scaffold-ETH useScaffoldReadContract return values](https://docs.scaffoldeth.io/hooks/useScaffoldReadContract#return-values) for the types.
