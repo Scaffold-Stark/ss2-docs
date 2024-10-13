@@ -18,7 +18,12 @@ const { data: yourContract, isLoading: yourContractLoading } = useDynamicContrac
 });
 
 // Returns the greeting and can be called in any function, unlike useDynamicReadContract
+
+// for eth contract
 await yourContract?.read.greeting();
+
+// for starknet contract
+await yourContract?.greeting();
 
 // Used to write to a contract and can be called in any function
 import { useAccount } from "@starknet-react/core";
@@ -40,7 +45,11 @@ const { data: yourContract, isLoading: yourContractLoading } = useDynamicContrac
 
 const setGreeting = async () => {
   // Call the method in any function
+  // for eth contract
   await yourContract?.write.setGreeting(["the greeting here"]);
+
+  // for starknet contract
+  await yourContract?.setGreeting(["the greeting here"]);
 };
 ```
 
