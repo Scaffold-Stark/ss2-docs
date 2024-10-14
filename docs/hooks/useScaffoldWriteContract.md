@@ -40,16 +40,13 @@ In this example, the updateGreeting function of the YourContract is called with 
 
 ## Configuration
 
-| Parameter             | Type        | Description                                                                                                      |
-| :-------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
-| **contractName**      | `string`    | Name of the contract to write to.                                                                                |
-| **functionName**      | `string`    | Name of the function to call.                                                                                    |
-| **args** (optional)   | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
-| **option** (optional) | `object`    | Additional options for the transaction, such as gas and value.                                                   |
-
-You can also pass other arguments accepted by [useContractWrite from Starknet-react](https://starknet-react.com/hooks/mutation/usecontractwrite).
+| Parameter           | Type        | Description                                                                                                      |
+| :------------------ | :---------- | :--------------------------------------------------------------------------------------------------------------- |
+| **contractName**    | `string`    | Name of the contract to write to.                                                                                |
+| **functionName**    | `string`    | Name of the function to call.                                                                                    |
+| **args** (optional) | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
 
 ## Return Values
 
-- The sendAsync method is used to send the write transaction. It returns a promise that resolves when the transaction is confirmed.
-- The extended object includes properties inherited from the useContractWrite hook of starknet-react. You can check the [useContractWrite return values](https://starknet-react.com/hooks/mutation/usecontractwrite) documentation for the types.
+- The `sendAsync` method is used to send the write transaction. It returns a promise that resolves when the transaction is confirmed.
+- The extended object includes properties inherited from the `useSendTransaction` hook of starknet-react. You can check their [documentation](https://www.starknet-react.com/docs/hooks/use-send-transaction#sendasync) for the the sepcific return values.

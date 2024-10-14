@@ -4,6 +4,10 @@ sidebar_position: 6
 
 # useScaffoldContract
 
+:::caution
+This hook currently only works to read contracts. We apologize for the inconvenience and will work on a fix.
+:::
+
 Use this hook to get your contract instance by providing the contract name. It enables you to interact with your contract methods.
 For reading data or sending transactions, it's recommended to use `useScaffoldReadContract` and `useScaffoldWriteContract`.
 

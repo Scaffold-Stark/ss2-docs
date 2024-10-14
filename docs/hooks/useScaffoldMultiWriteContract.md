@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # useScaffoldMultiWriteContract
 
-Use this hook to write to state-changing functions of your smart contract.
+Use this hook to batch-write multiple transactions to your smart contract.
 
 ```ts
 const { sendAsync } = useScaffoldMultiWriteContract({
@@ -48,7 +48,7 @@ This example demonstrates how to use the `sendAsync`function to send multiple tr
 
 | Parameter              | Type                 | Description                                                                                                                   |
 | :--------------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
-| **calls**              | `Array`              | Array of configuration objects for the contract calls. Each object should contain `contractName`, `functionName`, and `args`. |
+| **calls**              | `Calldata[]`         | Array of configuration objects for the contract calls. Each object should contain `contractName`, `functionName`, and `args`. |
 | **options** (optional) | `InvocationsDetails` | Additional options for the transactions.                                                                                      |
 
 ## Call Object Configuration
@@ -59,10 +59,8 @@ This example demonstrates how to use the `sendAsync`function to send multiple tr
 | **functionName**    | `string`    | Name of the function to call.                                                                                    |
 | **args** (optional) | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
 
-You can also pass other arguments accepted by [writeContractAsync from starknet-react](https://starknet-react.com/hooks/mutation/usecontractwrite).
+You can also pass other arguments accepted by [useSendTransaction#sendAsync from starknet-react](https://www.starknet-react.com/docs/hooks/use-send-transaction#sendasync).
 
 ## Return Values
 
-- `writeContractAsync` function sends the transaction to the smart contract.
-- `isMining` property indicates whether the transaction is currently being mined.
-- The extended object includes properties inherited from the useContractWrite hook from starknet-react. You can check the [useContractWrite return values](https://starknet-react.com/hooks/mutation/usecontractwrite) for the types.
+- `sendAsync` function sends the transaction(s) to the smart contract.
