@@ -27,9 +27,9 @@ This example retrieves the data returned by the `userGreetingCounter` function o
 | **watch** (optional)           | `boolean`     | Watches and refreshes data on new blocks. (default : `true`)                                                     |
 | Other arguments                | `various`     | You can pass other arguments accepted by the useContractRead hook from @starknet-react/core.                     |
 
-You can also pass other arguments accepted by [useContractRead from Starknet-react](https://starknet-react.com/hooks/query/usecontractread).
+You can also pass other arguments accepted by [starknet-react useReadContract](https://www.starknet-react.com/docs/hooks/use-read-contract).
 
 ## Return Values
 
 - The retrieved data is stored in the `data` property of the returned object.
-- The extended object includes properties inherited from the useContractRead hook of starknet-react. You can check the [useContractRead return values](https://starknet-react.com/hooks/query/usecontractread) documentation for the types.
+- The extended object includes properties inherited from the `useReadContract` hook of starknet-react. You can check the [useReadContract return values](https://www.starknet-react.com/docs/hooks/use-read-contract) documentation for the types.

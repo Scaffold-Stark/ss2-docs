@@ -20,7 +20,7 @@ const { data, isLoading, error } = useScaffoldEventHistory({
 });
 ```
 
-This example configures the hook to read events from the YourEvent event of the YourContract smart contract, starting from block 0. It includes block data, but excludes transaction and receipt data. The hook will watch for new events and refresh the data.
+This example configures the hook to read events from the `YourEvent` event of the `YourContract` smart contract, starting from block 0. It includes block data, but excludes transaction and receipt data. The hook will watch for new events and refresh the data.
 
 ## Configuration
 
