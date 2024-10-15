@@ -7,7 +7,7 @@ description: How to import existing Smart Contracts.
 
 There may be cases where you want to bring in existing smart contracts deployed on the network. This section will cover how you can easily bring existing contracts into your debug UI and use the Scaffold Hooks with it.
 
-The `Configure Contracts` page allows you to pull existing contracts from the Starknet network and incorporate them into your `Scaffold-Stark 2` project. It generates a configuration file that can be used to replace or append to your local `predeployedContracts.ts` or `configExternalContracts.ts` file, enabling contract debugging in the `/debug` page of your Scaffold-Stark project.
+The `Configure Contracts` page allows you to pull existing contracts from the Starknet network and incorporate them into your `Scaffold-Stark 2` project. It generates a configuration file that can be used to replace or append to your local `configExternalContracts.ts` file, enabling contract debugging in the `/debug` page of your Scaffold-Stark project.
 
 ### **Getting Started**:
 
@@ -69,8 +69,6 @@ export const externalContracts = [
 #### 5. Replace or Append the Configuration File
 
 - Download the file and replace or append its contents to your local `configExternalContracts.ts` file. This file is used to register external contracts that you want to interact with in your project.
-
-Alternatively, if you're working with pre-deployed contracts, you can modify the `predeployedContracts.ts` file.
 
 #### 6. Use the "Debug Contracts" page
 
