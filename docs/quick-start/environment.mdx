@@ -35,10 +35,10 @@ The command also will create a file called `packages/nextjs/contracts/deployedCo
 
 :::tip
 
-Note that `yarn deploy` does not reset the generated `deployedContracts.ts` file, meaning that any changes that you made to the contract name or any deletion will not be taken into account, as it will only make the new deployment on top of the existing API. To completely start from a fresh state of deployment, you can run (do run with caution):
+Note that `yarn deploy` resets the generated `deployedContracts.ts` file be default. To keep the existing deployments and `deployedContracts.ts`, you can run:
 
 ```
-yarn deploy:reset
+yarn deploy:no-reset
 ```
 
 :::
@@ -60,4 +60,4 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - Edit your deployment scripts in `packages/snfoundry/script-ts/deploy.ts`.
 - Edit your smart contract test in: `packages/snfoundry/contracts/src/test`. To run test use `yarn test`.
 
-see more detail at [customize-your-own-dApp](./customize-your-own-dApp) to customize your own dApp.
+See more details at the [Customize Your Own dApp](./customize-your-own-dApp) page!
