@@ -2,13 +2,13 @@
 sidebar_position: 5
 ---
 
-# useDynamicContract
+# useEthStarkContract
 
 This is the hook that wraps the `useScaffoldContract` hook from Scaffold-Stark and Scaffold-ETH for both Starknet and Ethereum. Use this hook to get your contract instance by providing the contract name. It enables you to interact with your contract methods.
-For reading data or sending transactions, it's recommended to use `useDynamicReadContract` and `useDynamicWriteContract`.
+For reading data or sending transactions, it's recommended to use `useEthStarkReadContract` and `useEthStarkWriteContract`.
 
 ```ts
-const { data: yourContract, isLoading: yourContractLoading } = useDynamicContract({
+const { data: yourContract, isLoading: yourContractLoading } = useEthStarkContract({
   eth: {
     contractName: "YourContract",
   },
@@ -17,7 +17,7 @@ const { data: yourContract, isLoading: yourContractLoading } = useDynamicContrac
   },
 });
 
-// Returns the greeting and can be called in any function, unlike useDynamicReadContract
+// Returns the greeting and can be called in any function, unlike useEthStarkReadContract
 
 // for eth contract
 await yourContract?.read.greeting();
@@ -32,7 +32,7 @@ import { useWalletClient } from "wagmi";
 const { account } = useAccount();
 const { data: walletClient } = useWalletClient();
 
-const { data: yourContract, isLoading: yourContractLoading } = useDynamicContract({
+const { data: yourContract, isLoading: yourContractLoading } = useEthStarkContract({
   eth: {
     contractName: "YourContract",
     walletClient: walletClient,
@@ -53,7 +53,7 @@ const setGreeting = async () => {
 };
 ```
 
-This example uses the `useDynamicContract` hook to obtain a contract instance for the `YourContract` smart contract.
+This example uses the `useEthStarkContract` hook to obtain a contract instance for the `YourContract` smart contract.
 
 ## Configuration
 
