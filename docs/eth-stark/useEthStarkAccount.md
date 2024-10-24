@@ -2,12 +2,12 @@
 sidebar_position: 6
 ---
 
-# useDynamicAccount
+# useEthStarkAccount
 
 This is the hook that wraps the `useAccount` hook from starknet-react and wagmi. Use this hook to get your account details.
 
 ```ts
-const { address } = useDynamicAccount();
+const { address } = useEthStarkAccount();
 ```
 
 ## Return Value

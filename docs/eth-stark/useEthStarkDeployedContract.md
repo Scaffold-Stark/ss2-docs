@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# useDynamicDeployContract
+# useEthStarkDeployedContract
 
 This is the hook that wraps the `useDeployedContractInfo` hook from Scaffold-Stark and Scaffold-ETH for both Starknet and Ethereum. Use this hook to fetch details about a deployed smart contract, including the ABI and address.
 
@@ -11,7 +11,7 @@ const {
   data: deployedContractInfo,
   isLoading: deployedContractLoading,
   error: deployedContractError,
-} = useDynamicDeployContract({
+} = useEthStarkDeployedContract({
   eth: { contractName: "YourContract" },
   strk: { contractName: "YourContract" },
 });

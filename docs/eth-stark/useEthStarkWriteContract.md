@@ -2,12 +2,12 @@
 sidebar_position: 2
 ---
 
-# useDynamicWriteContract
+# useEthStarkWriteContract
 
 This is the hook that wraps the `useScaffoldWriteContract` hook from Scaffold-Stark and Scaffold-ETH for both Starknet and Ethereum. Use this hook to write to your smart contract by calling state-mutating functions.
 
 ```ts
-const { writeAsync, isPending: greetingPending } = useDynamicWriteContract({
+const { writeAsync, isPending: greetingPending } = useEthStarkWriteContract({
   strk: {
     contractName: "YourContract",
     functionName: "updateGreeting",
@@ -26,7 +26,7 @@ This example calls the updateGreeting function of the YourContract smart contrac
 ## Usage Example
 
 ```tsx
-const { writeAsync, isPending: isUpdateGreetingPending } = useDynamicWriteContract({
+const { writeAsync, isPending: isUpdateGreetingPending } = useEthStarkWriteContract({
   strk: {
     contractName: "YourContract",
     functionName: "updateGreeting",

@@ -2,12 +2,12 @@
 sidebar_position: 3
 ---
 
-# useDynamicEventHistory
+# useEthStarkEventHistory
 
 This is the hook that wraps the `useScaffoldEventHistory` hook from Scaffold-Stark and Scaffold-ETH for both Starknet and Ethereum. This hook allows you to read events from a deployed smart contract.
 
 ```ts
-const { data, isLoading, error } = useDynamicEventHistory({
+const { data, isLoading, error } = useEthStarkEventHistory({
   strk: {
     contractName: "YourContract",
     eventName: "contracts::YourContract::YourContract::GreetingChanged",
