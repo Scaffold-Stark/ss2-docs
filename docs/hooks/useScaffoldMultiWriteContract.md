@@ -28,6 +28,21 @@ This example sends multiple transactions to the specified smart contracts to cal
 ## Usage Example
 
 ```tsx
+const { sendAsync } = useScaffoldMultiWriteContract({
+  calls: [
+    {
+      contractName: "YourContract1",
+      functionName: "setGreeting",
+      args: ["Hello"],
+    },
+    {
+      contractName: "YourContract2",
+      functionName: "setCounter",
+      args: [42],
+    },
+  ],
+});
+
 <button
   className="btn btn-primary"
   onClick={async () => {
@@ -39,17 +54,17 @@ This example sends multiple transactions to the specified smart contracts to cal
   }}
 >
   Send Transactions
-</button>
+</button>;
 ```
 
 This example demonstrates how to use the `sendAsync`function to send multiple transactions to the specified smart contracts, calling the functions with the arguments passed in calls.
 
 ## Configuration
 
-| Parameter              | Type                 | Description                                                                                                                   |
-| :--------------------- | :------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
-| **calls**              | `Calldata[]`         | Array of configuration objects for the contract calls. Each object should contain `contractName`, `functionName`, and `args`. |
-| **options** (optional) | `InvocationsDetails` | Additional options for the transactions.                                                                                      |
+| Parameter              | Type                 | Description                                                                                                                                                                                                        |
+| :--------------------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **calls**              | `Calldata[]`         | Array of configuration objects for the contract calls. Each object should contain `contractName`, `functionName`, and `args`. For special datatypes such as `enums`, you can pass in enum types from `starknet.js` |
+| **options** (optional) | `InvocationsDetails` | Additional options for the transactions.                                                                                                                                                                           |
 
 ## Call Object Configuration
 
