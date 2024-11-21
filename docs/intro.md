@@ -11,7 +11,7 @@ slug: /
 
 ## About Scaffold-Stark
 
-Scaffold-Stark is an open-source, up-to-date toolkit for building decentralized applications (dapps) on the Starknet blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts. Scaffold-Stark is a UI-agnostic framework, meaning it does not enforce any specific UI framework or library, giving developers the flexibility to choose their preferred UI tools and libraries.
+Scaffold-Stark is an open-source, up-to-date toolkit for building decentralized applications (dApps) on the Starknet blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts. Scaffold-Stark is a UI-agnostic framework, meaning it does not enforce any specific UI framework or library, giving developers the flexibility to choose their preferred UI tools and libraries.
 
 - ✅ **Contract Fast Reload**: Your frontend auto-adapts to your smart contract as you edit it.
 - 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
