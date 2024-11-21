@@ -4,7 +4,7 @@ This website contains Scaffold-Stark 2 Documentation and is built using [Docusau
 
 ## Requirements
 
-To run the Documentation site locally, but first ensure you have [Node](https://nodejs.org/en/download/) and [Git](https://git-scm.com/downloads) installed.
+To run the Documentation site locally, but first ensure you have [Node.js](https://nodejs.org/en/download/) and [Git](https://git-scm.com/downloads) installed.
 
 ## Installation
 
