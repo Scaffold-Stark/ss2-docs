@@ -40,11 +40,11 @@ In this example, the updateGreeting function of the YourContract is called with 
 
 ## Configuration
 
-| Parameter           | Type        | Description                                                                                                      |
-| :------------------ | :---------- | :--------------------------------------------------------------------------------------------------------------- |
-| **contractName**    | `string`    | Name of the contract to write to.                                                                                |
-| **functionName**    | `string`    | Name of the function to call.                                                                                    |
-| **args** (optional) | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. |
+| Parameter           | Type        | Description                                                                                                                                                                                           |
+| :------------------ | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **contractName**    | `string`    | Name of the contract to write to.                                                                                                                                                                     |
+| **functionName**    | `string`    | Name of the function to call.                                                                                                                                                                         |
+| **args** (optional) | `unknown[]` | Array of arguments to pass to the function (if any). Types are inferred from the contract's function parameters. For special datatypes such as `enums`, you can pass in enum types from `starknet.js` |
 
 ## Return Values
 
