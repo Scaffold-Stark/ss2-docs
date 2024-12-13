@@ -1,48 +1,68 @@
-# StarkNet Devnet - Installation and Setup with asdf
+# 🚀 StarkNet Devnet - Installation and Setup with asdf
 
-This document provides a guide to install and run **StarkNet Devnet** with asdf, a Rust-based tool for developers. Below, you'll find instructions for installation using `asdf`.
+Este documento proporciona una guía para instalar y ejecutar **StarkNet Devnet** utilizando `asdf`, una herramienta basada en Rust para desarrolladores. A continuación, encontrarás instrucciones para la instalación usando `asdf`.
 
-## Requirements
+## 📝 Requirements
 
-- **asdf**: Install `asdf` by following the official [asdf documentation](https://asdf-vm.com/).
+- **asdf**: Instala `asdf` siguiendo la [documentación oficial de asdf](https://asdf-vm.com/).
 
 ---
 
-## Installation Using `asdf`
+## ⚙️ Installation Using `asdf`
 
-1. Add the StarkNet Devnet plugin:
+1. **Añadir el plugin de StarkNet Devnet**:
 
    ```bash
    asdf plugin add starknet-devnet
    ```
 
-2. List all available versions:
+2. **Listar todas las versiones disponibles**:
 
    ```bash
    asdf list-all starknet-devnet
    ```
 
-3. Install the latest version:
+3. **Instalar la última versión**:
 
    ```bash
    asdf install starknet-devnet latest
    ```
 
-4. Set the installed version as global or local:
+4. **Configurar la versión instalada como global o local**:
    ```bash
-   asdf global starknet-devnet <VERSION>
-   # or
-   asdf local starknet-devnet <VERSION>
+   asdf global starknet-devnet <VERSIÓN>
+   # o
+   asdf local starknet-devnet <VERSIÓN>
    ```
 
 ---
 
-## Running StarkNet Devnet
+## 🏃‍♂️ Running StarkNet Devnet
 
-After installation, you can run StarkNet Devnet with the following command:
+Después de la instalación, puedes ejecutar StarkNet Devnet con el siguiente comando:
 
 ```bash
 starknet-devnet
 ```
 
 ---
+
+## 📚 Recursos Adicionales
+
+- [Documentación oficial de StarkNet](https://starknet.io/docs)
+- [Repositorio de GitHub de StarkNet Devnet](https://github.com/starknet/starknet-devnet)
+- [Comunidad de StarkNet](https://discord.gg/starknet)
+
+---
+
+## 🛠️ Troubleshooting
+
+Si encuentras algún problema durante la instalación o ejecución, considera lo siguiente:
+
+- Asegúrate de tener la última versión de `asdf` instalada.
+- Verifica que el plugin de StarkNet Devnet se haya añadido correctamente.
+- Consulta los [issues](https://github.com/starknet/starknet-devnet/issues) en el repositorio de GitHub para soluciones conocidas.
+
+---
+
+¡Gracias por usar **StarkNet Devnet**! 🎉
