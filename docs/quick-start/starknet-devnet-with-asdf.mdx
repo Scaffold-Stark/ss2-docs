@@ -1,6 +1,6 @@
-# StarkNet Devnet - Installation and Setup with asdf
+# Starknet Devnet - Installation with asdf
 
-This document provides a guide to install and run **StarkNet Devnet** using `asdf`, a Rust-based tool for developers. Below, you'll find instructions for installation using `asdf`.
+This document provides a guide to install **Starknet Devnet** using `asdf`, a Rust-based tool for developers. Below, you'll find instructions for installation using `asdf`.
 
 ## Requirements
 
@@ -8,7 +8,7 @@ This document provides a guide to install and run **StarkNet Devnet** using `asd
 
 ## Installation Using `asdf`
 
-1. **Add the StarkNet Devnet plugin**:
+1. **Add the Starknet Devnet plugin**:
 
    ```bash
    asdf plugin add starknet-devnet
@@ -26,26 +26,28 @@ This document provides a guide to install and run **StarkNet Devnet** using `asd
    asdf install starknet-devnet latest
    ```
 
-4. **Set the installed version as global or local**:
+   Alternatively, to install a specific version, such as `0.2.3`, use:
+
    ```bash
-   asdf global starknet-devnet <VERSION>
-   # or
-   asdf local starknet-devnet <VERSION>
+   asdf install starknet-devnet 0.2.3
    ```
 
-## Running StarkNet Devnet
+   ⚠️**WARNING:**
 
-After installation, you can run StarkNet Devnet with the following command:
+   > **Remenber the latest compatible version with scaffold is 0.2.3**.
 
-```bash
-starknet-devnet
-```
+4. **Set the installed version as global or local**:
+   ```bash
+   asdf global starknet-devnet 0.2.3
+   # or
+   asdf local starknet-devnet 0.2.3
+   ```
 
 ## Additional Resources
 
-- [StarkNet Official Documentation](https://starknet.io/docs)
-- [StarkNet Devnet GitHub Repository](https://github.com/starknet/starknet-devnet)
-- [StarkNet Community](https://discord.gg/starknet)
+- [Starknet Official Documentation](https://starknet.io/docs)
+- [Starknet Devnet GitHub Repository](https://github.com/0xSpaceShard/starknet-devnet-rs)
+- [Starknet Devnet versions](https://github.com/0xSpaceShard/starknet-devnet-rs/tags)
 
 ## Troubleshooting
 
