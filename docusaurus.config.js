@@ -129,6 +129,20 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: "OQHBL9CWH9",
+        apiKey: "042138591ea150790b1f40a365755caf",
+        indexName: "scaffoldstark",
+        contextualSearch: true,
+        externalUrlRegex: "external\\.com|domain\\.com",
+        replaceSearchResultPathname: {
+          from: "/docs/",
+          to: "/",
+        },
+        searchParameters: {},
+        searchPagePath: "search",
+        insights: false,
+      },
     }),
 };
 
