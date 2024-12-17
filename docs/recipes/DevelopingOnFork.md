@@ -75,7 +75,7 @@ yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_7
 # In a new terminal, deploy contracts
 yarn deploy
 
-# Start frontend
+# Start frontend on another terminal
 yarn start
 ```
 
