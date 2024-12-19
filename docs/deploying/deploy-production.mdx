@@ -19,9 +19,9 @@ scarb --version      # 2.9.2
 snforge --version    # 0.34.0
 ```
 
-:::tip Hint
+:::warning
 Using incompatible versions may cause unexpected issues in production. Make sure to align with the compatible versions specified in Scaffold-Stark 2.
-:::tip Hint
+:::warning
 
 ## 2. Remove Debug Features
 
@@ -91,9 +91,9 @@ Only add domains to `remotePatterns` that you trust and need for your applicatio
 
 ### Additional Build optimizations
 
-Scaffold-Stark 2 includes several build optimizations in `next.config.mjs`:
+Scaffold-Stark 2 includes several build optimizations in `next.config.mjs` to ensure better production performance:
 
-#### 1. TypeScript and ESLint error handling:
+#### 1. TypeScript and ESLint Error Handling:
 
 ```javascript
 typescript: {
@@ -104,6 +104,16 @@ eslint: {
 },
 ```
 
+These settings control how your application handles TypeScript and ESLint errors during the build process:
+
+- When NEXT_PUBLIC_IGNORE_BUILD_ERROR is set to "true":
+  - TypeScript type checking errors won't stop your build
+  - ESLint warnings and errors won't prevent deployment
+- This is useful when: - You're in rapid development and want to test deployments despite minor type issues - You're dealing with third-party dependencies that have type conflicts - You're migrating a JavaScript project to TypeScript and want to deploy while still fixing type issues
+  :::warning
+  While these settings can help you deploy quickly, it's recommended to fix all TypeScript and ESLint errors before deploying to production. Ignoring these errors might hide potential bugs or issues in your code.
+  :::warning
+
 #### 2. Webpack optimization for compatibility:
 
 ```javascript
@@ -113,6 +123,62 @@ webpack: (config) => {
   return config;
 },
 ```
+
+This webpack configuration handles some important compatibility issues:
+
+1. Fallback Resolution:
+
+```javascript
+config.resolve.fallback = { fs: false, net: false, tls: false };
+```
+
+This configuration tells webpack how to handle Node.js-specific modules in the browser by disabling several Node.js-native modules: the file system module (fs), the network module (net), and the TLS/SSL module (tls). This configuration is necessary because some dependencies might try to use these Node.js modules that don't exist in the browser environment, which could cause compatibility issues. 2. External Dependencies:
+
+```javascript
+config.externals.push("pino-pretty", "lokijs", "encoding");
+```
+
+This configuration marks certain packages as external to prevent them from being bundled with your client-side code. This includes pino-pretty (a logging library formatter), lokijs (an in-memory database), and encoding (a text encoding library). These packages are typically only needed on the server-side and shouldn't be included in the client bundle, which helps reduce the size of your frontend code.
+:::tip Hint
+These webpack optimizations help:
+
+- Reduce your bundle size
+- Prevent compatibility issues between Node.js and browser environments
+- Improve loading performance
+- Handle common dependencies that cause build issues
+  :::tip Hint
+
+### Setting Up Build Environment Variables
+
+To control these optimizations, you can set up your environment variables:
+
+1. For local development(packages/nextjs/.env.local):
+
+```bash
+# Only use during development
+NEXT_PUBLIC_IGNORE_BUILD_ERROR=true
+```
+
+2. For production deployment:
+
+```bash
+# Make sure this is false or unset in production
+NEXT_PUBLIC_IGNORE_BUILD_ERROR=false
+```
+
+:::tip Best Practices
+
+1. During development:
+
+- You can set `NEXT_PUBLIC_IGNORE_BUILD_ERROR=true` to speed up testing
+- Use this to iterate quickly on features
+
+2. Before production:
+
+- Set `NEXT_PUBLIC_IGNORE_BUILD_ERROR=false` or remove it
+- Fix all TypeScript and ESLint errors
+- Test the build locally with production settings
+  :::tip Best Practices
 
 ## 4. Production Environment Setup
 
