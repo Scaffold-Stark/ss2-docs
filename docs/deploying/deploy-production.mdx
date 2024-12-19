@@ -1,0 +1,264 @@
+---
+sidebar_position: 4
+toc_max_heading_level: 5
+---
+
+# Optimize Your dApp for Production
+
+When preparing your Scaffold-Stark 2 dApp for production deployment, there are several optimizations you can implement to improve performance and reduce bundle size.
+
+## 1. Verify System Requirements
+
+Before deploying to production, ensure you have the correct versions of all dependencies:
+
+```bash
+# Check versions
+node --version        # >= v18.17
+starknet-devnet --version  # 0.2.3
+scarb --version      # 2.9.2
+snforge --version    # 0.34.0
+```
+
+:::warning
+Using incompatible versions may cause unexpected issues in production. Make sure to align with the compatible versions specified in Scaffold-Stark 2.
+:::warning
+
+## 2. Remove Debug Features
+
+#### 1. Debug Page Removal
+
+The debug page is a development tool that should be removed for production builds. You can remove it by:
+
+Delete the debug page and its components:
+
+```bash
+rm -rf packages/nextjs/app/debug
+```
+
+#### 2. Remove the debug route from your navigation if you've added it manually in any of your components.
+
+:::tip Hint
+If you want to keep the debug features for development while removing them from production, you can use environment-based conditional rendering:
+
+````typescript
+{process.env.NODE_ENV === 'development' && (
+  <Link href="/debug">Debug Contracts</Link>
+)}
+
+:::tip Hint
+
+## 3. Asset optimization
+
+### Image Optimization
+Scaffold-Stark 2 comes with pre-configured image optimization in [`next.config.mjs`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/next.config.mjs). The configuration includes secure handling of SVGs and specific remote patterns for Starknet-related images.
+
+#### 1. When adding new image sources, extend the existing `remotePatterns` in `next.config.mjs`:
+
+```javascript
+images: {
+  dangerouslyAllowSVG: true,
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "your-new-domain.com",
+      pathname: "/**",
+    },
+    // existing patterns...
+  ],
+}
+````
+
+#### 2. Use the Next.js Image component with the allowed domains:
+
+```typescript
+import Image from 'next/image';
+
+export function YourComponent() {
+  return (
+    <Image
+      src="https://identicon.starknet.id/your-image"
+      alt="Description"
+      width={400}
+      height={300}
+    />
+  );
+}
+```
+
+:::tip Hint
+Only add domains to `remotePatterns` that you trust and need for your application. For each additional pattern may increases the potential attack surface of the application.
+:::tip Hint
+
+### Additional Build optimizations
+
+Scaffold-Stark 2 includes several build optimizations in `next.config.mjs` to ensure better production performance:
+
+#### 1. TypeScript and ESLint Error Handling:
+
+```javascript
+typescript: {
+  ignoreBuildErrors: process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
+},
+eslint: {
+  ignoreDuringBuilds: process.env.NEXT_PUBLIC_IGNORE_BUILD_ERROR === "true",
+},
+```
+
+These settings control how your application handles TypeScript and ESLint errors during the build process:
+
+- When NEXT_PUBLIC_IGNORE_BUILD_ERROR is set to "true":
+  - TypeScript type checking errors won't stop your build
+  - ESLint warnings and errors won't prevent deployment
+- This is useful when: - You're in rapid development and want to test deployments despite minor type issues - You're dealing with third-party dependencies that have type conflicts - You're migrating a JavaScript project to TypeScript and want to deploy while still fixing type issues
+  :::warning
+  While these settings can help you deploy quickly, it's recommended to fix all TypeScript and ESLint errors before deploying to production. Ignoring these errors might hide potential bugs or issues in your code.
+  :::warning
+
+#### 2. Webpack optimization for compatibility:
+
+```javascript
+webpack: (config) => {
+  config.resolve.fallback = { fs: false, net: false, tls: false };
+  config.externals.push("pino-pretty", "lokijs", "encoding");
+  return config;
+},
+```
+
+This webpack configuration handles some important compatibility issues:
+
+1. Fallback Resolution:
+
+```javascript
+config.resolve.fallback = { fs: false, net: false, tls: false };
+```
+
+This configuration tells webpack how to handle Node.js-specific modules in the browser by disabling several Node.js-native modules: the file system module (fs), the network module (net), and the TLS/SSL module (tls). This configuration is necessary because some dependencies might try to use these Node.js modules that don't exist in the browser environment, which could cause compatibility issues. 2. External Dependencies:
+
+```javascript
+config.externals.push("pino-pretty", "lokijs", "encoding");
+```
+
+This configuration marks certain packages as external to prevent them from being bundled with your client-side code. This includes pino-pretty (a logging library formatter), lokijs (an in-memory database), and encoding (a text encoding library). These packages are typically only needed on the server-side and shouldn't be included in the client bundle, which helps reduce the size of your frontend code.
+:::tip Hint
+These webpack optimizations help:
+
+- Reduce your bundle size
+- Prevent compatibility issues between Node.js and browser environments
+- Improve loading performance
+- Handle common dependencies that cause build issues
+  :::tip Hint
+
+### Setting Up Build Environment Variables
+
+To control these optimizations, you can set up your environment variables:
+
+1. For local development(packages/nextjs/.env.local):
+
+```bash
+# Only use during development
+NEXT_PUBLIC_IGNORE_BUILD_ERROR=true
+```
+
+2. For production deployment:
+
+```bash
+# Make sure this is false or unset in production
+NEXT_PUBLIC_IGNORE_BUILD_ERROR=false
+```
+
+:::tip Best Practices
+
+1. During development:
+
+- You can set `NEXT_PUBLIC_IGNORE_BUILD_ERROR=true` to speed up testing
+- Use this to iterate quickly on features
+
+2. Before production:
+
+- Set `NEXT_PUBLIC_IGNORE_BUILD_ERROR=false` or remove it
+- Fix all TypeScript and ESLint errors
+- Test the build locally with production settings
+  :::tip Best Practices
+
+## 4. Production Environment Setup
+
+#### Production Environment Variables
+
+Ensure your production environment variables are properly set in your deployment platform:
+
+```bash
+# In packages/nextjs/.env.local
+NEXT_PUBLIC_PROVIDER_URL=https://your-provider.example.com/your-api-key/rpc/v0_7
+```
+
+:::tip Hint
+Make sure your RPC provider URL includes the correct version path (v0_7). You can verify the RPC version with this curl command:
+
+```bash
+# Verify RPC version (should be 0.7.1)
+curl -X POST -H "Content-Type: application/json" --data '{
+ "jsonrpc":"2.0",
+ "method":"starknet_specVersion",
+ "id":1
+}' https://your-rpc-endpoint
+```
+
+Never commit production environment variables to your repository. Use .env.local for local development and configure environment variables directly in your deployment platform for production.
+:::tip Hint
+
+## 5. Build Optimization
+
+#### Next.js Build Configuration
+
+Optimize your Next.js build by adding the following to your `next.config.mjs`:
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // ... other config
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  experimental: {
+    optimizeCss: true,
+  },
+};
+```
+
+## 6. Production Deployment Checklist
+
+Before deploying to production, ensure you have:
+
+- [ ] Removed or conditionally rendered debug packages
+- [ ] Configured production environment variables
+- [ ] Optimized all images and assets
+- [ ] Run and tested production build locally
+- [ ] Updated all RPC endpoints to production URLs
+- [ ] Removed any hardcoded development addresses
+- [ ] Verified all smart contract integrations
+- [ ] Tested wallet connections on production networks
+
+## Production Build Command
+
+Use `yarn build` followed by `yarn start` to test your production build locally before deploying.
+
+```bash
+# Build the application
+yarn build
+
+# Test the production build locally
+yarn start
+```
+
+## Common Pitfalls
+
+- Leaving development RPC endpoints in production
+- Not configuring proper environment variables
+- Keeping debug routes accessible in production
+- Using development contract addresses in production
+- Not optimizing images and other assets
+- Leaving console.log statements in production code
+
+## Additional Resources
+
+- [Next.js Deployment Documentation](https://nextjs.org/docs/deployment)
