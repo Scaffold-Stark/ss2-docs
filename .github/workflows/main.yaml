@@ -31,6 +31,11 @@ jobs:
         run: yarn install --immutable
         working-directory: ./
 
+      - name: Setup environment
+        run: |
+          echo "${{ secrets.ENV_GLOBAL }}" > .env
+        working-directory: ./
+
       - name: Build Next.js project
         run: yarn build
         working-directory: ./
