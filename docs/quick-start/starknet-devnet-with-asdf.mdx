@@ -1,0 +1,57 @@
+# Starknet Devnet - Installation with asdf
+
+This document provides a guide to install **Starknet Devnet** using `asdf`, a Rust-based tool for developers. Below, you'll find instructions for installation using `asdf`.
+
+## Requirements
+
+- **asdf**: Install `asdf` by following the [official asdf documentation](https://asdf-vm.com/).
+
+## Installation Using `asdf`
+
+1. **Add the Starknet Devnet plugin**:
+
+   ```bash
+   asdf plugin add starknet-devnet
+   ```
+
+2. **List all available versions**:
+
+   ```bash
+   asdf list-all starknet-devnet
+   ```
+
+3. **Install the latest version**:
+
+   ```bash
+   asdf install starknet-devnet latest
+   ```
+
+   Alternatively, to install a specific version, such as `0.2.3`, use:
+
+   ```bash
+   asdf install starknet-devnet 0.2.3
+   ```
+
+:::note
+Remember the latest compatible version with scaffold-stark is `0.2.3`.
+
+:::
+
+4. **Set the installed version as global or local**:
+   ```bash
+   asdf global starknet-devnet 0.2.3
+   # or
+   asdf local starknet-devnet 0.2.3
+   ```
+
+## Additional Resources
+
+- [Starknet Official Documentation](https://starknet.io/docs)
+- [Starknet Devnet GitHub Repository](https://github.com/0xSpaceShard/starknet-devnet-rs)
+- [Starknet Devnet versions](https://github.com/0xSpaceShard/starknet-devnet-rs/tags)
+
+## Troubleshooting
+
+If you encounter any issues during installation or execution, consider the following:
+
+- Ensure you have the latest version of `asdf` installed.
