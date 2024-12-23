@@ -35,6 +35,7 @@ const mainnetFork = {
 
 const scaffoldConfig = {
   targetNetworks: [mainnetFork],
+  isFork: true,  // handles forked network validation, else might show wrong network.
   // ... other config options remain the same
 };
 ```
