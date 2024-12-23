@@ -10,34 +10,18 @@ This guide shows how to run and interact with a local fork of Starknet mainnet.
 yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_7
 ```
 
-2. Update scaffold.config.ts:
+2. Update `scaffoldConfig` in scaffold.config.ts as:
 ```typescript
-const mainnetFork = {
-  id: BigInt("0x534e5f4d41494e"),
-  network: "devnet",
-  name: "Starknet Fork",
-  nativeCurrency: {
-    address: "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
-    name: "Ether",
-    symbol: "ETH",
-    decimals: 18,
-  },
-  testnet: true,
-  rpcUrls: {
-    default: {
-      http: ["http://127.0.0.1:5050/rpc"],
-    },
-    public: {
-      http: ["http://127.0.0.1:5050/rpc"],
-    },
-  },
-} as Chain;
-
 const scaffoldConfig = {
-  targetNetworks: [mainnetFork],
-  isFork: true,  // handles forked network validation, else might show wrong network.
-  // ... other config options remain the same
+  targetNetworks: [chains.mainnetFork],
+  isFork: true,  // handles forked network validation
+  // ... other config options
 };
+```
+
+3. Create a `.env` file from the `.env.example` template and configure it accordingly
+```
+NEXT_PUBLIC_PROVIDER_URL=http://127.0.0.1:5050
 ```
 
 ## Wallet Configuration
