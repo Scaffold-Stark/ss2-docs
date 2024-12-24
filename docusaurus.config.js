@@ -1,6 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const dotenv = require('dotenv'); // Import dotenv
+dotenv.config(); // Load environment variables
+
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
@@ -128,6 +131,20 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      algolia: {
+        appId: process.env.APP_ID,
+        apiKey: process.env.API_KEY,
+        indexName: process.env.INDEX_NAME,
+        contextualSearch: true,
+        externalUrlRegex: "external\\.com|domain\\.com",
+        replaceSearchResultPathname: {
+          from: "/docs/",
+          to: "/",
+        },
+        searchParameters: {},
+        searchPagePath: "search",
+        insights: false,
       },
     }),
 };
