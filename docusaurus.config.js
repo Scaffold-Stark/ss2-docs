@@ -15,7 +15,7 @@ const config = {
   favicon: "img/icon-starknet.svg",
 
   // Set the production url of your site here
-  url: "https://scaffold-eth-2-docs.vercel.app",
+  url: "https://docs.scaffoldstark.com",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -30,7 +30,7 @@ const config = {
       src: "https://plausible.io/js/plausible.js",
       async: true,
       defer: true,
-      "data-domain": "docs.scaffoldstark.io",
+      "data-domain": "docs.scaffoldstark.com",
     },
   ],
 
