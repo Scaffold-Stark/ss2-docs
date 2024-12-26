@@ -1,6 +1,6 @@
 {
   "name": "se-2",
-  "version": "0.0.13",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
