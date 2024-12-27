@@ -68,22 +68,20 @@ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh
 
 ## Install `starknet-devnet`
 
-To ensure the proper functioning of scaffold-stark, your local starknet-devnet version must be 0.2.0.
+To ensure the proper functioning of scaffold-stark, your local starknet-devnet version must be 0.2.3.
 To accomplish this, first check your local starknet-devnet version:
 
 ```
 starknet-devnet --version
 ```
 
-If your local starknet-devnet version is not `0.2.0`, you need to install it.
+If your local starknet-devnet version is not `0.2.3`, you need to install it.
 
-```sh
-cargo install starknet-devnet --version 0.2.0
-```
+- Install Starknet-devnet `0.2.3` via `asdf` ([instructions](https://github.com/gianalarcon/asdf-starknet-devnet/blob/main/README.md)).
 
 ## Install Starknet Foundry
 
-If your Starknet Foundry version is not 0.31.0, you need to install it.
+If your Starknet Foundry version is not 0.34.0, you need to install it.
 
 ```sh
 snforge --version
@@ -104,13 +102,13 @@ asdf plugin add starknet-foundry
 This will allow you to download specific versions.
 
 ```bash
-asdf install starknet-foundry 0.31.0
+asdf install starknet-foundry 0.34.0
 ```
 
 and set a global version:
 
 ```bash
-asdf global starknet-foundry 0.31.0
+asdf global starknet-foundry 0.34.0
 ```
 
 </details>
@@ -132,14 +130,13 @@ curl --location 'https://starknet-sepolia.public.blastapi.io/rpc/v0_7' \
 
 | Dependency      | Version |
 | --------------- | ------- |
-| scarb           | v2.8.3  |
-| cairo           | v2.8.2  |
-| sierra          | v1.6.0  |
+| scarb           | v2.9.2  |
+| cairo           | v2.9.2  |
 | rpc             | v0.7.1  |
-| starknet-devnet | v0.2.0  |
-| snforge         | v0.31.0 |
+| starknet-devnet | v0.2.3  |
+| snforge         | v0.34.0 |
 | starknet.js     | v6.12.1 |
-| starknet-react  | v3.0.1  |
+| starknet-react  | v3.6.0 |
 
 ## Setup
 
