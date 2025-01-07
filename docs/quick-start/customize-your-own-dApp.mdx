@@ -19,6 +19,61 @@ These two directories together form the complete project structure, with `snfoun
 2. **Deployment Scripts**:
    The deployment scripts are located in `packages/snfoundry/scripts-ts/deploy.ts`. This script is used to deploy your smart contract to the specified blockchain network. By editing this script, you can adjust the deployment process, such as specifying different networks or contract parameters.
 
+   #### Deployment Command Line Flags
+
+   The deployment script supports several command line flags to customize the deployment process:
+
+   #### --network
+
+   - Type: string
+   - Default: "devnet"
+   - Description: Specifies the network for deployment
+   - Example: `--network mainnet`
+
+   <br />
+
+   #### --fee
+
+   - Type: string
+   - Default: "eth"
+   - Choices:
+     - "eth": Use ETH as the fee token
+     - "strk": Use STRK as the fee token
+   - Example: `--fee strk`
+
+   <br />
+
+   #### --reset
+
+   - Type: boolean
+   - Default: true
+   - Description: Controls whether to reset existing deployments
+   - When true: Keeps existing deployments
+   - When false: Resets deployments before new deployment
+   - Example: `--reset false`
+
+   <br />
+
+   #### Example Commands
+
+   2.1. Deploy to devnet using ETH fees (default settings):
+
+   ```bash
+   yarn deploy
+   ```
+
+   2.2. Deploy to testnet using STRK fees:
+
+   ```bash
+   yarn deploy --network sepolia --fee strk
+   ```
+
+   2.3. Deploy with reset:
+
+   ```bash
+   yarn deploy --network sepolia --reset false
+   ```
+
 3. **Test Smart Contracts**:
    To ensure your smart contracts work correctly, write and run tests in the `packages/snfoundry/contracts/src/test` directory. These tests can be executed using the `yarn test` command. This helps catch and fix potential errors before deployment.
 
