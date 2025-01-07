@@ -17,6 +17,7 @@ Forking from block: number=1047693
 ```
 
 - If you wanna use events, **MAKE SURE** the fromBlock : is > the number in console + 1, otherwise the events data will always be empty. i.e. do not capture the first block of the fork
+![Image description](../../static/img/warning-fork-block-number.png)
 
 3. Update `scaffoldConfig` in scaffold.config.ts as:
 
