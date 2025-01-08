@@ -16,20 +16,27 @@ yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_7
 Forking from block: number=1047693
 ```
 
-- If you wanna use events, **MAKE SURE** the fromBlock : is > the number in console + 1, otherwise the events data will always be empty. i.e. do not capture the first block of the fork
-  ![Image description](../../static/img/warning-fork-block-number.png)
+3. If you wanna use events, **MAKE SURE** the fromBlock : is > the number in console + 1, otherwise the events data will always be empty. i.e. do not capture the first block of the fork
 
-3. Update `scaffoldConfig` in scaffold.config.ts as:
+```typescript
+const { data: events } = useScaffoldEventHistory({
+  contractName: "YourContract",
+  eventName: "contracts::YourContract::YourContract::GreetingChanged",
+  fromBlock: 1028886n, // NOTE : Use the latest block on the fork + 1 ( see the logs in the console)
+  watch: true,
+});
+```
+
+4. Update `scaffoldConfig` in scaffold.config.ts as:
 
 ```typescript
 const scaffoldConfig = {
   targetNetworks: [chains.mainnetFork],
-  isFork: true, // handles forked network validation
   // ... other config options
 };
 ```
 
-4. Create a `.env` file from the `.env.example` template and configure it accordingly
+5. Create a `.env` file from the `.env.example` template and configure it accordingly
 
 ```
 NEXT_PUBLIC_PROVIDER_URL=http://127.0.0.1:5050
