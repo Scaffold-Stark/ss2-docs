@@ -31,19 +31,19 @@ This example demonstrates how to use the `useScaffoldStrkBalance` hook to displa
 
 ## Configuration
 
-| Parameter      | Type                   | Description                                                                                     |
-| :------------- | :--------------------- | :---------------------------------------------------------------------------------------------- |
-| **address**    | `Address \| string`    | The STRK address to fetch the balance for. If not provided, it will attempt to fetch the balance for the current connected account. |
+| Parameter   | Type                | Description                                                                                                                         |
+| :---------- | :------------------ | :---------------------------------------------------------------------------------------------------------------------------------- |
+| **address** | `Address \| string` | The STRK address to fetch the balance for. If not provided, it will attempt to fetch the balance for the current connected account. |
 
 ## Return Values
 
-| Parameter        | Type          | Description                                                                                                    |
-| :--------------- | :------------ | :------------------------------------------------------------------------------------------------------------- |
-| **value**        | `bigint`      | The raw STRK balance fetched from the contract as a `bigint`.                                                   |
-| **decimals**     | `number`      | Number of decimals for the token. Defaults to `18` for STRK.                                                    |
-| **symbol**       | `string`      | The token symbol. For this contract, it will return `"STRK"`.                                                   |
-| **formatted**    | `string`      | The balance formatted into a human-readable string using ethers' `formatUnits`.                                 |
-| **error**        | `Error`       | Error object in case there is a failure fetching the balance.                                                   |
+| Parameter     | Type     | Description                                                                     |
+| :------------ | :------- | :------------------------------------------------------------------------------ |
+| **value**     | `bigint` | The raw STRK balance fetched from the contract as a `bigint`.                   |
+| **decimals**  | `number` | Number of decimals for the token. Defaults to `18` for STRK.                    |
+| **symbol**    | `string` | The token symbol. For this contract, it will return `"STRK"`.                   |
+| **formatted** | `string` | The balance formatted into a human-readable string using ethers' `formatUnits`. |
+| **error**     | `Error`  | Error object in case there is a failure fetching the balance.                   |
 
 ## Best Practices
 

@@ -9,6 +9,7 @@ description: Learn how to perform multiple write operations to StarkNet smart co
 This recipe shows how to perform multiple contract write operations in a single transaction using the [`useScaffoldMultiWriteContract`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/hooks/scaffold-stark/useScaffoldMultiWriteContract.ts) hook from Scaffold-Stark.
 
 ## Overview
+
 In this guide, we will implement a feature that allows writing to multiple contracts or executing multiple transactions in a single action. This is particularly useful when your decentralized application (dApp) requires multiple state changes at once.
 
 This documentation will walk through the code and steps necessary to create a button that triggers the multi-write contract interaction.
@@ -56,30 +57,22 @@ export const MultiSetData = () => {
         type="text"
         placeholder="Enter your name"
         className="input border border-primary"
-        onChange={(e) => setName(e.target.value)}
+        onChange={e => setName(e.target.value)}
       />
       <input
         type="number"
         placeholder="Enter your age"
         className="input border border-primary"
-        onChange={(e) => setAge(Number(e.target.value))}
+        onChange={e => setAge(Number(e.target.value))}
       />
-      <button
-        className="btn btn-primary"
-        onClick={handleSetData}
-        disabled={isPending}
-      >
-        {isPending ? (
-          <span className="loading loading-spinner loading-sm"></span>
-        ) : (
-          "Submit"
-        )}
+      <button className="btn btn-primary" onClick={handleSetData} disabled={isPending}>
+        {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Submit"}
       </button>
     </div>
   );
 };
-
 ```
+
 </details>
 
 ## Implementation Guide
@@ -88,11 +81,10 @@ export const MultiSetData = () => {
 
 Create a new component in your `component` folder, named `MultiContractInteraction.tsx`. This component will handle multiple write operations on different contracts
 
-
 ```tsx title="components/MultiContractInteraction.tsx"
 export const MultiContractInteraction = () => {
-	return <div>Your MultiContractInteraction</div>
-}
+  return <div>Your MultiContractInteraction</div>;
+};
 ```
 
 ### Step 2: Import Required Hooks and Utilities
@@ -134,12 +126,12 @@ const { sendAsync, isPending } = useScaffoldMultiWriteContract({
     },
   ],
 });
-
 ```
 
 - The `isPending` variable will manage the loading state of the button, and `sendAsync` will handle the contract transaction.
 
 ### Step 5: Handle Submission
+
 - Create a `handleSetData` function that triggers the multi-write action. If successful, display a success notification; otherwise, log the error and display a failure message.
 
 ```tsx title="components/MultiContractInteraction.tsx"
@@ -155,6 +147,7 @@ const handleSetData = async () => {
 ```
 
 ### Step 6: Create the UI
+
 - Add inputs for `name` and `age`, and a button to submit the data.
 - Disable the button while the transaction is pending.
 
@@ -165,24 +158,16 @@ return (
       type="text"
       placeholder="Enter your name"
       className="input border border-primary"
-      onChange={(e) => setName(e.target.value)}
+      onChange={e => setName(e.target.value)}
     />
     <input
       type="number"
       placeholder="Enter your age"
       className="input border border-primary"
-      onChange={(e) => setAge(Number(e.target.value))}
+      onChange={e => setAge(Number(e.target.value))}
     />
-    <button
-      className="btn btn-primary"
-      onClick={handleSetData}
-      disabled={isPending}
-    >
-      {isPending ? (
-        <span className="loading loading-spinner loading-sm"></span>
-      ) : (
-        "Submit"
-      )}
+    <button className="btn btn-primary" onClick={handleSetData} disabled={isPending}>
+      {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Submit"}
     </button>
   </div>
 );

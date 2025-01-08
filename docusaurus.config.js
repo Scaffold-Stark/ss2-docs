@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const dotenv = require('dotenv'); // Import dotenv
+const dotenv = require("dotenv"); // Import dotenv
 dotenv.config(); // Load environment variables
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
