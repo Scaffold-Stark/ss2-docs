@@ -13,10 +13,10 @@ Before deploying to production, ensure you have the correct versions of all depe
 
 ```bash
 # Check versions
-node --version        # >= v18.17
-starknet-devnet --version  # 0.2.3
-scarb --version      # 2.9.2
-snforge --version    # 0.34.0
+node --version                # >= v18.17
+starknet-devnet --version     # 0.2.3
+scarb --version               # 2.9.2
+snforge --version             # 0.34.0
 ```
 
 :::warning
@@ -35,7 +35,9 @@ Delete the debug page and its components:
 rm -rf packages/nextjs/app/debug
 ```
 
-#### 2. Remove the debug route from your navigation if you've added it manually in any of your components.
+#### 2. Remove the debug route from your navigation
+
+If you've added it manually in any of your components, you can remove the debug route from it.
 
 :::tip Hint
 If you want to keep the debug features for development while removing them from production, you can use environment-based conditional rendering:
@@ -106,13 +108,14 @@ eslint: {
 
 These settings control how your application handles TypeScript and ESLint errors during the build process:
 
-- When NEXT_PUBLIC_IGNORE_BUILD_ERROR is set to "true":
+- When `NEXT_PUBLIC_IGNORE_BUILD_ERROR` environment variable is set to `true`:
   - TypeScript type checking errors won't stop your build
   - ESLint warnings and errors won't prevent deployment
 - This is useful when: - You're in rapid development and want to test deployments despite minor type issues - You're dealing with third-party dependencies that have type conflicts - You're migrating a JavaScript project to TypeScript and want to deploy while still fixing type issues
-  :::warning
-  While these settings can help you deploy quickly, it's recommended to fix all TypeScript and ESLint errors before deploying to production. Ignoring these errors might hide potential bugs or issues in your code.
-  :::warning
+
+:::warning
+While these settings can help you deploy quickly, it's recommended to fix all TypeScript and ESLint errors before deploying to production. Ignoring these errors might hide potential bugs or issues in your code.
+:::warning
 
 #### 2. Webpack optimization for compatibility:
 
@@ -227,7 +230,7 @@ const nextConfig = {
 
 ## 6. Production Deployment Checklist
 
-Before deploying to production, ensure you have:
+Before deploying to production, you can follow the following checklist to make sure you have the most optimum build:
 
 - [ ] Removed or conditionally rendered debug packages
 - [ ] Configured production environment variables
