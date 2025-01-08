@@ -27,10 +27,10 @@ By default `yarn deploy` will deploy contract to the local network. You can chan
 Run the command below to deploy the smart contract to the target network. Make sure to have some funds in your deployer account to pay for the transaction.
 
 ```
-yarn deploy --network network_name
+yarn deploy --network <NETWORK_NAME>
 ```
 
-eg: `yarn deploy --network sepolia`
+e.g. `yarn deploy --network sepolia`
 
 ## Configuration of Third-Party Services for Production-Grade Apps.
 
@@ -41,5 +41,5 @@ For production-grade applications, it's recommended to obtain your own API keys 
 - `RPC_URL_SEPOLIA` variable in `packages/snfoundry/.env` and `packages/nextjs/.env.local`. You can create API keys from the [Alchemy dashboard](https://dashboard.alchemy.com/).
 
 :::tip Hint
-It's recommended to store envs for nextjs in Vercel/system env config for live apps and use .env.local for local testing.
+It's recommended to store environment variables for nextjs in vercel/system env config for live apps and use `.env.local` for local testing.
 :::tip Hint
