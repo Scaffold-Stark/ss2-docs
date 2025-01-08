@@ -17,6 +17,10 @@ npm install
 npm run start
 ```
 
+### Using the Algolia Search
+
+The repository will disable Algolia search by default. you can enable Algolia search by setting `ALGOLIA_SEARCH_ENABLED` environment variable to `true`, provided you have the other required environment variables.
+
 ## Contribution Guidelines
 
 Thank you for your interest in contributing to improve the documentation!

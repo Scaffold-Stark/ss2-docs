@@ -132,20 +132,24 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      algolia: {
-        appId: process.env.APP_ID,
-        apiKey: process.env.API_KEY,
-        indexName: process.env.INDEX_NAME,
-        contextualSearch: true,
-        externalUrlRegex: "external\\.com|domain\\.com",
-        replaceSearchResultPathname: {
-          from: "/docs/",
-          to: "/",
-        },
-        searchParameters: {},
-        searchPagePath: "search",
-        insights: false,
-      },
+      ...((process.env.ALGOLIA_SEARCH_ENABLED || "false") === "true"
+        ? {
+            algolia: {
+              appId: process.env.ALGOLIA_APP_ID,
+              apiKey: process.env.ALGOLIA_API_KEY,
+              indexName: process.env.ALGOLIA_INDEX_NAME,
+              contextualSearch: true,
+              externalUrlRegex: "external\\.com|domain\\.com",
+              replaceSearchResultPathname: {
+                from: "/docs/",
+                to: "/",
+              },
+              searchParameters: {},
+              searchPagePath: "search",
+              insights: false,
+            },
+          }
+        : {}),
     }),
 };
 
