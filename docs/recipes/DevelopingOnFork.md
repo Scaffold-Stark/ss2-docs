@@ -16,7 +16,7 @@ yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_7
 Forking from block: number=1047693
 ```
 
-3. If you wanna use events, **MAKE SURE** the fromBlock : is > the number in console + 1, otherwise the events data will always be empty. i.e. do not capture the first block of the fork
+3. If you wanna use events, **MAKE SURE** the fromBlock is a number bigger than the number in console + 1, otherwise the events data will always be empty. i.e. do not capture the first block of the fork
 
 ```typescript
 const { data: events } = useScaffoldEventHistory({
@@ -27,7 +27,7 @@ const { data: events } = useScaffoldEventHistory({
 });
 ```
 
-4. Update `scaffoldConfig` in scaffold.config.ts as:
+4. Update `scaffoldConfig` in `scaffold.config.ts` as:
 
 ```typescript
 const scaffoldConfig = {
@@ -52,11 +52,13 @@ NEXT_PUBLIC_PROVIDER_URL=http://127.0.0.1:5050
    - Chain ID: 0x534e5f4d41494e
    - Name: Starknet Fork
 
-![image](https://github.com/user-attachments/assets/511b84a1-e232-46b3-a4a4-82c44ad03969)
+![image](/img/argent_fork_setup.png)
 
-similiarly for braavos.
-if you correctly connected with the devnet correctly, it should show
-![image](https://github.com/user-attachments/assets/a684c853-35ed-4042-a415-86744efb36d2)
+:::tip
+
+As of the the latest of this documentation, Bravoos has yet to add support for adding custom network. you can connect to devnet manually in Bravoos.
+
+:::
 
 ## Interaction
 
