@@ -35,13 +35,12 @@ You can configure different settings for your dapp at `packages/nextjs/scaffold.
 export type ScaffoldConfig = {
   targetNetworks: readonly Chain[];
   pollingInterval: number;
-  onlyLocalBurnerWallet: boolean;
   rpcProviderUrl: string;
   walletAutoConnect: boolean;
   autoConnectTTL: number;
 
   // other configs you might have
-  // e.g. isTest: boolean;
+  // e.g. tokenIcon: string;
 };
 ```
 
