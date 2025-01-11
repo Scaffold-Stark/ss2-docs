@@ -6,7 +6,7 @@ WORKDIR /app
 # Dependencies stage
 FROM base AS deps
 WORKDIR /app
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .env.example ./
 RUN yarn install --frozen-lockfile
 
 # Builder stage
