@@ -33,14 +33,14 @@ You can configure different settings for your dapp at `packages/nextjs/scaffold.
 
 ```ts
 export type ScaffoldConfig = {
-  targetNetworks: Chain[];
+  targetNetworks: readonly Chain[];
   pollingInterval: number;
-  alchemyApiKey: string;
-  walletConnectProjectId: string;
-  onlyLocalBurnerWallet: boolean;
+  rpcProviderUrl: string;
   walletAutoConnect: boolean;
-  // your dapp custom config, eg:
-  // tokenIcon : string;
+  autoConnectTTL: number;
+
+  // other configs you might have
+  // e.g. tokenIcon: string;
 };
 ```
 
@@ -48,28 +48,16 @@ The configuration parameters are described below. Make sure to update the values
 
 #### - targetNetworks
 
-Array of blockchain networks where your dapp is deployed. Use values from [`viem/chains`](https://viem.sh/docs/chains/introduction.html).
+Array of blockchain networks where your dapp is deployed. Use values from `supportedChains.ts`.
 
 #### - pollingInterval
 
 The interval in milliseconds at which your front-end application polls the RPC servers for fresh data. _Note that this setting does not affect the local network._
 
-#### - alchemyApiKey
+#### - rpcProviderUrl
 
-Default Alchemy API key from Scaffold-Stark 2 for local testing purposes.
-It's recommended to obtain your own API key from the [Alchemy Dashboard](https://dashboard.alchemyapi.io/) and store it in this environment variable: `NEXT_PUBLIC_ALCHEMY_API_KEY` in the `\packages\nextjs\.env.local` file.
-
-#### - walletConnectProjectId
-
-WalletConnect's default project ID from Scaffold-Stark 2 for local testing purposes.
-It's recommended to obtain your own project ID from the [WalletConnect website](https://cloud.walletconnect.com) and store it in this environment variable: `NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID` in the `\packages\nextjs\.env.local` file.
-
-#### - onlyLocalBurnerWallet
-
-Controls the networks where the Burner Wallet feature is available. This feature provides a lightweight wallet for users.
-
-- `true` => Use Burner Wallet only on Hardhat network.
-- `false` => Use Burner Wallet on all networks.
+Default RPC url from Scaffold-Stark 2.
+If you are using your own RPC, you can put it within the `NEXT_PUBLIC_PROVIDER_URL` environment variable.
 
 #### - walletAutoConnect
 
@@ -77,6 +65,10 @@ Set it to `true` to activate automatic wallet connection behavior:
 
 - If the user was connected into a wallet before, on page reload it reconnects automatically.
 - If the user is not connected to any wallet, on reload, it connects to the burner wallet _if it is enabled for the current network_. See `onlyLocalBurnerWallet`
+
+#### - autoConnectTTL
+
+This will determine how long should the application persist wallet connection (i.e. wallets will auto-connect withtin the time period), in milliseconds
 
 You can extend this configuration file, adding new parameters that you need to use across your dapp **(make sure you update the above type `ScaffoldConfig`)**:
 
