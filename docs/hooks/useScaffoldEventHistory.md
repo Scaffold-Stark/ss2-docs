@@ -41,3 +41,83 @@ This example configures the hook to read events from the `YourEvent` event of th
 - `data` The event history data, including optional block, transaction, and receipt data if specified.
 - `isLoading` A boolean indicating whether the data is currently being loaded.
 - `error` An error message if an error occurred while fetching the data.
+
+## Filters
+
+Filters can only be applied to event keys, which are event fields annotated with `#[key]`. For example, consider an event defined in a contract as follows:
+
+```cairo
+#[derive(Drop, starknet::Event)]
+struct GreetingChanged {
+  #[key]
+  setter: ContractAddress,
+  #[key]
+  event_type: u256,
+  new_greeting: ByteArray,
+}
+```
+
+The event data will include a `keys` array:
+
+```
+[
+  "0x30a5b63b12d63c3c34bd7145a56f903aa6e641b727d42ff159af4372c62e008",
+  "0x65dc4a1c484bcde864e7eebc55f033f2baf57dc6e2f4eae14c6860836cfcd0e",
+  "0x2703",
+  "0x0",
+]
+```
+
+- The first element is the hash of the event name.
+- The second element is the serialized result of the first key `setter`.
+- The third and fourth elements are the serialized results of the second key `event_type`.
+
+> For serialization reference, see: https://docs.starknet.io/architecture-and-concepts/smart-contracts/serialization-of-cairo-types/#additional_resources
+
+Here is an example of how to use `filters`, where the key corresponds to the event variable name:
+
+```
+useScaffoldEventHistory({
+  contractName: "YourContract",
+  eventName: "contracts::YourContract::YourContract::GreetingChanged",
+  fromBlock: 0n,
+  filters: {
+    setter: "0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810",
+    event_type: 9987n
+  },
+});
+```
+
+Key Points to Consider
+
+1. Filter Keys: The keys in the `filters` object must correspond to event fields annotated with `#[key]`.
+2. Filter Values: The value of a filter can be an array, meaning the event value can match any element in the array. For example:
+
+```
+{
+  setter: [
+    "0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810",
+    "0xeaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a",
+  ]
+}
+```
+
+3. Handling Variable-Length Event Keys: For events with variable-length keys annotated with #[key], such as new_greeting in the GreetingChanged event:
+
+```
+#[derive(Drop, starknet::Event)]
+struct GreetingChanged {
+  #[key]
+  setter: ContractAddress,
+  #[key]
+  event_type: u256,
+  #[key]
+  new_greeting: ByteArray,
+  #[key]
+  bool_val: bool,
+  #[key]
+  size_val: u128,
+}
+```
+
+During serialization, keys are serialized in the order they are defined in the event. When applying filters, if new_greeting is not provided but bool_val and size_val are, these filter conditions will be ignored.
