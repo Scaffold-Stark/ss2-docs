@@ -87,7 +87,18 @@ useScaffoldEventHistory({
 });
 ```
 
-In this example, we added two filters. The hook will then send an RPC request to the target network with these filter parameters. The response will only include the events that match the filters. (setter is `0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810` and event_type is `9987n`)
+In this example, we added two filters. The hook will then send an RPC request to the target network with these filter parameters. The response will only include the events that match the filters. (setter is `0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810` and event_type is `9987n`).
+
+| Cairo Type                                    | TS Type           |
+| :-------------------------------------------- | :---------------- |
+| ContractAddress/EthAddress/ClassHash          | `string`          |
+| bool                                          | `boolean`         |
+| u8/u16/u32/u64/u128/u256/u512/bytes31/felt252 | `bigint`          |
+| Option                                        | `CairoOption`     |
+| enum                                          | `CairoCustomEnum` |
+| struct                                        | `Object`          |
+
+> How to define the complect type you can reference the example below
 
 **Key Points to Consider**
 
