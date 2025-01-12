@@ -46,7 +46,7 @@ This example configures the hook to read events from the `YourEvent` event of th
 
 Filters can only be applied to event keys, which are event fields annotated with `#[key]`. For example, consider an event defined in a contract as follows:
 
-```cairo
+```rust
 #[derive(Drop, starknet::Event)]
 struct GreetingChanged {
   #[key]
@@ -59,31 +59,30 @@ struct GreetingChanged {
 
 The event data will include a `keys` array:
 
-```
+```javascript
 [
+  // The first element is the hash of the event name.
   "0x30a5b63b12d63c3c34bd7145a56f903aa6e641b727d42ff159af4372c62e008",
+  // The second element is the serialized result of the first key `setter`.
   "0x65dc4a1c484bcde864e7eebc55f033f2baf57dc6e2f4eae14c6860836cfcd0e",
+  // The third and fourth elements are the serialized results of the second key `event_type`.
   "0x2703",
   "0x0",
-]
+];
 ```
-
-- The first element is the hash of the event name.
-- The second element is the serialized result of the first key `setter`.
-- The third and fourth elements are the serialized results of the second key `event_type`.
 
 > For serialization reference, see: https://docs.starknet.io/architecture-and-concepts/smart-contracts/serialization-of-cairo-types/#additional_resources
 
 Here is an example of how to use `filters`, where the key corresponds to the event variable name:
 
-```
+```javascript
 useScaffoldEventHistory({
   contractName: "YourContract",
   eventName: "contracts::YourContract::YourContract::GreetingChanged",
   fromBlock: 0n,
   filters: {
     setter: "0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810",
-    event_type: 9987n
+    event_type: 9987n,
   },
 });
 ```
@@ -93,18 +92,18 @@ Key Points to Consider
 1. Filter Keys: The keys in the `filters` object must correspond to event fields annotated with `#[key]`.
 2. Filter Values: The value of a filter can be an array, meaning the event value can match any element in the array. For example:
 
-```
+```javascript
 {
   setter: [
     "0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810",
     "0xeaa020c61cc479712813461ce153894a96a6c00b21ed0cfc2798d1f9a9e9c94a",
-  ]
+  ];
 }
 ```
 
 3. Handling Variable-Length Event Keys: For events with variable-length keys annotated with #[key], such as new_greeting in the GreetingChanged event:
 
-```
+```rust
 #[derive(Drop, starknet::Event)]
 struct GreetingChanged {
   #[key]
