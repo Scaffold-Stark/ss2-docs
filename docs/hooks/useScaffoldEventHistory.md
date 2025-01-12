@@ -87,7 +87,9 @@ useScaffoldEventHistory({
 });
 ```
 
-Key Points to Consider
+In this example, we added two filters. The hook will then send an RPC request to the target network with these filter parameters. The response will only include the events that match the filters. (setter is `0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810` and event_type is `9987n`)
+
+**Key Points to Consider**
 
 1. Filter Keys: The keys in the `filters` object must correspond to event fields annotated with `#[key]`.
 2. Filter Values: The value of a filter can be an array, meaning the event value can match any element in the array. For example:
@@ -120,3 +122,69 @@ struct GreetingChanged {
 ```
 
 During serialization, keys are serialized in the order they are defined in the event. When applying filters, if new_greeting is not provided but bool_val and size_val are, these filter conditions will be ignored.
+
+Then let's see a more complex example. the event defined with complex data type.
+
+```rust
+#[derive(Drop, starknet::Event)]
+struct GreetingChanged {
+  #[key]
+  greeting_setter: ContractAddress,
+  #[key]
+  new_greeting: ByteArray,
+  #[key]
+  event_type: u256,
+  premium: bool,
+  value: u256,
+  #[key]
+  addresses: Array<ContractAddress>,
+  arr: Array<u256>,
+  #[key]
+  tup: (u32, u64, bool, ContractAddress),
+  #[key]
+  st: SomeStruct,
+  #[key]
+  enum_val: SomeEnum,
+  #[key]
+  bool_val: bool,
+}
+```
+
+If we want to add all the filters, the hook definition will be:
+
+```javascript
+useScaffoldEventHistory({
+  contractName: "YourContract",
+  eventName: "contracts::YourContract::YourContract::GreetingChanged",
+  fromBlock: 0n,
+  filters: {
+    greeting_setter: "0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810",
+    new_greeting: "hello world",
+    event_type: 9987n,
+    addresses: [
+      "0x00daC9BCF0bC21a9f3483D47A8Ade4764EE5c0377B3bCDDf2df477E3C1e55810",
+      "0x065Dc4A1C484bcde864e7eEBc55F033F2BAF57dc6e2f4eaE14c6860836CFcd0E",
+    ],
+    tup: {
+      0: 1n,
+      1: 2n,
+      2: true,
+      3: caller,
+    },
+    st: {
+      addr: new CairoOption(CairoOptionVariant.Some, caller),
+      val: new CairoOption(CairoOptionVariant.None),
+    },
+    enum_val: new CairoCustomEnum({
+      val1: new CairoCustomEnum({
+        val1: 12,
+      }),
+    }),
+    bool_val: true,
+  },
+});
+```
+
+Please pay attention to how tuples, structs, and enum types are defined on the web side.
+
+> There is a limitation on the filter count. The count here refers to the number of elements in the serialization result of the filter object. The maximum allowed count is 16.
