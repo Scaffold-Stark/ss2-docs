@@ -19,33 +19,7 @@ yarn chain
 
 This command starts a local Starknet network using Devnet. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `scaffold.config.ts`.
 
-### 2. Declare your smart contract (optional):
-
-Following an example at `deploy.ts`:
-
-```typescript
-const declareScript = async (): Promise<void> => {
-  const response = await declareContract({
-    contract: "YourContractName",
-    options: {}, // You can add options like maxFee, nonce if needed
-  });
-};
-```
-
-After setup function at `deploy.ts` run the command :
-
-```
-yarn deploy --network {NETWORK_NAME}
-```
-
-Pay attention to the output in the terminal. The ClassHash will be displayed during the deploy contract process.
-
-```
-Declaring Contract YourContractName
-Contract Declared at 0x00...
-```
-
-### 3. Deploy your smart contract:
+### 2. Deploy your smart contract:
 
 In the second terminal, deploy the test contract:
 
@@ -69,7 +43,7 @@ yarn deploy:no-reset
 
 :::
 
-### 4. Launch your NextJS Application
+### 3. Launch your NextJS Application
 
 On a third terminal, start your NextJS app:
 
@@ -78,6 +52,32 @@ yarn start
 ```
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+
+### [OPTIONAL] Declare your smart contract:
+
+If you don't wish to deploy your contract but rather just declare for your own purpose, follow this example in `deploy.ts`:
+
+```typescript
+const declareScript = async (): Promise<void> => {
+  const response = await declareContract({
+    contract: "YourContractName",
+    options: {}, // You can add options like maxFee, nonce if needed
+  });
+};
+```
+
+After setup function at `deploy.ts` run the command :
+
+```
+yarn deploy --network {NETWORK_NAME}
+```
+
+Pay attention to the output in the terminal. The ClassHash will be displayed during the deploy contract process.
+
+```
+Declaring Contract YourContractName
+Contract Declared at 0x00...
+```
 
 **What's next**:
 
