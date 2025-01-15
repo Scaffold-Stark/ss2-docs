@@ -12,9 +12,9 @@ const { data, isLoading } = useScaffoldStarkProfile(
 );
 ```
 
-This example fetches the StarkNet profile for the provided address in the function. The returned object contains the profile `data` which includes the user's name and profile picture, along with `isLoading` showing the loading state.
-
 ## Usage Example
+
+This example fetches the StarkNet profile for the provided address in the function. The returned object contains the profile `data` which includes the user's name and profile picture, along with `isLoading` showing the loading state.
 
 ```tsx
 import { useScaffoldStarkProfile } from "~~/hooks/scaffold-stark/useScaffoldStarkProfile";
