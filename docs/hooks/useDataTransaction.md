@@ -9,6 +9,16 @@ Use this hook to fetch, process, and monitor blockchain transaction data from St
 
 ---
 
+## Features
+
+- **Automatic Data Fetching**: Automatically fetches data when the hook is used.
+- **TPS Calculation**: Estimates transactions per second based on block timestamps.
+- **Average Fee in USD**: Converts transaction fees from Wei to USD using live ETH price data from CoinGecko.
+- **Gas Price Metrics**: Retrieves L1 gas price information in both Wei and FRI.
+- **Error Handling**: Captures and provides error details if fetching fails.
+
+---
+
 ## Usage
 
 This example fetches and monitors data for the specified block, 
@@ -91,12 +101,3 @@ A function to toggle the automatic fetching of data.
 
 ---
 
-## Features
-
-- **Automatic Data Fetching**: Automatically fetches data when the hook is used.
-- **TPS Calculation**: Estimates transactions per second based on block timestamps.
-- **Average Fee in USD**: Converts transaction fees from Wei to USD using live ETH price data from CoinGecko.
-- **Gas Price Metrics**: Retrieves L1 gas price information in both Wei and FRI.
-- **Error Handling**: Captures and provides error details if fetching fails.
-
----
