@@ -36,14 +36,14 @@ By calling `useAutoConnect`, the application will attempt to reconnect to the la
 ### **How It Works**
 
 1. **Local Storage**: Reads the last used connector and connection timestamp from local storage:
-   - `lastUsedConnector`: Stores the ID of the last used wallet connector.
-   - `lastConnectedTime`: Stores the timestamp of the last successful connection.
+- `lastUsedConnector`: Stores the ID of the last used wallet connector.
+- `lastConnectedTime`: Stores the timestamp of the last successful connection.
 
 2. **Connector Matching**: Attempts to find the previously used connector from the available connectors.
 
 3. **Reconnection**: If the connector is found and the TTL hasn’t expired:
-   - For burner wallets, the correct account is restored based on the index.
-   - Initiates the connection using the `connect` function from `useConnect`.
+- For burner wallets, the correct account is restored based on the index.
+- Initiates the connection using the `connect` function from `useConnect`.
 
 ---
 
