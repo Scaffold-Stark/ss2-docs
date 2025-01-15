@@ -11,6 +11,9 @@ Use this hook to fetch, process, and monitor blockchain transaction data from St
 
 ## Usage
 
+This example fetches and monitors data for the specified block, 
+allowing you to display metrics or manage the data fetching state dynamically.
+
 ```tsx
 import { useDataTransaction } from "~~/hooks/scaffold-stark/useDataTransaction";
 
