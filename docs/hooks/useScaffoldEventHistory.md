@@ -98,7 +98,7 @@ In this example, we added two filters. The hook will then send an RPC request to
 | enum                                          | `CairoCustomEnum` |
 | struct                                        | `Object`          |
 
-> How to define the complect type you can reference the example below
+> How to define the complex type you can reference the example below
 
 **Key Points to Consider**
 
