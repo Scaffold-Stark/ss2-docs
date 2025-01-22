@@ -49,4 +49,4 @@ In this example, the updateGreeting function of the YourContract is called with 
 ## Return Values
 
 - The `sendAsync` method is used to send the write transaction. It returns a promise that resolves when the transaction is confirmed.
-- The extended object includes properties inherited from the `useSendTransaction` hook of starknet-react. You can check their [documentation](https://www.starknet-react.com/docs/hooks/use-send-transaction#sendasync) for the the sepcific return values.
+- The extended object includes properties inherited from the `useSendTransaction` hook of starknet-react. You can check their [documentation](https://www.starknet-react.com/docs/hooks/use-send-transaction#sendasync) for the specific return values.

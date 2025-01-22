@@ -56,7 +56,7 @@ NEXT_PUBLIC_PROVIDER_URL=http://127.0.0.1:5050
 
 :::tip
 
-As of the the latest of this documentation, Bravoos has yet to add support for adding custom network. you can connect to devnet manually in Bravoos.
+As of the latest of this documentation, Bravoos has yet to add support for adding custom network. you can connect to devnet manually in Bravoos.
 
 :::
 
