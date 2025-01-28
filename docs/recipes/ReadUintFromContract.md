@@ -13,7 +13,7 @@ This recipe demonstrates how to read data from contract functions and display it
 
 ```tsx title="components/GreetingsCount.tsx"
 import { useAccount } from "@starknet-react/core";
-import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
 
 export const GreetingsCount = () => {
   const { account: connectedAddress } = useAccount();
