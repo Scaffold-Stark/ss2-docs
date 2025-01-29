@@ -13,7 +13,7 @@ This recipe demonstrates how to create a button for contract interaction using t
 
 ```tsx title="components/ContractInteraction.tsx"
 import { useState } from "react";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
 
 export const SetName = () => {
   const [newName, setNewName] = useState("");
@@ -78,7 +78,7 @@ Initialize the `useScaffoldWriteContract` hook. This hook provides the `sendAsyn
 ```tsx
 // highlight-start
 import { useState } from "react";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
 // highlight-end
 
 export const SetName = () => {
@@ -123,7 +123,7 @@ Wire up the input field to update the `newName` state when the user types in a n
 
 ```tsx
 import { useState } from "react";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
 
 export const SetName = () => {
   const [newName, setNewName] = useState("");
@@ -172,7 +172,7 @@ We can use `isPending` returned from `useScaffoldWriteContract` while the transa
 
 ```tsx
 import { useState } from "react";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
 
 export const SetName = () => {
   const [newName, setNewName] = useState("");
