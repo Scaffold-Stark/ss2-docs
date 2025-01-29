@@ -43,6 +43,26 @@ If you decide to rename the default `YourContract` Cairo contract to something e
    };
    ```
 
+- **(Optional) Deploy the same contract under a different name**
+
+    If you want to deploy the same contract but reference it under a different name , you can use `contractName`:
+
+    ```typescript
+    await deployContract({
+      contract: "MyNewContract",
+      contractName: "CustomDisplayName",  // Allows multiple deployments with unique references
+      constructorArgs: {
+        owner: deployer.address,
+      },
+    });
+    ```
+
+    This can be useful if you want to:
+
+    - Deploy multiple instances of the same contract with different identifiers.
+
+    - Reference the deployed contract under a custom name for clarity in deployment logs.
+
 ## 4. Deploy your smart contract(s)
 
 By default `yarn deploy` will deploy contract to the local network. You can change `defaultNetwork` in `scaffold.config.ts`
