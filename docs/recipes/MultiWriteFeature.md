@@ -19,7 +19,7 @@ This documentation will walk through the code and steps necessary to create a bu
 
 ```tsx title="components/MultiContractInteraction.tsx"
 import { useState } from "react";
-import { useScaffoldMultiWriteContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldMultiWriteContract } from "~~/hooks/scaffold-stark/useScaffoldMultiWriteContract";
 import { notification } from "~~/utils/scaffold-stark";
 
 export const MultiSetData = () => {
@@ -94,7 +94,7 @@ export const MultiContractInteraction = () => {
 `](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/utils/scaffold-stark/notification.tsx) utility to display success or error messages.
 
 ```tsx title="components/MultiContractInteraction.tsx"
-import { useScaffoldMultiWriteContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldMultiWriteContract } from "~~/hooks/scaffold-stark/useScaffoldMultiWriteContract";
 import { notification } from "~~/utils/scaffold-stark";
 ```
 

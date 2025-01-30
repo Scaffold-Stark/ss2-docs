@@ -77,11 +77,50 @@ starknet-devnet --version
 
 If your local starknet-devnet version is not `0.2.3`, you need to install it.
 
-- Install Starknet-devnet `0.2.3` via `asdf` ([instructions](https://github.com/gianalarcon/asdf-starknet-devnet/blob/main/README.md)).
+<details>
+<summary><b>Starknet Devnet Installation Process</b></summary>
+
+To install Starknet Devnet, please refer to the [installation instructions](https://0xspaceshard.github.io/starknet-devnet-rs/docs/running/install#install-with-asdf).  
+This will ensure that the version of Starknet Devnet you use always matches the one defined in the project settings, avoiding version mismatches.
+
+Please refer to the [`asdf` documentation](https://asdf-vm.com/guide/getting-started.html) to install all prerequisites.
+
+Once you have `asdf` installed locally, you can add the Starknet Devnet plugin with the following command:
+
+```bash
+asdf plugin add starknet-devnet
+```
+
+This will allow you to download specific versions. You can install the compatible version **0.2.3** with:
+
+```bash
+asdf install starknet-devnet 0.2.3
+```
+
+and set it as the global or local version:
+
+```bash
+asdf global starknet-devnet 0.2.3
+```
+
+or
+
+```bash
+asdf local starknet-devnet 0.2.3
+```
+
+Otherwise, you can simply run the following command in your terminal and follow the on-screen instructions.  
+This will install the version **0.2.3** of Starknet Devnet:
+
+```bash
+curl -L https://raw.githubusercontent.com/Shard-Labs/starknet-devnet/main/install.sh | bash -s -- -v 0.2.3
+```
+
+</details>
 
 ## Install Starknet Foundry
 
-If your Starknet Foundry version is not 0.34.0, you need to install it.
+If your Starknet Foundry version is not 0.35.1, you need to install it.
 
 ```sh
 snforge --version
@@ -102,14 +141,42 @@ asdf plugin add starknet-foundry
 This will allow you to download specific versions.
 
 ```bash
-asdf install starknet-foundry 0.34.0
+asdf install starknet-foundry 0.35.1
 ```
 
 and set a global version:
 
 ```bash
-asdf global starknet-foundry 0.34.0
+asdf global starknet-foundry 0.35.1
 ```
+
+</details>
+
+## Alternative Option with Docker
+
+As an alternative to installing the tools locally (Scarb, Starknet Foundry, Starknet Devnet), you can use Docker.
+
+<details>
+<summary><b>Docker Setup Process</b></summary>
+
+To set up your environment using Docker, follow these steps:
+
+1. Install [Docker](https://www.docker.com/get-started/)
+2. Install [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+3. Use the provided `devcontainer.json` file to set up the environment:
+   - The configuration uses the `starknetfoundation/starknet-dev:2.9.2` image.
+   - This includes all required tools pre-installed, such as Scarb, Starknet Foundry, Starknet Devnet, and other dependencies.
+
+### Getting Started with Docker Setup
+
+To start using the Docker-based setup:
+
+1. Open the project in **Visual Studio Code**.
+2. Select **"Reopen in Container"**.
+3. If you need to rebuild the container, open the Command Palette (**View -> Command Palette**) and choose:
+   - **Dev Containers: Rebuild and Reopen in Container**
+
+> Once inside the container, you can start working with all the tools and dependencies pre-configured.
 
 </details>
 
@@ -134,7 +201,7 @@ curl --location 'https://starknet-sepolia.public.blastapi.io/rpc/v0_7' \
 | cairo           | v2.9.2  |
 | rpc             | v0.7.1  |
 | starknet-devnet | v0.2.3  |
-| snforge         | v0.34.0 |
+| snforge         | v0.35.1 |
 | starknet.js     | v6.12.1 |
 | starknet-react  | v3.6.0  |
 

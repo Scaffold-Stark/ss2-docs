@@ -13,7 +13,7 @@ This recipe demonstrates how to read data from contract functions and display it
 
 ```tsx title="components/GreetingsCount.tsx"
 import { useAccount } from "@starknet-react/core";
-import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
 
 export const GreetingsCount = () => {
   const { account: connectedAddress } = useAccount();
@@ -77,7 +77,7 @@ export const GreetingsCount = () => {
 Initialize the [useScaffoldReadContract](/hooks/useScaffoldReadContract) hook to read from the contract. This hook provides the `data` which contains the return value of the function.
 
 ```tsx title="components/GreetingsCount.tsx"
-import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
 // highlight-end
 
 export const GreetingsCount = () => {
@@ -150,7 +150,7 @@ export const GreetingsCount = () => {
 We can use `isLoading` returned from the [`useScaffoldReadContract`](/hooks/usescaffoldreadcontract) hook. This variable is set to `true` while fetching data from the contract.
 
 ```tsx title="components/GreetingsCount.tsx"
-import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
 import { useAccount } from "@starknet-react/core";
 
 export const GreetingsCount = () => {

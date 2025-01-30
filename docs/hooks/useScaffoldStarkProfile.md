@@ -8,7 +8,7 @@ Use this hook to fetch and manage the StarkNet profile of a specified address. T
 
 ```ts
 const { data, isLoading } = useScaffoldStarkProfile(
-  "0x061b6c0a78f9edf13cea17b50719f3344533fadd470b8cb29c2b4318014f52d3"
+  "0x061b6c0a78f9edf13cea17b50719f3344533fadd470b8cb29c2b4318014f52d3",
 );
 ```
 
@@ -45,27 +45,27 @@ This example demonstrates how to use the `useScaffoldStarkProfile` hook to displ
 
 ## Configuration
 
-| Parameter   | Description                                   |
-| :---------- | :-------------------------------------------- |
-| **address** | The StarkNet address to fetch the profile for.|
+| Parameter   | Description                                    |
+| :---------- | :--------------------------------------------- |
+| **address** | The StarkNet address to fetch the profile for. |
 
 ---
 
 ## Return Values
 
-| Parameter      | Type          | Description                                                        |
-| :------------- | :------------ | :----------------------------------------------------------------- |
-| **data**       | `StarkProfile`| The user's StarkNet profile, including `name` and `profilePicture`.|
-| **isLoading**  | `boolean`     | Indicates whether the profile data is being fetched.               |
+| Parameter     | Type           | Description                                                         |
+| :------------ | :------------- | :------------------------------------------------------------------ |
+| **data**      | `StarkProfile` | The user's StarkNet profile, including `name` and `profilePicture`. |
+| **isLoading** | `boolean`      | Indicates whether the profile data is being fetched.                |
 
 ---
 
 ## StarkProfile Object
 
-| Field             | Type     | Description                                              |
-| :---------------- | :------- | :------------------------------------------------------- |
-| **name**          | `string` | The domain name associated with the user's StarkNet ID.  |
-| **profilePicture**| `string` | URL of the user's profile picture.                       |
+| Field              | Type     | Description                                             |
+| :----------------- | :------- | :------------------------------------------------------ |
+| **name**           | `string` | The domain name associated with the user's StarkNet ID. |
+| **profilePicture** | `string` | URL of the user's profile picture.                      |
 
 ---
 
@@ -74,6 +74,7 @@ This example demonstrates how to use the `useScaffoldStarkProfile` hook to displ
 - Use this hook in components where you need to display user-specific StarkNet information, such as their domain name or profile picture.
 - Ensure that the target network supports StarkNet profiles.
 - Handle loading and fallback states to provide a better user experience.
+
 ---
 
 ## Error Handling
