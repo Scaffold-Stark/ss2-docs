@@ -6,51 +6,57 @@ description: Learn how to read from contract functions which accept arguments / 
 
 # Read a `uint` from a contract
 
-This recipe demonstrates how to read data from contract functions and display it on the UI. We'll showcase an example that accepts some arguments (parameters), and another with no arguments at all.
+This recipe demonstrates how to read data from contract functions and display it on the UI. We'll showcase an example that accepts arguments (parameters) and another with no arguments at all.
 
 <details open>
-<summary>Here is the full code, which we will be implementing in the guide below:</summary>
+<summary>Here is the full code, which we will implement in the guide below:</summary>
 
-```tsx title="components/GreetingsCount.tsx"
-import { useAccount } from "@starknet-react/core";
+```tsx title="components/Greetings.tsx"
+"use client";
+
+import { useScaffoldContract } from "~~/hooks/scaffold-stark/useScaffoldContract";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
 
-export const GreetingsCount = () => {
-  const { account: connectedAddress } = useAccount();
+const Greetings = () => {
+  const { data: YourContract } = useScaffoldContract({ contractName: "YourContract" });
 
-  const { data: totalCounter, isLoading: isTotalCounterLoading } = useScaffoldReadContract({
+  const { data: currentGreeting, isLoading: isCurrentGreetingLoading } = useScaffoldReadContract({
     contractName: "YourContract",
-    functionName: "totalCounter",
+    functionName: "greeting",
   });
 
-  const { data: connectedAddressCounter, isLoading: isConnectedAddressCounterLoading } = useScaffoldReadContract({
-    contractName: "YourContract",
-    functionName: "userGreetingCounter",
-    args: [connectedAddress], // passing args to function
+  const { data: ethBalance, isLoading: isEthBalanceLoading } = useScaffoldReadContract({
+    contractName: "Eth",
+    functionName: "balance_of",
+    args: [YourContract?.address],
   });
 
   return (
-    <div className="card card-compact w-64 bg-secondary text-primary-content shadow-xl m-4">
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">Greetings Count</h2>
-        <div className="card-actions items-center flex-col gap-1 text-lg">
-          <h2 className="font-bold m-0">Total Greetings count:</h2>
-          {isTotalCounterLoading ? (
+    <div className="m-4 p-4 bg-white border border-gray-300 rounded-lg shadow-md w-64 text-black">
+      <div className="text-center">
+        <h2 className="text-xl font-semibold">Greetings</h2>
+        <div className="my-4">
+          <h3 className="font-medium">Balance ETH in YourContract:</h3>
+          {isEthBalanceLoading ? (
             <span className="loading loading-spinner"></span>
           ) : (
-            <p className="m-0">{totalCounter ? totalCounter.toString() : 0}</p>
+            <p>{ethBalance ? (Number(ethBalance) / 10 ** 18).toFixed(6) : "0.000000"} ETH</p>
           )}
-          <h2 className="font-bold m-0">Your Greetings count:</h2>
-          {isConnectedAddressCounterLoading ? (
+        </div>
+        <div className="my-4">
+          <h3 className="font-medium">New Greeting:</h3>
+          {isCurrentGreetingLoading ? (
             <span className="loading loading-spinner"></span>
           ) : (
-            <p className="m-0">{connectedAddressCounter ? connectedAddressCounter.toString() : 0}</p>
+            <p>{currentGreeting ? currentGreeting.toString() : "No greeting"}</p>
           )}
         </div>
       </div>
     </div>
   );
 };
+
+export default Greetings;
 ```
 
 </details>
@@ -61,135 +67,116 @@ export const GreetingsCount = () => {
 
 Begin by creating a new component in the "components" folder of your application.
 
-```tsx title="components/GreetingsCount.tsx"
-export const GreetingsCount = () => {
+```tsx title="components/Greetings.tsx"
+const Greetings = () => {
   return (
     <div>
-      <h2 className="font-bold m-0">Total Greetings count:</h2>
-      <h2 className="font-bold m-0">Your Greetings count:</h2>
+      <h3 className="font-medium">Balance ETH in YourContract:</h3>
+      <h3 className="font-medium">New Greeting:</h3>
     </div>
   );
 };
+export default Greetings;
 ```
 
-### Step 2: Retrieve total greetings count
+### Step 2: Retrieve New Greetings
 
-Initialize the [useScaffoldReadContract](/hooks/useScaffoldReadContract) hook to read from the contract. This hook provides the `data` which contains the return value of the function.
+Initialize the [`useScaffoldReadContract`](/hooks/useScaffoldReadContract) hook to read from the contract. This hook provides the `data` which contains the return value of the function.
 
-```tsx title="components/GreetingsCount.tsx"
+```tsx title="components/Greetings.tsx"
 import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
-// highlight-end
 
-export const GreetingsCount = () => {
-  // highlight-start
-  const { data: totalCounter } = useScaffoldReadContract({
+const Greetings = () => {
+  const { data: currentGreeting } = useScaffoldReadContract({
     contractName: "YourContract",
-    functionName: "totalCounter",
+    functionName: "greeting",
   });
-  // highlight-end
 
   return (
     <div>
-      <h2 className="font-bold m-0">Total Greetings count:</h2>
-      //highlight-start
-      <p>{totalCounter ? totalCounter.toString() : 0}</p>
-      //highlight-end
-      <h2 className="font-bold m-0">Your Greetings count:</h2>
+      <h3 className="font-medium">New Greeting:</h3>
+      <p>{currentGreeting ? currentGreeting.toString() : "No greeting"}</p>
     </div>
   );
 };
 ```
 
-In the line `const {data: totalCounter} = useScaffoldReadContract({...})` we are using [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to assign `data` to a new name `totalCounter`.
+In the line `const {data: currentGreeting} = useScaffoldReadContract({...})`, we use [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to extract the `data` field and rename it as `currentGreeting`.
 
-In the contract, `totalCounter` returns an `uint` value, which is represented as a [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) in javascript and can be converted to a readable string using `.toString()`.
+The contract function returns a `uint`, which is represented as a [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) in JavaScript. You can convert it to a readable string using `.toString()`.
 
-### Step 3: Retrieve connected address greetings count
+### Step 3: Retrieve ETH Balance in YourContract
 
-We can get the connected address using the [useAccount](https://starknet-react.com/hooks/account/useaccount) hook and pass it to `args` key in the `useScaffoldReadContract` hook configuration. This will be used as an argument to read the contract function.
+We can retrieve the ETH balance of the contract by first getting its address using `useScaffoldContract`. Then, we pass this address as an argument (`args`) to `useScaffoldReadContract`, which will call the contract function.
 
-```tsx title="components/GreetingsCount.tsx"
-import { useScaffoldReadContract } from "~~/hooks/scaffold-stark";
-//highlight-start
-import { useAccount } from "@starknet-react/core";
-//highlight-end
-
-export const GreetingsCount = () => {
-  //highlight-start
-  const { account: connectedAddress } = useAccount();
-  //highlight-end
-
-  const { data: totalCounter } = useScaffoldReadContract({
-    contractName: "YourContract",
-    functionName: "totalCounter",
-  });
-
-  //highlight-start
-  const { data: connectedAddressCounter } = useScaffoldReadContract({
-    contractName: "YourContract",
-    functionName: "userGreetingCounter",
-    args: [connectedAddress], // passing args to function
-  });
-  //highlight-end
-
-  return (
-    <div>
-      <h2>Total Greetings count:</h2>
-      <p>{totalCounter ? totalCounter.toString() : 0}</p>
-      <h2>Your Greetings count:</h2>
-      //highlight-start
-      <p>{connectedAddressCounter ? connectedAddressCounter.toString() : 0}</p>
-      //highlight-end
-    </div>
-  );
-};
-```
-
-### Step 4: Bonus adding loading state
-
-We can use `isLoading` returned from the [`useScaffoldReadContract`](/hooks/usescaffoldreadcontract) hook. This variable is set to `true` while fetching data from the contract.
-
-```tsx title="components/GreetingsCount.tsx"
+```tsx title="components/Greetings.tsx"
+import { useScaffoldContract } from "~~/hooks/scaffold-stark/useScaffoldContract";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
-import { useAccount } from "@starknet-react/core";
 
-export const GreetingsCount = () => {
-  const { account: connectedAddress } = useAccount();
+const Greetings = () => {
+  const { data: YourContract } = useScaffoldContract({ contractName: "YourContract" });
 
-  // highlight-start
-  const { data: totalCounter, isLoading: isTotalCounterLoading } = useScaffoldReadContract({
-    // highlight-end
-    contractName: "YourContract",
-    functionName: "totalCounter",
-  });
-
-  // highlight-start
-  const { data: connectedAddressCounter, isLoading: isConnectedAddressCounterLoading } = useScaffoldReadContract({
-    // highlight-end
-    contractName: "YourContract",
-    functionName: "userGreetingCounter",
-    args: [connectedAddress], // passing args to function
+  const { data: ethBalance } = useScaffoldReadContract({
+    contractName: "Eth",
+    functionName: "balance_of",
+    args: [YourContract?.address],
   });
 
   return (
     <div>
-      <h2>Total Greetings count:</h2>
-      // highlight-start
-      {isTotalCounterLoading ? (
-        <span className="loading loading-spinner"></span>
-      ) : (
-        <p className="m-0">{totalCounter ? totalCounter.toString() : 0}</p>
-      )}
-      // highlight-end
-      <h2>Your Greetings count:</h2>
-      // highlight-start
-      {isConnectedAddressCounterLoading ? (
-        <span className="loading loading-spinner"></span>
-      ) : (
-        <p className="m-0">{connectedAddressCounter ? connectedAddressCounter.toString() : 0}</p>
-      )}
-      // highlight-end
+      <h3 className="font-medium">Balance ETH in YourContract:</h3>
+      <p>{ethBalance ? (Number(ethBalance) / 10 ** 18).toFixed(6) : "0.000000"} ETH</p>
     </div>
   );
 };
+```
+
+### Step 4: Handling Loading State
+
+We can use the `isLoading` flag returned from `useScaffoldReadContract` to show a loading spinner while fetching data from the contract.
+
+```tsx title="components/Greetings.tsx"
+import { useScaffoldContract } from "~~/hooks/scaffold-stark/useScaffoldContract";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldReadContract";
+
+const Greetings = () => {
+  const { data: YourContract } = useScaffoldContract({ contractName: "YourContract" });
+
+  const { data: currentGreeting, isLoading: isCurrentGreetingLoading } = useScaffoldReadContract({
+    contractName: "YourContract",
+    functionName: "greeting",
+  });
+
+  const { data: ethBalance, isLoading: isEthBalanceLoading } = useScaffoldReadContract({
+    contractName: "Eth",
+    functionName: "balance_of",
+    args: [YourContract?.address],
+  });
+
+  return (
+    <div className="m-4 p-4 bg-white border border-gray-300 rounded-lg shadow-md w-64 text-black">
+      <div className="text-center">
+        <h2 className="text-xl font-semibold">Greetings</h2>
+        <div className="my-4">
+          <h3 className="font-medium">Balance ETH in YourContract:</h3>
+          {isEthBalanceLoading ? (
+            <span className="loading loading-spinner"></span>
+          ) : (
+            <p>{ethBalance ? (Number(ethBalance) / 10 ** 18).toFixed(6) : "0.000000"} ETH</p>
+          )}
+        </div>
+        <div className="my-4">
+          <h3 className="font-medium">New Greeting:</h3>
+          {isCurrentGreetingLoading ? (
+            <span className="loading loading-spinner"></span>
+          ) : (
+            <p>{currentGreeting ? currentGreeting.toString() : "No greeting"}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Greetings;
 ```
