@@ -18,25 +18,29 @@ This documentation will walk through the code and steps necessary to create a bu
 <summary>Here is full implementation of the mult-write feature:</summary>
 
 ```tsx title="components/MultiContractInteraction.tsx"
-import { useState } from "react";
-import { useScaffoldMultiWriteContract } from "~~/hooks/scaffold-stark/useScaffoldMultiWriteContract";
-import { notification } from "~~/utils/scaffold-stark";
+"use client";
 
-export const MultiSetData = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+import { useState } from "react";
+import { useScaffoldContract } from "~~/hooks/scaffold-stark/useScaffoldContract";
+import { useScaffoldMultiWriteContract } from "~~/hooks/scaffold-stark/useScaffoldMultiWriteContract";
+
+const MultiSetData = () => {
+  const [inputAmount, setInputAmount] = useState<bigint>(0n);
+  const [greeting, setGreeting] = useState<string>("");
+
+  const { data: YourContract } = useScaffoldContract({ contractName: "YourContract" });
 
   const { sendAsync, isPending } = useScaffoldMultiWriteContract({
     calls: [
       {
-        contractName: "ProfileContract",
-        functionName: "setName",
-        args: [name],
+        contractName: "Eth",
+        functionName: "approve",
+        args: [YourContract?.address, BigInt(inputAmount)],
       },
       {
-        contractName: "ProfileContract",
-        functionName: "setAge",
-        args: [age],
+        contractName: "YourContract",
+        functionName: "set_greeting",
+        args: [greeting, BigInt(inputAmount)],
       },
     ],
   });
@@ -44,10 +48,8 @@ export const MultiSetData = () => {
   const handleSetData = async () => {
     try {
       await sendAsync();
-      notification("Multi-write successful!", "success");
     } catch (e) {
       console.error("Error in multi-write", e);
-      notification("Multi-write failed.", "error");
     }
   };
 
@@ -55,15 +57,17 @@ export const MultiSetData = () => {
     <div>
       <input
         type="text"
-        placeholder="Enter your name"
+        placeholder="Enter your greeting"
         className="input border border-primary"
-        onChange={e => setName(e.target.value)}
+        onChange={e => setGreeting(e.target.value)}
       />
       <input
         type="number"
-        placeholder="Enter your age"
+        placeholder="Enter your ETH amount"
         className="input border border-primary"
-        onChange={e => setAge(Number(e.target.value))}
+        onChange={e => {
+          setInputAmount(BigInt(Number(e.target.value) * 10 ** 18));
+        }}
       />
       <button className="btn btn-primary" onClick={handleSetData} disabled={isPending}>
         {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Submit"}
@@ -71,6 +75,8 @@ export const MultiSetData = () => {
     </div>
   );
 };
+
+export default MultiSetData;
 ```
 
 </details>
@@ -103,26 +109,26 @@ import { notification } from "~~/utils/scaffold-stark";
 - Use the `useState` hook to track user inputs, `name` and `age`.
 
 ```tsx title="components/MultiContractInteraction.tsx"
-const [name, setName] = useState("");
-const [age, setAge] = useState(0);
+const [inputAmount, setInputAmount] = useState<bigint>(0n);
+const [greeting, setGreeting] = useState<string>("");
 ```
 
 ### Step 4: Configure the [`useScaffoldMultiWriteContract`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/hooks/scaffold-stark/useScaffoldMultiWriteContract.ts) Hook
 
-- Configure the hook with the necessary contract calls. Here, we call the `setName` and `setAge` functions of `ProfileContract` in sequence.
+- Configure the hook with the necessary contract calls. Here, we call the `setGreeting` and `setInputAmount` functions of `YourContract` and `Eth` in sequence.
 
 ```tsx title="components/MultiContractInteraction.tsx"
 const { sendAsync, isPending } = useScaffoldMultiWriteContract({
   calls: [
     {
-      contractName: "ProfileContract",
-      functionName: "setName",
-      args: [name],
+      contractName: "Eth",
+      functionName: "approve",
+      args: [YourContract?.address, BigInt(inputAmount)],
     },
     {
-      contractName: "ProfileContract",
-      functionName: "setAge",
-      args: [age],
+      contractName: "YourContract",
+      functionName: "set_greeting",
+      args: [greeting, BigInt(inputAmount)],
     },
   ],
 });
@@ -148,27 +154,30 @@ const handleSetData = async () => {
 
 ### Step 6: Create the UI
 
-- Add inputs for `name` and `age`, and a button to submit the data.
+- Add inputs for `gretting` and `inputAmount`, and a button to submit the data.
 - Disable the button while the transaction is pending.
 
 ```tsx
 return (
-  <div>
-    <input
-      type="text"
-      placeholder="Enter your name"
-      className="input border border-primary"
-      onChange={e => setName(e.target.value)}
-    />
-    <input
-      type="number"
-      placeholder="Enter your age"
-      className="input border border-primary"
-      onChange={e => setAge(Number(e.target.value))}
-    />
-    <button className="btn btn-primary" onClick={handleSetData} disabled={isPending}>
-      {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Submit"}
-    </button>
-  </div>
-);
+    <div>
+      <input
+        type="text"
+        placeholder="Enter your gretting"
+        className="input border border-primary"
+        onChange={e =>
+          greeting(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Enter your ETH amount"
+        className="input border border-primary"
+        onChange={(e) => {
+          setInputAmount(BigInt(Number(e.target.value) * 10 ** 18));
+      />
+      <button className="btn btn-primary" onClick={handleSetData} disabled={isPending}>
+        {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Submit"}
+      </button>
+    </div>
+  );
+};
 ```
