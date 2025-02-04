@@ -9,17 +9,17 @@ The `useScaffoldStrkBalance` hook is a custom React hook designed to fetch and d
 ## Usage Example
 
 ```ts
-import useScaffoldStrkBalance from './hooks/useScaffoldStrkBalance';
+import useScaffoldStrkBalance from '~~/hooks/scaffold-stark/useScaffoldStrkBalance';
+import { useAccount } from '~~/hooks/useAccount';
 
-const address = "0x01176a1bd84444c89232ec27754698e5d2e7e1a7f1539f12027f28b23ec9f3d8"
-
-function StrkBalanceDisplay({ address }) {
-  const { value, formatted, symbol } = useScaffoldStrkBalance({ address: "0x01176a1bd84444c89232ec27754698e5d2e7e1a7f1539f12027f28b23ec9f3d8" });
+function StrkBalanceDisplay() {
+  const { address } = useAccount();
+  const { value, formatted, symbol } = useScaffoldStrkBalance({ address: address || "" });
 
   return (
     <div>
       <h3>STRK Balance:</h3>
-      <p>Raw Value: {value}</p>
+      <p>Raw Value: {value ? value.toString() : ""}</p>
       <p>Formatted: {formatted}</p>
       <p>Symbol: {symbol}</p>
     </div>

@@ -6,28 +6,27 @@ sidebar_position: 9
 
 Use this hook to read the Ethereum (ETH) balance of a specified address on the StarkNet blockchain.
 
-```ts
-const { value, formatted, symbol } = useScaffoldEthBalance({
-  address: "0x01176a1bd84444c89232ec27754698e5d2e7e1a7f1539f12027f28b23ec9f3d8",
-});
-```
-
 This example retrieves the ETH balance for the specified address using the deployed Ethereum contract on StarkNet. The returned object includes the raw balance value, the formatted balance, and the ETH symbol.
 
 ## Usage Example
 
 ```tsx
-const BalanceDisplay = ({ userAddress }) => {
-  const { formatted, symbol } = useScaffoldEthBalance({ address: userAddress });
+import useScaffoldEthBalance from "~~/hooks/scaffold-stark/useScaffoldEthBalance";
+import { useAccount } from "~~/hooks/useAccount";
+
+function EthBalanceDisplay() {
+  const { address } = useAccount();
+  const { value, formatted, symbol } = useScaffoldEthBalance({ address: address || "" });
 
   return (
     <div>
-      <p>
-        Balance: {formatted} {symbol}
-      </p>
+      <h3>ETH Balance:</h3>
+      <p>Raw Value: {value ? value.toString() : ""}</p>
+      <p>Formatted: {formatted}</p>
+      <p>Symbol: {symbol}</p>
     </div>
   );
-};
+}
 ```
 
 This example demonstrates how to use the `useScaffoldEthBalance` hook to display the formatted ETH balance for a user's address.
