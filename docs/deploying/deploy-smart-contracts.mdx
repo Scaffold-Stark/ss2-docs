@@ -20,7 +20,50 @@ You can use any pre-funded account / private key or add your crypto wallet's pri
 
 You can also manually set your own private key, you will need to add `PRIVATE_KEY_SEPOLIA=yourWalletPrivateKey` to the `packages/snfoundry/.env` file.
 
-## 3. Deploy your smart contract(s)
+## 3. Changing the smart contract name
+
+If you decide to rename the default `YourContract` Cairo contract to something else, you will need to update the deployment script (`deploy.ts`) to use the new contract name.
+
+### Steps to Change the Contract Name:
+
+- **Rename the Cairo Contract**:
+   - Rename the `.cairo` file in the `contracts` directory to the desired name. For example, if you rename `YourContract.cairo` to `MyNewContract.cairo`, make sure the new `.cairo` file exists in the `contracts` folder.
+
+- **Update the `deploy.ts` Script**:
+   - After renaming the Cairo contract file, open the `deploy.ts` script and change the contract name from `YourContract` to the new contract name you’ve chosen. The relevant section in the `deploy.ts` file will look like this:
+
+   ```typescript
+   const deployScript = async (): Promise<void> => {
+     await deployContract({
+       contract: "MyNewContract",  // Change this to your renamed contract
+       constructorArgs: {
+         owner: deployer.address,
+       },
+     });
+   };
+   ```
+
+- **(Optional) Deploy the same contract under a different name**
+
+    If you want to deploy the same contract but reference it under a different name , you can use `contractName`:
+
+    ```typescript
+    await deployContract({
+      contract: "MyNewContract",
+      contractName: "CustomDisplayName",  // Allows multiple deployments with unique references
+      constructorArgs: {
+        owner: deployer.address,
+      },
+    });
+    ```
+
+    This can be useful if you want to:
+
+    - Deploy multiple instances of the same contract with different identifiers.
+
+    - Reference the deployed contract under a custom name for clarity in deployment logs.
+
+## 4. Deploy your smart contract(s)
 
 By default `yarn deploy` will deploy contract to the local network. You can change `defaultNetwork` in `scaffold.config.ts`
 
