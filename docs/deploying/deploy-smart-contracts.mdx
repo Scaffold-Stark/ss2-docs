@@ -8,9 +8,9 @@ To deploy your smart contracts to a live network, there are a few things you nee
 
 ## 1. Configure your network
 
-Scaffold-Stark 2 comes with a selection of predefined networks. They are `Devnet` and `Sepolia`.
+Scaffold-Stark 2 comes with a selection of predefined networks: `Devnet`, `Sepolia`, and `Mainnet`.
 
-Here are the [Starknet docs](https://docs.starknet.io/documentation/tools/api-services/) for information on Seplia networks providers.
+Here are the [Starknet docs](https://docs.starknet.io/documentation/tools/api-services/) for information on Sepolia network providers.
 
 ## 2. Use pre-funded accounts and add one of them to deploy the contract(s) from.
 
@@ -18,7 +18,33 @@ The deployer account is the account that will deploy your contracts. Additionall
 
 You can use any pre-funded account / private key or add your crypto wallet's private key.
 
-You can also manually set your own private key, you will need to add `PRIVATE_KEY_SEPOLIA=yourWalletPrivateKey` to the `packages/snfoundry/.env` file.
+### Configure Sepolia:
+
+To use the Sepolia, set your own private key and configure the necessary environment variables by adding and replacing `yourWalletPrivateKey`, `yourWalletAddress` in the following:
+
+Add the following to the `packages/snfoundry/.env` file:
+
+If you are working with Sepolia, you need to use the setup:
+
+```env
+PRIVATE_KEY_SEPOLIA=yourWalletPrivateKey
+RPC_URL_SEPOLIA=https://starknet-sepolia.public.blastapi.io/rpc/v0_7
+ACCOUNT_ADDRESS_SEPOLIA=yourWalletAddress
+```
+
+### Configure Mainnet:
+
+To use the Mainnet, set your own private key and configure the necessary environment variables by adding and replacing `yourWalletPrivateKey`, `yourWalletAddress` in the following:
+
+Add the following to the `packages/snfoundry/.env` file:
+
+If you are working with Mainnet, you need to use the setup:
+
+```env
+PRIVATE_KEY_MAINNET=yourWalletPrivateKey
+RPC_URL_MAINNET=https://starknet-mainnet.public.blastapi.io/rpc/v0_7
+ACCOUNT_ADDRESS_MAINNET=yourWalletAddress
+```
 
 ## 3. Changing the smart contract name
 
@@ -27,45 +53,46 @@ If you decide to rename the default `YourContract` Cairo contract to something e
 ### Steps to Change the Contract Name:
 
 - **Rename the Cairo Contract**:
-   - Rename the `.cairo` file in the `contracts` directory to the desired name. For example, if you rename `YourContract.cairo` to `MyNewContract.cairo`, make sure the new `.cairo` file exists in the `contracts` folder.
+
+  Rename the `.cairo` file in the `contracts` directory to the desired name. For example, if you rename `YourContract.cairo` to `MyNewContract.cairo`, make sure the new `.cairo` file exists in the `contracts` folder.
 
 - **Update the `deploy.ts` Script**:
-   - After renaming the Cairo contract file, open the `deploy.ts` script and change the contract name from `YourContract` to the new contract name you’ve chosen. The relevant section in the `deploy.ts` file will look like this:
 
-   ```typescript
-   const deployScript = async (): Promise<void> => {
-     await deployContract({
-       contract: "MyNewContract",  // Change this to your renamed contract
-       constructorArgs: {
-         owner: deployer.address,
-       },
-     });
-   };
-   ```
+  After renaming the Cairo contract file, open the `deploy.ts` script and change the contract name from `YourContract` to the new contract name you’ve chosen. The relevant section in the `deploy.ts` file will look like this:
 
-- **(Optional) Deploy the same contract under a different name**
-
-    If you want to deploy the same contract but reference it under a different name , you can use `contractName`:
-
-    ```typescript
+  ```typescript
+  const deployScript = async (): Promise<void> => {
     await deployContract({
-      contract: "MyNewContract",
-      contractName: "CustomDisplayName",  // Allows multiple deployments with unique references
+      contract: "MyNewContract", // Change this to your renamed contract
       constructorArgs: {
         owner: deployer.address,
       },
     });
-    ```
+  };
+  ```
 
-    This can be useful if you want to:
+- **(Optional) Deploy the same contract under a different name**:
 
-    - Deploy multiple instances of the same contract with different identifiers.
+  If you want to deploy the same contract but reference it under a different name, you can use `contractName`:
 
-    - Reference the deployed contract under a custom name for clarity in deployment logs.
+  ```typescript
+  await deployContract({
+    contract: "MyNewContract",
+    contractName: "CustomDisplayName", // Allows multiple deployments with unique references
+    constructorArgs: {
+      owner: deployer.address,
+    },
+  });
+  ```
+
+  This can be useful if you want to:
+
+  - Deploy multiple instances of the same contract with different identifiers.
+  - Reference the deployed contract under a custom name for clarity in deployment logs.
 
 ## 4. Deploy your smart contract(s)
 
-By default `yarn deploy` will deploy contract to the local network. You can change `defaultNetwork` in `scaffold.config.ts`
+By default, `yarn deploy` will deploy the contract to the local network. You can change `defaultNetwork` in `scaffold.config.ts`.
 
 Run the command below to deploy the smart contract to the target network. Make sure to have some funds in your deployer account to pay for the transaction.
 
@@ -75,7 +102,7 @@ yarn deploy --network <NETWORK_NAME>
 
 e.g. `yarn deploy --network sepolia`
 
-## Configuration of Third-Party Services for Production-Grade Apps.
+## Configuration of Third-Party Services for Production-Grade Apps
 
 By default, Scaffold-Stark 2 provides predefined API keys for popular services such as Infura. This allows you to begin developing and testing your applications more easily, avoiding the need to register for this service.
 
@@ -84,5 +111,5 @@ For production-grade applications, it's recommended to obtain your own API keys 
 - `RPC_URL_SEPOLIA` variable in `packages/snfoundry/.env` and `packages/nextjs/.env.local`. You can create API keys from the [Alchemy dashboard](https://dashboard.alchemy.com/).
 
 :::tip Hint
-It's recommended to store environment variables for nextjs in vercel/system env config for live apps and use `.env.local` for local testing.
-:::tip Hint
+It's recommended to store environment variables for Next.js in Vercel/system environment variable configuration for live apps and use `.env.local` for local testing.
+:::
