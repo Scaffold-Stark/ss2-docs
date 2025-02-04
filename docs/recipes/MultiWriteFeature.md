@@ -38,6 +38,11 @@ const MultiSetData = () => {
         args: [YourContract?.address, BigInt(inputAmount)],
       },
       {
+        contractName: "Eth",
+        functionName: "transfer",
+        args: [YourContract?.address, BigInt(inputAmount)],
+      },
+      {
         contractName: "YourContract",
         functionName: "set_greeting",
         args: [greeting, BigInt(inputAmount)],
@@ -106,7 +111,7 @@ import { notification } from "~~/utils/scaffold-stark";
 
 ### Step 3: Set Up State Variables
 
-- Use the `useState` hook to track user inputs, `name` and `age`.
+- Use the `useState` hook to track user inputs, `greeting` and `inputAmount`.
 
 ```tsx title="components/MultiContractInteraction.tsx"
 const [inputAmount, setInputAmount] = useState<bigint>(0n);
@@ -123,6 +128,11 @@ const { sendAsync, isPending } = useScaffoldMultiWriteContract({
     {
       contractName: "Eth",
       functionName: "approve",
+      args: [YourContract?.address, BigInt(inputAmount)],
+    },
+    {
+      contractName: "Eth",
+      functionName: "transfer",
       args: [YourContract?.address, BigInt(inputAmount)],
     },
     {
