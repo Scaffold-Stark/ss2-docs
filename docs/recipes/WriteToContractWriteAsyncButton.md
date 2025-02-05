@@ -6,50 +6,48 @@ description: Learn how to create a button that executes the writeContractAsync f
 
 # Write to a Contract with `sendAsync` button using the `useScaffoldWriteContract` hook.
 
-This recipe demonstrates how to create a button for contract interaction using the `useScaffoldWriteContract` hooks from the Scaffold-Stark 2 hooks.
+This recipe demonstrates how to create a button for contract interaction using the `useScaffoldWriteContract` hook from Scaffold-Stark.
 
 <details open>
 <summary>Here is the full code, which we will be implementing in the guide below:</summary>
 
 ```tsx title="components/ContractInteraction.tsx"
+"use client";
 import { useState } from "react";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
 
-export const SetName = () => {
-  const [newName, setNewName] = useState("");
-
+const SetGreeting = () => {
+  const [greeting, setGreeting] = useState<string>("");
   const { sendAsync, isPending } = useScaffoldWriteContract({
-    calls: [
-      {
-        contractName: "YourContract",
-        functionName: "setName",
-        args: [newName],
-      },
-    ],
+    contractName: "YourContract",
+    functionName: "set_greeting",
+    args: [greeting, 0n], // `inputAmount` fixed at 0n
   });
 
-  const handleSetName = async () => {
+  const handleSetGreeting = async () => {
     try {
       await sendAsync();
     } catch (e) {
-      console.error("Error setting name", e);
+      console.error("Error setting greeting", e);
     }
   };
 
   return (
-    <>
+    <div>
       <input
         type="text"
-        placeholder="Write your name"
+        placeholder="Enter your greeting"
         className="input border border-primary"
-        onChange={e => setNewName(e.target.value)}
+        onChange={e => setGreeting(e.target.value)}
       />
-      <button className="btn btn-primary" onClick={handleSetName} disabled={isPending}>
-        {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Send"}
+      <button className="btn btn-primary" onClick={handleSetGreeting} disabled={isPending}>
+        {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Submit"}
       </button>
-    </>
+    </div>
   );
 };
+
+export default SetGreeting;
 ```
 
 </details>
@@ -58,158 +56,141 @@ export const SetName = () => {
 
 ### Step 1: Set Up Your Component
 
-Create a new component in the "components" folder. The component will show a button that will allow users to interact with your smart contract.
+Create a new component in the `components` folder. This component will display an input field and a button to interact with your smart contract.
 
 ```tsx title="components/ContractInteraction.tsx"
-export const SetName = () => {
+"use client";
+
+const SetGreeting = () => {
   return (
-    <>
-      <input type="text" placeholder="Write your name" className="input border border-primary" />
-      <button>Send</button>
-    </>
+    <div>
+      <input type="text" placeholder="Enter your greeting" className="input border border-primary" />
+      <button className="btn btn-primary">Submit</button>
+    </div>
   );
 };
+
+export default SetGreeting;
 ```
 
-### Step 2: Initialize useScaffoldWriteContract hook
+### Step 2: Initialize `useScaffoldWriteContract` Hook
 
-Initialize the `useScaffoldWriteContract` hook. This hook provides the `sendAsync` function for sending transactions. We'll create a `handleSetName` function in which we'll call and pass parameters to `sendAsync` required to perform contract interaction.
+Now we'll add state management and initialize the hook for contract interaction:
 
-```tsx
-// highlight-start
-import { useState } from "react";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
-// highlight-end
-
-export const SetName = () => {
-  // highlight-start
-  const [newName, setNewName] = useState("");
-  // highlight-end
-
-  // highlight-start
-  const { sendAsync } = useScaffoldWriteContract({
-    calls: [
-      {
-        contractName: "YourContract",
-        functionName: "setName",
-        args: [newName],
-      },
-    ],
-  });
-  // highlight-end
-
-  // highlight-start
-  const handleSetName = async () => {
-    try {
-      await sendAsync();
-    } catch (e) {
-      console.error("Error setting name", e);
-    }
-  };
-  // highlight-end
-
-  return (
-    <>
-      <input type="text" placeholder="Write your name" className="input border border-primary" />
-      <button onClick={handleSetName}>Send</button>
-    </>
-  );
-};
-```
-
-### Step 3: Add input change logic and send transaction when users click the button
-
-Wire up the input field to update the `newName` state when the user types in a new name and call the `handleSetName` function when the user clicks the button.
-
-```tsx
+```tsx title="components/ContractInteraction.tsx"
+"use client";
 import { useState } from "react";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
 
-export const SetName = () => {
-  const [newName, setNewName] = useState("");
-
+const SetGreeting = () => {
+  const [greeting, setGreeting] = useState<string>("");
   const { sendAsync } = useScaffoldWriteContract({
-    calls: [
-      {
-        contractName: "YourContract",
-        functionName: "setName",
-        args: [newName],
-      },
-    ],
+    contractName: "YourContract",
+    functionName: "set_greeting",
+    args: [greeting, 0n], // `inputAmount` fixed at 0n
   });
 
-  const handleSetName = async () => {
+  const handleSetGreeting = async () => {
     try {
       await sendAsync();
     } catch (e) {
-      console.error("Error setting name", e);
+      console.error("Error setting greeting", e);
     }
   };
 
   return (
-    <>
+    <div>
+      <input type="text" placeholder="Enter your greeting" className="input border border-primary" />
+      <button className="btn btn-primary">Send</button>
+    </div>
+  );
+};
+
+export default SetGreeting;
+```
+
+### Step 3: Add Input Change Logic and Connect Button
+
+Now we'll connect the input to our state and wire up the button click handler:
+
+```tsx title="components/ContractInteraction.tsx"
+"use client";
+import { useState } from "react";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
+
+const SetGreeting = () => {
+  const [greeting, setGreeting] = useState<string>("");
+  const { sendAsync } = useScaffoldWriteContract({
+    contractName: "YourContract",
+    functionName: "set_greeting",
+    args: [greeting, 0n], // `inputAmount` fixed at 0n
+  });
+
+  const handleSetGreeting = async () => {
+    try {
+      await sendAsync();
+    } catch (e) {
+      console.error("Error setting greeting", e);
+    }
+  };
+
+  return (
+    <div>
       <input
         type="text"
-        placeholder="Write your name"
+        placeholder="Enter your greeting"
         className="input border border-primary"
-        // highlight-start
-        onChange={e => setNewName(e.target.value)}
-        // highlight-end
+        onChange={e => setGreeting(e.target.value)}
       />
-      // highlight-start
-      <button className="btn btn-primary" onClick={handleSetName}>
-        Send
+      <button className="btn btn-primary" onClick={handleSetGreeting}>
+        Submit
       </button>
-      // highlight-end
-    </>
+    </div>
   );
 };
+
+export default SetGreeting;
 ```
 
-### Step 4: Bonus - Adding loading state
+### Step 4: Add Loading State
 
-We can use `isPending` returned from `useScaffoldWriteContract` while the transaction is being mined and also disable the button.
+Finally, we'll add loading state handling to improve the user experience:
 
-```tsx
+```tsx title="components/ContractInteraction.tsx"
+"use client";
 import { useState } from "react";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-stark/useScaffoldWriteContract";
 
-export const SetName = () => {
-  const [newName, setNewName] = useState("");
-  // highlight-start
+const SetGreeting = () => {
+  const [greeting, setGreeting] = useState<string>("");
   const { sendAsync, isPending } = useScaffoldWriteContract({
-    // highlight-end
-    calls: [
-      {
-        contractName: "YourContract",
-        functionName: "setName",
-        args: [newName],
-      },
-    ],
+    contractName: "YourContract",
+    functionName: "set_greeting",
+    args: [greeting, 0n], // `inputAmount` fixed at 0n
   });
 
-  const handleSetName = async () => {
+  const handleSetGreeting = async () => {
     try {
       await sendAsync();
     } catch (e) {
-      console.error("Error setting name", e);
+      console.error("Error setting greeting", e);
     }
   };
 
   return (
-    <>
+    <div>
       <input
         type="text"
-        placeholder="Write your name"
+        placeholder="Enter your greeting"
         className="input border border-primary"
-        onChange={e => setNewName(e.target.value)}
+        onChange={e => setGreeting(e.target.value)}
       />
-      // highlight-start
-      <button className="btn btn-primary" onClick={handleSetName} disabled={isPending}>
-        {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Send"}
+      <button className="btn btn-primary" onClick={handleSetGreeting} disabled={isPending}>
+        {isPending ? <span className="loading loading-spinner loading-sm"></span> : "Submit"}
       </button>
-      // highlight-end
-    </>
+    </div>
   );
 };
+
+export default SetGreeting;
 ```

@@ -65,7 +65,7 @@ export default Greetings;
 
 ### Step 1: Create a new Component
 
-Begin by creating a new component in the "components" folder of your application.
+Begin by creating a new component in the `components` folder of your application.
 
 ```tsx title="components/Greetings.tsx"
 const Greetings = () => {
