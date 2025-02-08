@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Add Cartridge Controller
+title: Integrating Cartridge Controller
 description: Comprehensive guide to integrating the Cartridge Controller in Scaffold-Stark
 ---
 
@@ -25,7 +25,7 @@ This guide provides a complete implementation for integrating the [Cartridge Con
 
 ### Step 1: Add Controller Dependency
 
-Update your `package.json` to include the Cartridge dependency:
+Update your `packages/nextjs/package.json` to include the Cartridge dependency:
 
 <details open>
 <summary>Add dependencies controller </summary>
@@ -42,7 +42,7 @@ Update your `package.json` to include the Cartridge dependency:
 
 ### Step 2: Create Controller Configuration
 
-Create a new file `controller.tsx` in `utils/scaffold-stark/`. You can also review different configurations in the [Cartridge Controller documentation](https://docs.cartridge.gg/controller/overview) to understand how to integrate [policies or sessions](https://docs.cartridge.gg/controller/sessions) and other powerful features, especially for gaming or UX improvements.
+Create a new file `index.tsx` in `nextjs/services/web3/controller/index.tsx`. You can also review different configurations in the [Cartridge Controller documentation](https://docs.cartridge.gg/controller/overview) to understand how to integrate [policies or sessions](https://docs.cartridge.gg/controller/sessions) and other powerful features, especially for gaming or UX improvements.
 
 <details>
 <summary>View full code</summary>
@@ -132,7 +132,7 @@ Update `services/web/connectors.tsx` to include the Cartridge Controller instanc
 <summary>View changes</summary>
 
 ```tsx title="nextjs/services/web/connectors.tsx"
-import { controllerInstance } from "~~/utils/scaffold-stark/controller";
+import { controllerInstance } from "~~/services/web3/controller/index";
 
 // Add Cartridge Controller for non-devnet networks
 if (!targetNetworks.some(network => (network.network as string) === "devnet")) {
@@ -146,7 +146,7 @@ if (!targetNetworks.some(network => (network.network as string) === "devnet")) {
 
 #### Update Network Configuration
 
-Modify `scaffold.config.ts` to target Sepolia:
+Modify `scaffold.config.ts` to target `sepolia` or `mainnet`:
 
 ```typescript title="scaffold.config.ts"
 const scaffoldConfig = {
