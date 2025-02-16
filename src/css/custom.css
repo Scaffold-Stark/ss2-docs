@@ -32,3 +32,12 @@ h1 {
 details[open] {
   min-height: 50px;
 }
+
+.external-link-item a::after {
+  content: "↗";
+  margin-left: 5px;
+}
+
+.external-link-item a {
+  target: "_blank";
+}

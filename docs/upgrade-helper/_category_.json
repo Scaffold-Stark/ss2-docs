@@ -1,0 +1,9 @@
+{
+  "label": "🔗 Upgrade Scaffold",
+  "position": 9,
+  "link": {
+    "type": "doc",
+    "id": "upgrade-helper/external-link"
+  },
+  "className": "external-link-item"
+}
