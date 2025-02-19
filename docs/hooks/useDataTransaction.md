@@ -2,7 +2,6 @@
 sidebar_position: 11
 ---
 
-
 # `useDataTransaction`
 
 Use this hook to fetch, process, and monitor blockchain transaction data from Starknet for a specific block number. It calculates various statistics such as transactions per second (TPS), gas prices, average transaction fees in USD, and many more.
@@ -21,15 +20,14 @@ Use this hook to fetch, process, and monitor blockchain transaction data from St
 
 ## Usage
 
-This example fetches and monitors data for the specified block, 
+This example fetches and monitors data for the specified block,
 allowing you to display metrics or manage the data fetching state dynamically.
 
 ```tsx
 import { useDataTransaction } from "~~/hooks/scaffold-stark/useDataTransaction";
 
 const DataTransaction = ({ blockNumber }: { blockNumber: number }) => {
-  const { blockData, error, refetch, isEnabled, toggleFetching } =
-    useDataTransaction(blockNumber);
+  const { blockData, error, refetch, isEnabled, toggleFetching } = useDataTransaction(blockNumber);
 
   return (
     <div>
@@ -42,14 +40,11 @@ const DataTransaction = ({ blockNumber }: { blockNumber: number }) => {
           <p>TPS: {blockData.tps}</p>
           <p>Gas Price (ETH): {blockData.gasprice}</p>
           <p>Average Fee (USD): {blockData.averageFeeUSD}</p>
-         
         </>
       ) : (
         <p>Loading block data...</p>
       )}
-      <button onClick={toggleFetching}>
-        {isEnabled ? "Pause Fetching" : "Resume Fetching"}
-      </button>
+      <button onClick={toggleFetching}>{isEnabled ? "Pause Fetching" : "Resume Fetching"}</button>
       <button onClick={refetch}>Refetch Data</button>
     </div>
   );
@@ -70,6 +65,7 @@ const DataTransaction = ({ blockNumber }: { blockNumber: number }) => {
 The hook returns an object with the following properties:
 
 ### 1. `blockData: BlockData | null`
+
 The processed data for the specified block, including:
 
 - **`transaction`**: Total number of transactions in the block.
@@ -88,16 +84,19 @@ The processed data for the specified block, including:
 - **`averageFeeUSD`**: Average transaction fee in USD.
 
 ### 2. `error: string | null`
+
 An error message if the data fetching fails.
 
 ### 3. `refetch: () => void`
+
 A function to refetch the data.
 
 ### 4. `isEnabled: boolean`
+
 Indicates whether the automatic fetching is enabled.
 
 ### 5. `toggleFetching: () => void`
+
 A function to toggle the automatic fetching of data.
 
 ---
-
