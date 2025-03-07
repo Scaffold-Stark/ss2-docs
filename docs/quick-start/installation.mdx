@@ -18,13 +18,13 @@ Before you begin, you need to install the following tools:
 
 ## Install scarb
 
-To ensure the proper functioning of scaffold-stark, your local `Scarb` version must be `2.9.2`. To accomplish this, first check your local Scarb version:
+To ensure the proper functioning of scaffold-stark, your local `Scarb` version must be `2.9.4`. To accomplish this, first check your local Scarb version:
 
 ```sh
 scarb --version
 ```
 
-If your local Scarb version is not `2.9.2`, you need to install it.
+If your local Scarb version is not `2.9.4`, you need to install it.
 
 <details>
 <summary><b>Scarb Installation Process</b></summary>
@@ -45,23 +45,23 @@ Once you have `asdf` installed locally, you can download Scarb plugin with the f
 asdf plugin add scarb
 ```
 
-This will allow you to download specific versions. You can choose the same version as the Cairo's version, for example, 2.9.2, with the following command:
+This will allow you to download specific versions. You can choose the same version as the Cairo's version, for example, 2.9.4, with the following command:
 
 ```bash
-asdf install scarb 2.9.2
+asdf install scarb 2.9.4
 ```
 
 and set a global version:
 
 ```bash
-asdf global scarb 2.9.2
+asdf global scarb 2.9.4
 ```
 
 Otherwise, you can simply run the following command in your terminal, and follow the onscreen instructions. This
-will install the version `2.9.2` of Scarb.
+will install the version `2.9.4` of Scarb.
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.9.2
+curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh | sh -s -- -v 2.9.4
 ```
 
 </details>
@@ -120,7 +120,7 @@ curl -L https://raw.githubusercontent.com/Shard-Labs/starknet-devnet/main/instal
 
 ## Install Starknet Foundry
 
-If your Starknet Foundry version is not 0.35.1, you need to install it.
+If your Starknet Foundry version is not 0.38.2, you need to install it.
 
 ```sh
 snforge --version
@@ -141,13 +141,13 @@ asdf plugin add starknet-foundry
 This will allow you to download specific versions.
 
 ```bash
-asdf install starknet-foundry 0.35.1
+asdf install starknet-foundry 0.38.2
 ```
 
 and set a global version:
 
 ```bash
-asdf global starknet-foundry 0.35.1
+asdf global starknet-foundry 0.38.2
 ```
 
 </details>
@@ -197,11 +197,11 @@ curl --location 'https://starknet-sepolia.public.blastapi.io/rpc/v0_7' \
 
 | Dependency      | Version |
 | --------------- | ------- |
-| scarb           | v2.9.2  |
-| cairo           | v2.9.2  |
+| scarb           | v2.9.4  |
+| cairo           | v2.9.4  |
 | rpc             | v0.7.1  |
 | starknet-devnet | v0.2.3  |
-| snforge         | v0.35.1 |
+| snforge         | v0.38.2 |
 | starknet.js     | v6.12.1 |
 | starknet-react  | v3.6.0  |
 
