@@ -1,4 +1,4 @@
-# Scaffold-Stark 2 Docs 
+# Scaffold-Stark 2 Docs
 
 This website contains Scaffold-Stark 2 Documentation and is built using [Docusaurus 2](https://docusaurus.io/).
 
