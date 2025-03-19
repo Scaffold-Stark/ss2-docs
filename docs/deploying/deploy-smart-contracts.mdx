@@ -104,11 +104,11 @@ e.g. `yarn deploy --network sepolia`
 
 ## Configuration of Third-Party Services for Production-Grade Apps
 
-By default, Scaffold-Stark 2 provides predefined API keys for popular services such as Infura. This allows you to begin developing and testing your applications more easily, avoiding the need to register for this service.
+By default, Scaffold-Stark 2 provides predefined API keys for popular public services such as [Blast](https://blastapi.io/chains/starknet). This allows you to begin developing and testing your applications more easily, avoiding the need to register for this service.
 
 For production-grade applications, it's recommended to obtain your own API keys (to prevent rate limiting issues). You can configure these at:
 
-- `RPC_URL_SEPOLIA` variable in `packages/snfoundry/.env` and `packages/nextjs/.env.local`. You can create API keys from the [Alchemy dashboard](https://dashboard.alchemy.com/).
+- `RPC_URL_SEPOLIA` variable in `packages/snfoundry/.env` and `packages/nextjs/.env.local`. You can create API keys from the [Alchemy dashboard](https://dashboard.alchemy.com/) or [Infura](https://www.infura.io/).
 
 :::tip Hint
 It's recommended to store environment variables for Next.js in Vercel/system environment variable configuration for live apps and use `.env.local` for local testing.
