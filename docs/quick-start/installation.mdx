@@ -18,13 +18,13 @@ Before you begin, you need to install the following tools:
 
 ## Install scarb
 
-To ensure the proper functioning of scaffold-stark, your local `Scarb` version must be `2.9.4`. To accomplish this, first check your local Scarb version:
+To ensure the proper functioning of scaffold-stark, your `Scarb` version must be `2.9.4`. To accomplish this, first check your `Scarb` version:
 
 ```sh
 scarb --version
 ```
 
-If your local Scarb version is not `2.9.4`, you need to install it.
+If your Scarb version is not `2.9.4`, you need to install it.
 
 <details>
 <summary><b>Scarb Installation Process</b></summary>
@@ -51,10 +51,10 @@ This will allow you to download specific versions. You can choose the same versi
 asdf install scarb 2.9.4
 ```
 
-and set a global version:
+and set a version:
 
 ```bash
-asdf global scarb 2.9.4
+asdf set scarb 2.9.4
 ```
 
 Otherwise, you can simply run the following command in your terminal, and follow the onscreen instructions. This
@@ -68,14 +68,14 @@ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh
 
 ## Install `starknet-devnet`
 
-To ensure the proper functioning of scaffold-stark, your local starknet-devnet version must be 0.2.3.
-To accomplish this, first check your local starknet-devnet version:
+To ensure the proper functioning of scaffold-stark, your starknet-devnet version must be 0.2.3.
+To accomplish this, first check your starknet-devnet version:
 
 ```
 starknet-devnet --version
 ```
 
-If your local starknet-devnet version is not `0.2.3`, you need to install it.
+If your `starknet-devnet` version is not `0.2.4`, you need to install it.
 
 <details>
 <summary><b>Starknet Devnet Installation Process</b></summary>
@@ -94,19 +94,19 @@ asdf plugin add starknet-devnet
 This will allow you to download specific versions. You can install the compatible version **0.2.3** with:
 
 ```bash
-asdf install starknet-devnet 0.2.3
+asdf install starknet-devnet 0.2.4
 ```
 
-and set it as the global or local version:
+and set a version:
 
 ```bash
-asdf global starknet-devnet 0.2.3
+asdf set starknet-devnet 0.2.4
 ```
 
 or
 
 ```bash
-asdf local starknet-devnet 0.2.3
+asdf set starknet-devnet 0.2.3
 ```
 
 Otherwise, you can simply run the following command in your terminal and follow the on-screen instructions.  
@@ -144,10 +144,10 @@ This will allow you to download specific versions.
 asdf install starknet-foundry 0.38.2
 ```
 
-and set a global version:
+and set a version:
 
 ```bash
-asdf global starknet-foundry 0.38.2
+asdf set starknet-foundry 0.38.2
 ```
 
 </details>
