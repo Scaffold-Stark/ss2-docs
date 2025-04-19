@@ -23,8 +23,9 @@ Scaffold-Stark is not a product itself but more of a combination or stack of oth
 
 Here are the main components:
 
-- [**Starknet-Devnet-rs**](https://github.com/0xSpaceShard/starknet-devnet-rs) for running local networks
+- [**Starknet-Devnet**](https://0xspaceshard.github.io/starknet-devnet/) for running local networks
 - [**Scarb**](https://docs.swmansion.com/scarb/) to build/compile smart contracts
-- [**StarknetJS**](https://www.starknetjs.com/docs/guides/intro) as low-level interface that provides primitives to interact with Starknet. Declaring and deploying smart contracts.The alternative to starknet-rs.
+- [**Starknet-Foundry**](https://foundry-rs.github.io/starknet-foundry/index.html) for testing smart contracts
 - [**Starknet-React**](https://starknet-react.com/docs/getting-started) Collection of React hooks wrapper around starknet-react to simplify interactions with smart contracts with typescript autocompletion.
+- [**StarknetJS**](https://www.starknetjs.com/docs/guides/intro) as low-level interface that provides primitives to interact with Starknet. Declaring and deploying smart contracts.The alternative to starknet-rs.
 - [**NextJS**](https://nextjs.org/docs) for building a frontend, using many useful pre-made hooks.

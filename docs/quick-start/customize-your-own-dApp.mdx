@@ -32,17 +32,6 @@ These two directories together form the complete project structure, with `snfoun
 
    <br />
 
-   #### --fee
-
-   - Type: string
-   - Default: "eth"
-   - Choices:
-     - "eth": Use ETH as the fee token
-     - "strk": Use STRK as the fee token
-   - Example: `--fee strk`
-
-   <br />
-
    #### --reset
 
    - Type: boolean
@@ -62,10 +51,10 @@ These two directories together form the complete project structure, with `snfoun
    yarn deploy
    ```
 
-   2.2. Deploy to testnet using STRK fees:
+   2.2. Deploy to testnet:
 
    ```bash
-   yarn deploy --network sepolia --fee strk
+   yarn deploy --network sepolia
    ```
 
    2.3. Deploy with reset:
@@ -75,7 +64,11 @@ These two directories together form the complete project structure, with `snfoun
    ```
 
 3. **Test Smart Contracts**:
-   To ensure your smart contracts work correctly, write and run tests in the `packages/snfoundry/contracts/src/test` directory. These tests can be executed using the `yarn test` command. This helps catch and fix potential errors before deployment.
+   To ensure your smart contracts work correctly, write and run tests in the `packages/snfoundry/contracts/src/test` directory. These tests can be executed using the command:
+   ```bash
+   yarn test
+   ```
+   This helps catch and fix potential errors before deployment.
 
 ## Customize Frontend
 
@@ -139,7 +132,7 @@ const MyBalance = ({ address }) => {
         </div>
       </div>
       <Balance className="mt-4 text-4xl text-blue-600" address={address} />
-      <div className="mt-2 text-sm text-gray-500">Current balance in ETH</div>
+      <div className="mt-2 text-sm text-gray-500">Current balance in STRK</div>
     </div>
   );
 };
