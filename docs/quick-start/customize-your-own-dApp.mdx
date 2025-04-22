@@ -32,17 +32,6 @@ These two directories together form the complete project structure, with `snfoun
 
    <br />
 
-   #### --fee
-
-   - Type: string
-   - Default: "eth"
-   - Choices:
-     - "eth": Use ETH as the fee token
-     - "strk": Use STRK as the fee token
-   - Example: `--fee strk`
-
-   <br />
-
    #### --reset
 
    - Type: boolean
@@ -56,16 +45,16 @@ These two directories together form the complete project structure, with `snfoun
 
    #### Example Commands
 
-   2.1. Deploy to devnet using ETH fees (default settings):
+   2.1. Deploy to devnet (default settings):
 
    ```bash
    yarn deploy
    ```
 
-   2.2. Deploy to testnet using STRK fees:
+   2.2. Deploy to testnet:
 
    ```bash
-   yarn deploy --network sepolia --fee strk
+   yarn deploy --network sepolia
    ```
 
    2.3. Deploy with reset:
@@ -139,7 +128,7 @@ const MyBalance = ({ address }) => {
         </div>
       </div>
       <Balance className="mt-4 text-4xl text-blue-600" address={address} />
-      <div className="mt-2 text-sm text-gray-500">Current balance in ETH</div>
+      <div className="mt-2 text-sm text-gray-500">Current balance in STRK</div>
     </div>
   );
 };
