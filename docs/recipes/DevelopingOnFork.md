@@ -67,5 +67,5 @@ Navigate to `/debug-ui` to interact with your contracts
 ## Notes
 
 - Make sure your contract deployment is complete before testing
-- The burner wallet is automatically configured with test ETH
+- The burner wallet is automatically configured with test STRK
 - External wallets need to be configured with the correct network settings
