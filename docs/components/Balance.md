@@ -32,7 +32,7 @@ import { Balance } from "~~/components/scaffold-stark";
 | ------------------------ | --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **address**              | `string`  | `undefined`   | Address in `0x___` format, it will resolve its Starknet Domain if it has one associated(coming soon).                     |
 | **className** (optional) | `string`  | `""`          | Prop to pass additional CSS styling to the component. You can use Tailwind / daisyUI classes like `text-3xl` for styling. |
-| **usdMode** (optional)   | `boolean` | `false`       | If true, the balance is displayed in USD. Otherwise, it defaults to ETH/STRK.                                             |
+| **usdMode** (optional)   | `boolean` | `false`       | If true, the balance is displayed in USD. Otherwise, it defaults to STRK. |
 
 ## Example
 
