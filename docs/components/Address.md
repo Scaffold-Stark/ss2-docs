@@ -13,7 +13,7 @@ By default, clicking on the address redirects to the connected wallet's network 
 ## Import
 
 ```tsx
-import { Address } from "@starknet-react/chains";
+import { Address } from "~~/components/scaffold-stark";
 ```
 
 ## Usage
