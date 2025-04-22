@@ -25,8 +25,8 @@ const Greetings = () => {
     functionName: "greeting",
   });
 
-  const { data: ethBalance, isLoading: isEthBalanceLoading } = useScaffoldReadContract({
-    contractName: "Eth",
+  const { data: strkBalance, isLoading: isStrkBalanceLoading } = useScaffoldReadContract({
+    contractName: "Strk",
     functionName: "balance_of",
     args: [YourContract?.address],
   });
@@ -36,11 +36,11 @@ const Greetings = () => {
       <div className="text-center">
         <h2 className="text-xl font-semibold">Greetings</h2>
         <div className="my-4">
-          <h3 className="font-medium">Balance ETH in YourContract:</h3>
-          {isEthBalanceLoading ? (
+          <h3 className="font-medium">Balance STRK in YourContract:</h3>
+          {isStrkBalanceLoading ? (
             <span className="loading loading-spinner"></span>
           ) : (
-            <p>{ethBalance ? (Number(ethBalance) / 10 ** 18).toFixed(6) : "0.000000"} ETH</p>
+            <p>{strkBalance ? (Number(strkBalance) / 10 ** 18).toFixed(6) : "0.000000"} STRK</p>
           )}
         </div>
         <div className="my-4">
@@ -71,7 +71,7 @@ Begin by creating a new component in the `components` folder of your application
 const Greetings = () => {
   return (
     <div>
-      <h3 className="font-medium">Balance ETH in YourContract:</h3>
+      <h3 className="font-medium">Balance STRK in YourContract:</h3>
       <h3 className="font-medium">New Greeting:</h3>
     </div>
   );
@@ -105,9 +105,9 @@ In the line `const {data: currentGreeting} = useScaffoldReadContract({...})`, we
 
 The contract function returns a `uint`, which is represented as a [`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) in JavaScript. You can convert it to a readable string using `.toString()`.
 
-### Step 3: Retrieve ETH Balance in YourContract
+### Step 3: Retrieve STRK Balance in YourContract
 
-We can retrieve the ETH balance of the contract by first getting its address using `useScaffoldContract`. Then, we pass this address as an argument (`args`) to `useScaffoldReadContract`, which will call the contract function.
+We can retrieve the STRK balance of the contract by first getting its address using `useScaffoldContract`. Then, we pass this address as an argument (`args`) to `useScaffoldReadContract`, which will call the contract function.
 
 ```tsx title="components/Greetings.tsx"
 import { useScaffoldContract } from "~~/hooks/scaffold-stark/useScaffoldContract";
@@ -116,16 +116,16 @@ import { useScaffoldReadContract } from "~~/hooks/scaffold-stark/useScaffoldRead
 const Greetings = () => {
   const { data: YourContract } = useScaffoldContract({ contractName: "YourContract" });
 
-  const { data: ethBalance } = useScaffoldReadContract({
-    contractName: "Eth",
+  const { data: strkBalance } = useScaffoldReadContract({
+    contractName: "Strk",
     functionName: "balance_of",
     args: [YourContract?.address],
   });
 
   return (
     <div>
-      <h3 className="font-medium">Balance ETH in YourContract:</h3>
-      <p>{ethBalance ? (Number(ethBalance) / 10 ** 18).toFixed(6) : "0.000000"} ETH</p>
+      <h3 className="font-medium">Balance STRK in YourContract:</h3>
+      <p>{strkBalance ? (Number(strkBalance) / 10 ** 18).toFixed(6) : "0.000000"} STRK</p>
     </div>
   );
 };
@@ -147,8 +147,8 @@ const Greetings = () => {
     functionName: "greeting",
   });
 
-  const { data: ethBalance, isLoading: isEthBalanceLoading } = useScaffoldReadContract({
-    contractName: "Eth",
+  const { data: strkBalance, isLoading: isStrkBalanceLoading } = useScaffoldReadContract({
+    contractName: "Strk",
     functionName: "balance_of",
     args: [YourContract?.address],
   });
@@ -158,11 +158,11 @@ const Greetings = () => {
       <div className="text-center">
         <h2 className="text-xl font-semibold">Greetings</h2>
         <div className="my-4">
-          <h3 className="font-medium">Balance ETH in YourContract:</h3>
-          {isEthBalanceLoading ? (
+          <h3 className="font-medium">Balance STRK in YourContract:</h3>
+          {isStrkBalanceLoading ? (
             <span className="loading loading-spinner"></span>
           ) : (
-            <p>{ethBalance ? (Number(ethBalance) / 10 ** 18).toFixed(6) : "0.000000"} ETH</p>
+            <p>{strkBalance ? (Number(strkBalance) / 10 ** 18).toFixed(6) : "0.000000"} STRK</p>
           )}
         </div>
         <div className="my-4">
