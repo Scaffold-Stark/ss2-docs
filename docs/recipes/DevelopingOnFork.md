@@ -7,7 +7,7 @@ This guide shows how to run and interact with a local fork of Starknet mainnet.
 1. Start the fork:
 
 ```bash
-yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_7
+yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_8
 ```
 
 2. After running yarn chain fork, there will be a block number in console:
