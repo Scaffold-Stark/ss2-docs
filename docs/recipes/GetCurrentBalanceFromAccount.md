@@ -1,12 +1,12 @@
 ---
 sidebar_position: 1
 title: Get the Current Balance of the Connected Account
-description: Learn how to display the ETH and STRK balance and address of an account in your dApp.
+description: Learn how to display the STRK balance and address of an account in your dApp.
 ---
 
 # Get the Current Balance of the Connected Account
 
-This recipe shows how to fetch and display the ETH and STRK balance of the currently connected account.
+This recipe shows how to fetch and display the STRK balance of the currently connected account.
 
 <details open>
 <summary>Here is the full code, which we will be implementing in the guide below:</summary>
@@ -69,7 +69,7 @@ export const ConnectedAddressBalance = () => {
 
   return (
     <div>
-      <h2>Your ETH and STRK Balance</h2>
+      <h2>Your STRK Balance</h2>
       {/* highlight-start */}
       Address: <Address address={connectedAddress} />
       Balance: <Balance address={connectedAddress} />

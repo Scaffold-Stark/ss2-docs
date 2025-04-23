@@ -4,15 +4,15 @@ sidebar_position: 2
 
 # Balance
 
-The `Balance` component displays the balance of a given Ethereum (ETH) or Starknet (STRK) address in both its native currency and US dollars (USD). It allows toggling between these two modes and also handles potential errors or loading states.
+The `Balance` component displays the balance of a given Starknet (STRK) address in both its native currency and US dollars (USD). It allows toggling between these two modes and also handles potential errors or loading states.
 
 ## Features
 
-- **ETH & STRK Balances:** Shows both Ethereum and Starknet balances for a given address.
+- **STRK Balances:** Shows Starknet balances for a given address.
 - **USD Conversion:** Option to toggle and display balance in USD, provided the exchange rates are available.
 - **Error & Loading States:** Handles network issues, loading delays, and empty address scenarios gracefully.
 
-![Balance Example](/img/Balance.gif)
+![Balance Example](/img/Balance.gif) <!-- Update gif here -->
 
 ## Import
 
@@ -32,7 +32,7 @@ import { Balance } from "~~/components/scaffold-stark";
 | ------------------------ | --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **address**              | `string`  | `undefined`   | Address in `0x___` format, it will resolve its Starknet Domain if it has one associated(coming soon).                     |
 | **className** (optional) | `string`  | `""`          | Prop to pass additional CSS styling to the component. You can use Tailwind / daisyUI classes like `text-3xl` for styling. |
-| **usdMode** (optional)   | `boolean` | `false`       | If true, the balance is displayed in USD. Otherwise, it defaults to ETH/STRK.                                             |
+| **usdMode** (optional)   | `boolean` | `false`       | If true, the balance is displayed in USD. Otherwise, it defaults to STRK. |
 
 ## Example
 

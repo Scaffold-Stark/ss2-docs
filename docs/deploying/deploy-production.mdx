@@ -14,8 +14,8 @@ Before deploying to production, ensure you have the correct versions of all depe
 ```bash
 # Check versions
 node --version                # >= v18.17
-starknet-devnet --version     # 0.3.0
-scarb --version               # 2.11.2
+starknet-devnet --version     # 0.4.0
+scarb --version               # 2.11.4
 snforge --version             # 0.41.0
 ```
 
@@ -191,14 +191,14 @@ Ensure your production environment variables are properly set in your deployment
 
 ```bash
 # In packages/nextjs/.env.local
-NEXT_PUBLIC_PROVIDER_URL=https://your-provider.example.com/your-api-key/rpc/v0_7
+NEXT_PUBLIC_PROVIDER_URL=https://your-provider.example.com/your-api-key/rpc/v0_8
 ```
 
 :::tip Hint
-Make sure your RPC provider URL includes the correct version path (v0_7). You can verify the RPC version with this curl command:
+Make sure your RPC provider URL includes the correct version path (v0_8). You can verify the RPC version with this curl command:
 
 ```bash
-# Verify RPC version (should be 0.7.1)
+# Verify RPC version (should be 0.8.x)
 curl -X POST -H "Content-Type: application/json" --data '{
  "jsonrpc":"2.0",
  "method":"starknet_specVersion",

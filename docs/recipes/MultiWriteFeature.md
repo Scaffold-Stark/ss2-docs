@@ -33,12 +33,12 @@ const MultiSetData = () => {
   const { sendAsync, isPending } = useScaffoldMultiWriteContract({
     calls: [
       {
-        contractName: "Eth",
+        contractName: "Strk",
         functionName: "approve",
         args: [YourContract?.address, BigInt(inputAmount)],
       },
       {
-        contractName: "Eth",
+        contractName: "Strk",
         functionName: "transfer",
         args: [YourContract?.address, BigInt(inputAmount)],
       },
@@ -68,7 +68,7 @@ const MultiSetData = () => {
       />
       <input
         type="number"
-        placeholder="Enter your ETH amount"
+        placeholder="Enter your STRK amount"
         className="input border border-primary"
         onChange={e => {
           setInputAmount(BigInt(Number(e.target.value) * 10 ** 18));
@@ -120,18 +120,18 @@ const [greeting, setGreeting] = useState<string>("");
 
 ### Step 4: Configure the [`useScaffoldMultiWriteContract`](https://github.com/Scaffold-Stark/scaffold-stark-2/blob/main/packages/nextjs/hooks/scaffold-stark/useScaffoldMultiWriteContract.ts) Hook
 
-- Configure the hook with the necessary contract calls. Here, we call the `setGreeting` and `setInputAmount` functions of `YourContract` and `Eth` in sequence.
+- Configure the hook with the necessary contract calls. Here, we call the `setGreeting` and `setInputAmount` functions of `YourContract` and `Strk` in sequence.
 
 ```tsx title="components/MultiContractInteraction.tsx"
 const { sendAsync, isPending } = useScaffoldMultiWriteContract({
   calls: [
     {
-      contractName: "Eth",
+      contractName: "Strk",
       functionName: "approve",
       args: [YourContract?.address, BigInt(inputAmount)],
     },
     {
-      contractName: "Eth",
+      contractName: "Strk",
       functionName: "transfer",
       args: [YourContract?.address, BigInt(inputAmount)],
     },
@@ -179,7 +179,7 @@ return (
       />
       <input
         type="number"
-        placeholder="Enter your ETH amount"
+        placeholder="Enter your STRK amount"
         className="input border border-primary"
         onChange={(e) => {
           setInputAmount(BigInt(Number(e.target.value) * 10 ** 18));

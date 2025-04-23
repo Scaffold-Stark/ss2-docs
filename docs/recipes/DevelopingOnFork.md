@@ -7,7 +7,7 @@ This guide shows how to run and interact with a local fork of Starknet mainnet.
 1. Start the fork:
 
 ```bash
-yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_7
+yarn chain --fork-network https://starknet-mainnet.public.blastapi.io/rpc/v0_8
 ```
 
 2. After running yarn chain fork, there will be a block number in console:
@@ -67,5 +67,5 @@ Navigate to `/debug-ui` to interact with your contracts
 ## Notes
 
 - Make sure your contract deployment is complete before testing
-- The burner wallet is automatically configured with test ETH
+- The burner wallet is automatically configured with test STRK
 - External wallets need to be configured with the correct network settings
