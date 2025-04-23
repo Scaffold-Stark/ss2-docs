@@ -68,7 +68,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://docs.swmansion.com/scarb/install.sh
 
 ## Install `starknet-devnet`
 
-To ensure the proper functioning of scaffold-stark, your starknet-devnet version must be 0.3.0.
+To ensure the proper functioning of scaffold-stark, your starknet-devnet version must be 0.4.0.
 To accomplish this, first check your starknet-devnet version:
 
 ```
@@ -91,7 +91,7 @@ Once you have `asdf` installed locally, you can add the Starknet Devnet plugin w
 asdf plugin add starknet-devnet
 ```
 
-This will allow you to download specific versions. You can install the compatible version **0.3.0** with:
+This will allow you to download specific versions. You can install the compatible version **0.4.0** with:
 
 ```bash
 asdf install starknet-devnet 0.2.4
@@ -106,14 +106,14 @@ asdf set starknet-devnet 0.2.4
 or
 
 ```bash
-asdf set starknet-devnet 0.3.0
+asdf set starknet-devnet 0.4.0
 ```
 
 Otherwise, you can simply run the following command in your terminal and follow the on-screen instructions.  
-This will install the version **0.3.0** of Starknet Devnet:
+This will install the version **0.4.0** of Starknet Devnet:
 
 ```bash
-curl -L https://raw.githubusercontent.com/Shard-Labs/starknet-devnet/main/install.sh | bash -s -- -v 0.3.0
+curl -L https://raw.githubusercontent.com/Shard-Labs/starknet-devnet/main/install.sh | bash -s -- -v 0.4.0
 ```
 
 </details>
@@ -182,7 +182,7 @@ To start using the Docker-based setup:
 
 ## Install RPC
 
-To ensure the proper functioning of the scaffold-stark with Testnet or Mainnet, your RPC version must be `0.7.1`. This repository contains a .env.example file, where we provided the default RPC URL for the Starknet Testnet: `RPC_URL_SEPOLIA=https://starknet-sepolia.public.blastapi.io/rpc/v0_8`. Let's verify this RPC version is `0.7.1` by running the following command:
+To ensure the proper functioning of the scaffold-stark with Testnet or Mainnet, your RPC version must be `0.8.0`. This repository contains a .env.example file, where we provided the default RPC URL for the Starknet Testnet: `RPC_URL_SEPOLIA=https://starknet-sepolia.public.blastapi.io/rpc/v0_8`. Let's verify this RPC version is `0.8.0` by running the following command:
 
 ```sh
 curl --location 'https://starknet-sepolia.public.blastapi.io/rpc/v0_8' \
@@ -199,8 +199,8 @@ curl --location 'https://starknet-sepolia.public.blastapi.io/rpc/v0_8' \
 | --------------- | ------- |
 | scarb           | v2.11.4 |
 | cairo           | v2.11.4 |
-| rpc             | v0.7.1  |
-| starknet-devnet | v0.3.0  |
+| rpc             | v0.8.0  |
+| starknet-devnet | v0.4.0  |
 | snforge         | v0.41.0 |
 | starknet.js     | v7.1.0  |
 | starknet-react  | v3.7.2  |
